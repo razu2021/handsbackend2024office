@@ -1,0 +1,92 @@
+.contact_banner{
+    background-image: url(../img/banner/handsbanner.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+    .bannerbg{
+        background: rgba(0, 0, 0, 0.57);
+      
+    }
+}
+.banner_contents{
+    h1{
+        text-transform: uppercase;
+        font-size: 4.5rem;
+        font-weight: 700;
+        color: #fff;
+        padding: 6rem 0rem;
+        text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
+        0px -5px 35px rgba(255,255,255,0.3);
+       
+    }
+   
+}
+.contact_details{
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    min-height: 12.5rem;
+    display: flex;
+    justify-content:flex-start;
+    padding: 1rem;
+    justify-items: center;
+    align-items: center;
+    transition: 1s all;
+    &:hover{
+        border-radius: .5rem;
+        border: .1rem solid red;
+        a,p{
+            color: #000;
+        }
+        .detais_icon{
+            background: #BD1D1D;
+            
+        }
+    }
+}
+.detais_icon{
+    background: #000;
+    padding: 1rem;
+    border-radius: 10%;
+    margin-right: 1.5rem;
+    span{
+        color: var(--color2);
+        font-size: 2rem;
+    }
+}
+.details_info{
+    p{
+        @include peragraph($fw:700)
+    }
+    a:hover{
+        color: red;
+        transition: 0.35s all;
+    }
+}
+
+// form css
+.form_banner{
+    background-image: url(../img/contactbanner.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+    .form_bg{
+        background: rgba(255, 255, 255, 0.75);
+    }
+}
+.form_content{
+    strong{
+        font-size: 3rem;
+        border-bottom: 3px dotted #fff ;
+    }
+    h3{
+        @include heading1($fontsize:4.5rem,$color:#000);
+        text-transform: capitalize;
+    }
+}
+.form_content{
+    padding: 1rem;
+}
+.contact_form{
+    padding: 2rem;
+}

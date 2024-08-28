@@ -1,0 +1,428 @@
+
+
+.job_post{
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(34, 27, 35, 0.15) 0px 0px 0px 1px;
+    padding: 2rem 1rem;
+}
+.job_post_image{
+    box-shadow: rgba(128, 192, 229, 0.86) 0px 22px 70px 4px;
+    height: 11rem;
+    width: auto;
+    object-fit: cover;
+    img{
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+    }
+}
+.job_post_title{
+    padding: 0rem 1rem;
+
+    h4{
+        font-weight: 700;
+        padding-bottom: .6rem;
+        span{
+            color: red ;
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+    }
+    p{
+        font-size: 1.5rem;
+    }
+    a{
+        color: green;
+        transition: all 0.35s;
+        &:hover{
+            color: red;
+        }
+    }
+}
+.job_post_view{
+    text-align: right;
+    p{
+        background-color: rgb(53, 39, 1);
+        display: inline-block;
+        padding: .5rem .8rem;
+        color: #fff;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+    }
+    a{
+        color: rgb(129, 80, 6);
+        text-transform: capitalize;
+        font-weight: 500;
+        transition: all .35s;
+        &:hover{
+            color: red;
+        }
+    }
+
+    h5{
+        font-weight: 700;
+        padding-bottom: 1rem;
+        span{
+            color: green;
+            font-weight: 400;
+            font-style: italic;
+            
+        }
+    }
+}
+// ---------------  job details  ---------------
+.job_details_area{
+    background: #fff;
+}
+.details_header_image{
+    background-image: url('../img/builidng.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.details_header_bg{
+    background-color: rgba(255, 255, 255, 0.72);
+}
+
+.header_content{
+    text-align: center;
+    padding: 5rem 0rem;
+    img{
+        height: 10rem;
+        width: auto;
+        background: #fff;
+        border-radius: 2rem;
+        
+    }
+    h1{
+        @include heading1($color:#000);
+    }
+}
+/*--------  job details --------*/
+.job_details_content{
+    padding: 1rem 2rem;
+    h4{
+        color: green;
+        font-weight: 700;
+    }
+    h5{
+        padding-top: 3rem;
+        padding-bottom: 1.2rem;
+
+        font-weight: 700;
+        span{
+            font-weight: 400;
+        }
+    }
+    ul{
+        margin-left: 4rem ;
+        li{
+            list-style-type: square;
+        }
+    } 
+}
+
+.job_des_footer{
+    text-align: center;
+    padding: 3rem 0rem;
+    h6{
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+        margin: 2rem;
+        padding: .5rem;
+        font-weight: 700;
+        transition: all 0.35s;
+        &:hover{
+            a{
+                color: red;
+            }
+        }
+        a{
+            color: green;
+        }
+    }
+    h4{
+        color: red;
+    }
+    button{
+        a{
+            color: #fff;
+        }
+    }
+}
+.job_details_address{
+    text-align: left;
+}
+
+// Training Details css 
+.training_details_area{
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+    padding: 1rem;
+}
+.tr_details_image{
+
+    height: 38rem;
+    width: 100%;
+    object-fit: cover;
+    img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+.training_details_content{
+    padding: 1.5rem ;
+    h4{
+        color: #000;
+        font-weight: 700;
+        padding: 1rem 0rem;
+        span{
+            color: green;
+            font-weight: 400;
+            font-size: 1.5rem;
+
+        }
+    }
+    p{
+        padding: .5rem 0rem;
+        span{
+            color: #000;
+            padding-right: 1.3rem;
+            a{
+                color: rgb(29, 130, 247);
+            }
+        }
+    }
+}
+.tr_apply_button{
+    padding: 1.5rem 0rem;
+    text-align: right;
+
+    button{
+        a{
+            color: #fff;
+        }
+    }
+    p{
+        padding: .7rem 0rem;
+        color: red;
+    }
+}
+.training_des{
+    padding: 4rem 0rem;
+
+    h4{
+        padding-bottom: 2rem;
+        text-transform: uppercase;
+    }
+    p{
+        text-align: justify;
+        padding: 1rem 0rem;
+    }
+}
+
+.course_siderbar_overvew{
+    padding: 1rem;
+}
+.overview_content{
+    ul{
+        li{
+            background-color: rgb(236, 236, 236);
+            margin: .5rem 0rem;
+            padding: 1rem;
+            span{
+                padding-right: 1rem;
+                color: #ff9f9f;
+            }
+        }
+    }
+}
+.over_contents{
+    display: flex;
+    justify-content: start;
+    height: auto;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+}
+.ov_icon{
+    span{
+        padding: 2rem;
+        font-size: 1.8rem;
+        color: green;
+    }
+}
+.ov_content{
+   padding: .5rem 1rem;
+    p{
+        font-size: 1.5rem;
+    }
+}
+
+// n---------------- notice page design -----------
+.notice_board{
+    background-image: url('../img/vactor/notice1.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: scroll;
+
+}
+.about_notice{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    background-color: rgba(255, 255, 255, 0.99);
+    border: 1px solid gray;
+    padding: 2rem;
+    outline: .1rem solid #fff;
+}
+.notice_header{
+    text-align: center;
+    justify-content: center;
+    border-bottom: 1px solid #000;
+    padding: 1rem 0rem;
+    img{
+        height: 10rem;
+        width: auto;
+    }
+    h3{
+        color: #000;
+    }
+    a{
+        text-align: center;
+        padding-bottom: 1rem;
+        span{
+            font-weight: 700;
+        }
+    }
+}
+
+.notice_body{
+    h1{
+        text-align: center;
+        text-transform: uppercase;
+        padding: 1rem 0rem;
+    }
+    strong{
+        padding: 2rem 0rem;
+        font-weight: 700;
+    }
+}
+.notice_content{
+    padding: 2rem 0rem ;
+    h4{
+        text-align: center;
+        font-weight: 700;
+        padding: 2rem 0rem;
+        color: #131635;
+    }
+    p{
+        padding: 1rem 0rem;
+        text-align: justify;
+    }
+}
+.notice_fotter{
+    padding: 5rem;
+    img{
+        height: 8rem;
+    }
+}
+
+.notice_verify{
+    img{
+        height: 15rem;
+        color: green;
+    }
+}
+
+// u-------------  user profile modal ------
+.profile_section{
+    border-left: 2px solid gray;
+    padding: 2rem;
+    height: 100vh;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    overflow: hidden;
+  
+}
+.user_profile{
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    display: grid;
+}
+.user_profile_image{
+
+    height: 15rem;
+    width:15rem;
+    object-fit: cover;
+    img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid #fc975d;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;    
+    }
+}
+.user_profile_info{
+    padding: 1rem 0rem;
+    text-align: center;
+    h3{
+        text-transform: capitalize;
+        font-weight: 700;
+        padding-bottom:.8rem ;
+    }
+}
+.user_log{
+    text-align: center;
+    border-bottom: 2px dotted #000;
+    padding-bottom: 2rem;
+    button{
+        border: none;
+        background: $color4;
+        padding: .8rem;
+        border-radius: 1rem;
+        transition: all .40s;
+        &:hover{
+            background: transparent;
+            border: 1px solid gray;
+            a{
+                color: red;
+            }
+        }
+        a{
+            color: #fff;
+            padding: .4rem;
+        }
+    }
+}
+.flow_us_social{
+    padding: 2rem 0rem;
+    border-bottom: 2px dotted gray;
+}
+.app_download{
+    padding: 2rem 0rem;
+    text-align: center;
+    button{
+        border: 1px solid gray;
+        padding: .8rem;
+
+        a{
+            img{
+                height:3.5rem;
+            }
+        }
+    }
+}
+
+
+
+.user_faq{
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    display: grid;
+    h1{
+        color: #fc975d;
+    }
+}

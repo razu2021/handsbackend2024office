@@ -1,0 +1,595 @@
+// slider banner csss 
+.slider_container_size{
+    height: 80rem;
+    padding: 5rem 2rem ;
+}
+.container_slider_content{
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    display: grid;
+}
+.container_slider_text{
+    h3{
+        color: #fff;
+        word-spacing: 0.1rem;
+        font-style: italic;
+        letter-spacing: 0.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid red ;
+        display: inline-block;
+    }
+    h1{
+        @include heading1($color:#fff,$fontsize:4.8rem);
+        text-transform: capitalize;
+        font-weight: 900;
+        z-index: +1;
+        padding-bottom: 1rem;
+        span{
+            color: $color4;
+        }
+    }
+    p{
+        color: #fff;
+    }
+}
+.container_slider_images{
+    text-align: right;
+    padding: 1rem 2rem;
+    img{
+        text-align: right;
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+// slider animation 
+.owl-carousel .owl-item.active .container_slider_item .container_slider_images img {
+    animation: jackInTheBox 2s linear;
+}
+
+.owl-carousel .owl-item.active .container_slider_item .container_slider_text h1 {
+    animation: fadeInDown 2s linear;
+}
+.owl-carousel .owl-item.active .container_slider_item .container_slider_text h3 {
+    animation: fadeInDown 2s linear;
+}
+
+
+.owl-carousel .owl-item.active .container_slider_item .container_slider_text p {
+    animation:fadeInUp 2s linear;
+}
+
+
+// banner image start here ===============
+.volunteer_bg_image{
+    background-image: url(../img/contactbanner.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+}
+
+.legal_aid_banner{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+}
+
+ .team_banner{
+    background-image: url(../img/banner3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+}
+// health page
+.doctorebgimage{
+    background-image: url(../img/vactor/bg-shape-10.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+}
+
+.achivbgimage{
+    background-image: url(../img/vactor/achiv.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+}
+.upcoming_cam_image{
+    background-image: url(../img/health_bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+}
+.upcoming_bg{
+    background: rgba(255,255,255,0.85);
+}
+.apoinment_bg_image{
+    background-image: url(../img/vactor/bg5.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+}
+
+.banner_slider{
+    background-image: url(../img/banner-shape1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+}
+.bcome_volunteer{
+    background-image: url(../img/volunteer.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+}
+.volunteerbg{
+    background-color: rgba(255,255,255,0.60);
+}
+
+
+
+.banner_slider3bg{
+   background-color:  rgba(102,16,242,0.80);
+}
+
+.donnerbgimage{
+    background-image: url(../img/vactor/donerbd.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: center;
+}
+
+.donnerbg{
+    background-color: rgba(255,255,255,0.56);
+}
+
+//microfinace 
+.microfinace_banner{
+    // background-image: url(../img/microfinance.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: center;
+}
+.bannerbg{
+    background-color: $bannerbg;
+}
+
+// banner image start here ===============
+// banner 3
+.banner_3{
+    padding: 10rem 0rem ;
+    text-align: center;
+    h1{
+        @include heading1($color:#fff);
+        font-weight:900;
+        text-transform: uppercase;
+    }
+    a{
+        color: red;
+        transition: all 0.5s;
+        &:hover{
+            color: #fff;
+        }
+    }
+}
+.banner_3_bg{
+    background: $banner_3;
+}
+
+.common_banner_bg{
+    background: $bannerbg;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+// imgae style
+.common_banner_content{
+    background: transparent;
+    text-align: center;
+    img{
+        height: 40rem;
+        width:auto;
+        object-fit: cover;
+        z-index: -1;
+        border-radius: 1rem;
+        box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+    }
+}
+// video style 
+.common_banner_content{
+    background: transparent;
+    text-align: center;
+    video{
+        height: 40rem;
+        width: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+}
+// banner text content
+.common_banner_contents{
+    text-align: center;
+    padding-top:10rem;
+    h1{
+        @include heading1 ($color:#000,$fontsize:4.5rem);
+        position: relative;
+        text-transform: uppercase;
+        span{
+            color: red;
+        }
+    }
+    p{
+        @include peragraph($fsize:2rem,$color:#000);
+        padding: 1rem 0rem;
+    }
+}
+
+
+// comon about css start here 
+.common_about_image{
+    position: relative;
+    object-fit: cover;
+    img{
+        height: 40rem;
+        width: auto;
+        object-fit: cover;
+        clip-path: polygon(0 0, 75% 0%, 100% 50%, 75% 100%, 0 100%, 0% 50%);
+    }
+    .other_imge{
+        position: absolute;
+        bottom: 15%;
+        right: 0;
+        img{
+            height: 20rem;
+            width: auto;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+           
+        }
+    }
+}
+.common_about_content{
+    padding: 0rem 2rem;
+    p{
+       strong{
+        color: red;
+       }
+    }
+    h1{
+        @include heading1($color:#011a41,);
+        padding-bottom: 1rem;
+    }
+
+}
+.about_1{
+    @include peragraph($color:#011a41,$fw:700);
+    padding-bottom: 2rem;
+}
+.about_2{
+    @include peragraph($color:#011a41,$fw:300);
+    padding-bottom: 2rem;
+}
+.comon_overview{
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    .overview{
+        display: flex;
+        justify-content: space-between;
+        justify-items: center;
+        align-items: center;
+        .icon{
+            span{
+                font-size: 4rem;
+                padding: 0rem 1rem;
+                color: $color4;
+            }
+        }
+        .common_count{
+            strong{
+                font-size: 4rem;
+                font-weight: 900;
+              
+            }
+            p{
+                color: $color4;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+// image
+.profile{
+    height: 30rem;
+    object-fit: cover;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+
+
+
+
+// banner 3 start here ==============
+.banner3{
+    background-image: url(../img/vactor/bg-shape-10.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+    z-index: -1;
+
+}
+.banner3bg{
+    background: rgba(255,255,255,0.85)
+}
+.banner3_content{
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    display: grid;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 15%;
+        width: 100%;
+        height:60rem;
+        background-image: url("../img/vactor/Rotate.svg");
+        background-repeat: no-repeat;
+        background-size:contain;
+        background-position: center;
+        z-index: 1;
+        animation: rotation 8s linear infinite; // Apply animation to only the background
+    }
+}
+
+.banner3_info{
+    
+    h1{
+        @include heading1($color:$color3,$fontsize:4.8rem);
+        span{
+            color: $color4;
+            text-transform: uppercase;
+            &::after{
+                content: '__';
+                display: inline-block;
+                
+            }
+        }
+    }
+
+}
+
+
+
+
+.banner3_image{
+    justify-content: end;
+    display: flex;
+    justify-items: end;
+    img{
+        width: 80%;
+      
+      
+    }
+}
+
+
+
+
+// -------------------------------------  slider banner ------------
+// child protection page css 
+// index banner 
+.slider_section_bg{
+   background-color: red;
+}
+.overlay_index{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background:rgba(255, 255, 255, 0.50);
+}
+.owl-theme .owl-nav .index_banner_slider{
+    margin-bottom: 0;
+}
+.slider_item {
+    position: relative;
+    height: 75rem;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    .slider_image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%; /* Adjusted */
+        width: 100%;
+        object-fit: cover;
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            animation: scale 7s linear infinite;
+        }
+    }
+}
+@keyframes scale {
+    100% {
+        transform: scale(1.5);
+    }
+}
+
+.slider_text{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 25rem;
+    left: 5%;
+    z-index: 1;
+    p{
+        font-size: 2.2rem;
+        letter-spacing: 1rem;
+        font-weight: 600;
+    }
+    h1{
+        @include heading1;
+        text-transform: capitalize;
+        font-weight: 900;
+        font-size: 4rem;
+        background: #ffbc13;
+        display: inline-block;
+        padding: .5rem 2rem;
+        span{
+            color: red;
+        }
+    }
+    h2{
+        font-size: 10rem;
+        font-weight: 900;
+        display: block;
+        text-transform: uppercase;
+    }
+}
+// next & prev button 
+// .prev{
+//     position: absolute;
+//     top: 10rem;
+//     right: 5%;
+//     background-color: transparent;
+//     cursor: pointer;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     font-size: 28px !important;
+//     height: 40px;
+//     width: 40px ;
+//     border-radius: 2px ;
+//     color: #000;
+//    border: 1px solid #000;
+//     transition: 0.35 linear;
+//     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+//     animation:zoomIn 3s linear; 
+//     &:hover{
+//         background-color: #ffbc13;
+//         border-left: 2px solid #ffff;
+//         border-right: 2px solid #ffff;
+//         transition: 0.35 linear;
+//         color: #ffff;
+//         box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+//     }
+
+//     }
+//     .next {
+//         position: absolute;
+//         bottom: 15rem;
+//         right: 5%;
+//         background-color:transparent;
+//         cursor: pointer;
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//         font-size: 28px !important;
+//         height: 40px;
+//         width: 40px ;
+//         border-radius: 2px ;
+//         color: #000;
+//         border: 1px solid #000;
+//         transition: 0.35 linear;
+//         box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+//         animation:zoomIn 3s linear;
+//         &:hover{
+//             background-color:#ffbc13;;
+//             border-left: 2px solid #ffff;
+//             border-right: 2px solid #ffff;
+//             transition: 0.35s linear;
+//             color: #ffff;
+//             box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+//         }
+    
+//         }
+// index banner slider end herre 
+        .owl-carousel .owl-item.active .slider_item .slider_text h2{
+            animation: zoomIn 2s linear; 
+        }
+        .owl-carousel .owl-item.active .slider_item .slider_text h1{
+            animation: zoomIn 2s linear; 
+        }
+        .owl-carousel .owl-item.active .slider_item .slider_text button{
+            animation: zoomIn 2s linear; 
+        }
+        .owl-carousel .owl-item.active .slider_item .slider_text{
+            animation: zoomIn 2s linear; 
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            padding: 2rem;
+        }
+
+// endex banner end 
+
+// banner4 css start here 
+
+.banner4_content {
+    background: linear-gradient(311deg, rgba(255,255,255,1) 54%, rgba(245,4,4,0.14049369747899154) 100%);
+    height: 40.5rem;
+    width: 100%;
+    display: grid;
+    text-align: center;
+    align-content: center;
+    padding: 0rem 5rem;
+    
+    h1{
+        @include heading1($color:rgb(248, 151, 23),$fontsize:5rem)
+    }
+}
+
+.banner4_images{
+    height: 40.5rem;
+    width: 100%;
+    object-fit: cover;
+    img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+// about page banner 
+.aboutpagebg{
+    background-image: url(../img/background/bg-image.png);
+    background-position: center;
+    background-attachment: scroll;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.aboutbannerbg{
+    background-position: center;
+    background-attachment: scroll;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.aboutbgcolor{
+    background-color: rgba(255,255,255,0.85);
+}
+
+
+
+

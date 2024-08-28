@@ -1,0 +1,461 @@
+// microfinacne page css
+.microfinacne_content{
+    h5{
+        border-bottom: 1px solid bisque;
+        display: inline-block;
+        font-weight: 600;
+    }
+    p{
+        padding: 2rem 1rem;
+        text-align: justify;
+    }
+}
+
+.service_loan{
+    border: .1rem solid rgb(255, 168, 37);
+    padding: 1rem 2rem;
+}
+.sidebar_list{
+    h4{
+        font-weight: 700;
+        border-left: .3rem solid rgb(255, 168, 37);
+        padding: 1rem 2rem ;
+        margin-bottom: 2rem;
+        text-transform: capitalize;
+    }
+    ul{
+        li{
+            background: #fef7f3;
+            margin-bottom: .7rem;
+            padding: 1rem 0rem ;
+            transition: all 0.35s;
+            &:hover{
+                background-color: rgb(255, 168, 37);
+                a{
+                    color: #fff;
+                }
+            }
+            a{
+                font-size: 1.6rem;
+                padding: 1rem 1rem;
+                text-transform: capitalize;
+            }
+        }
+    }
+}
+// ------------service two 
+.service_two{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    min-height: 40rem;
+    width: 100%;
+    padding: 1rem;
+    &:hover{
+        img{
+            transform: scale(1.1);
+            transition: all 1s;
+            border-radius: .8rem;
+        }
+    }
+   
+}
+.service_tow_profile{
+    position: relative;
+    height: 35rem;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    transition: all 1s;
+    img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: .8rem;
+    }
+}
+.service_two_cotent{
+    padding: 1rem 1rem;
+    h2{
+        font-weight: 700;
+        text-transform: capitalize;
+        color: darkblue;
+        padding: 1rem 0rem;
+        font-size: 2.3rem;
+    }
+    p{
+        text-align: justify;
+    }
+}
+.stwo_link{
+    padding: 1rem 0rem ;
+    a{
+        color: #000;
+        font-weight: 900;
+        transition: all 0.35s;
+        span{
+            color: rgb(255, 168, 37);
+        }
+        &:hover{
+            color: red;
+            padding-left: 1rem;
+        }
+    }
+}
+
+
+//  child protection css 
+.ch_about_content{
+    h1{
+        @include heading1($color:#000,);
+        padding-bottom: 1rem;
+        span{
+            color:$color4;
+        }
+    }
+}
+.ch_box_content{
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    padding: 1.5rem;
+    h4{
+        font-weight: 500;
+        text-transform: capitalize;
+        span{
+            color: red;
+            font-size: 2.2rem;
+            font-weight: 900;
+        }
+    }
+}
+.ch_donate_form{
+    background-image: url(../img/child2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+}
+.ch_form{
+    padding: 2rem;
+    background: rgba(0,0,0,0.58);
+   h2{
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    span{
+        color:red;
+    }
+   }
+   p{
+    span{
+        color: rgb(247, 151, 7);
+        font-weight: 700;
+    }
+    color: #fff;
+   }
+}
+
+.make_D_image{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+    background-attachment: fixed;
+}
+.make_donation_quickbg{
+    background: rgba(0,0,0,0.58);
+}
+.make_donation_quick{
+    padding: 5rem 0rem;
+    text-align: center;
+    h1{
+        @include heading1();
+        
+    }
+    h3{
+        color: #fff;
+        span{
+            color: red;
+            font-weight: 900;
+        }
+    }
+}
+/*-----------------------*/
+.case_heading{
+    text-align: center;
+    h1{
+        text-transform: uppercase;
+        color: #000;
+        b{
+            color:red;
+        }
+    }
+    span{
+        font-size: 4rem;
+        color: #f8b45b;
+        &::after{
+            content: '';
+            height: .2rem;
+            width: 7rem;
+            background: #000;
+            display: inline-block;
+        }
+        &::before{
+            content: '';
+            height: .2rem;
+            width: 7rem;
+            background: #000;
+            display: inline-block;
+        }
+    }
+}
+.child_cause_area{
+    min-height: 50rem;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+    transition: all 1s linear;
+    border-bottom: 1px solid #f8b45b;
+    &:hover{
+        img{
+            transform: scale(1.1);
+            transition: all 1s ;
+        }
+        .ch_over_button{
+            position: absolute;
+            top: 15%;
+            z-index: +1;
+            transition: all 0.40s;
+            animation: showsch all 2s linear;
+            opacity: 1;
+        }
+    }
+}
+@keyframes showsch {
+    0%{
+        top: 0;
+        opacity: 0;
+    }
+    0%{
+        top: 10%;
+        opacity: 1;
+    }
+}
+.ch_image{
+    position: relative;
+    height: 25.5rem;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+.ch_over_button{
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+    position: absolute;
+    top:-100%;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    button{
+        border: none;
+        padding:.5rem;
+        background:#f8b45b;
+        a{
+            color: #000;
+            padding: .4rem;
+        }
+    }
+}
+.ch_cause_content{
+    padding: 2rem 1rem;
+    h2{
+        @include heading1($color:$color3,$fontsize:2.5rem)
+    }
+}
+.cause_dontate_graph{
+    justify-content: space-around;
+    display: flex;
+    padding: 1rem;
+}
+.ch_dontate{
+    background-color: #f3cc9a;
+    width: 100%;
+    margin: .2rem;
+    text-align: center;
+    padding: .5rem;
+    border-right: 1px solid rgb(0, 26, 255);
+    p{
+        
+    }
+    span{
+        color: red;
+    }
+}
+/*------------------*/
+.ch_dontate_count{
+    text-align: center;
+    span{
+        color: #fff;
+        font-size: 3.8rem;
+    }
+    h1{
+        color: #ffff;
+        font-size: 4.2rem;
+        padding-bottom: 1rem;
+    }
+    p{
+        color: #ffff;
+
+    }
+}
+
+.ch_event_area{
+    padding: 2rem 1rem;
+}
+.ch_mission{
+    width: 100%;
+    min-height: auto;
+    justify-content: space-between;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    padding: 1rem;
+}
+.mission_icon{
+    span{
+        font-size: 4.2rem;
+        padding: 1rem 2rem;
+        color: #f08d0d;
+    }
+}
+.mission_content{
+    h4{
+        padding-bottom: 1rem;
+        span{
+            color: red;
+        }
+    }
+    p{
+        text-align: justify;
+    }
+}
+.ch_upcoming_events{
+    justify-content: start;
+    display: flex;
+    justify-items: start;
+    align-items: start;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+.ch_event_date{
+    background-color: #f08d0d;
+    padding: 1rem;
+    text-align: center;
+    margin-right: 1rem;
+    h3{
+        display: block;
+        padding: 1rem;
+        font-size: 3rem;
+        font-weight: 700;
+    }
+    p{
+        display: block;
+    }
+}
+.ch_event_location{
+    h6{
+        font-size: 2.3rem;
+        padding: 1rem .2rem;
+    }
+    p{
+        font-size: 1.5rem;
+        a{
+            margin-right: 2rem;
+            span{
+                color: #f08d0d;
+                padding: 0rem 1rem;
+            }
+        }
+    }
+}
+
+/*----------------   emergency crisis page css ------------start */
+.crisis_content{
+
+    h1{
+        @include heading1($color:rgb(1, 1, 2),$fontsize:4rem);
+        padding-bottom: 2rem;
+    }
+    h3{
+        font-style: italic;
+        font-weight: 700;
+        span{
+            color: red;
+        }
+    }
+    p{
+        padding: 1rem 0rem;
+        text-align: justify;
+    }
+}
+
+// relif content 
+.r_section{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    padding: 1rem;
+    margin: 1rem 0rem;
+}
+.relif_image{
+    height: 38.5rem;
+    width: 100%;
+    object-fit: cover;
+    img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 1rem;
+        box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+    }
+}
+.relif_content{
+    height: 40.5rem;
+    width: 100%;
+    display: grid;
+    text-align: left;
+    align-content: center;
+    padding: 0rem 5rem;
+    h3{
+        color: #1c4ef3;
+        font-weight: 700;
+    }
+    p{
+        text-align: justify;
+        padding: 0.5rem 0rem;
+    }
+}
+//footer banner 
+.footer_banner_image{
+    height: 45.5rem;
+    width: 100%;
+    object-fit: cover;
+    img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+.footer_banner_content{
+    background-color: rgb(255, 136, 0);
+    height: 45.5rem;
+    width: 100%;
+    display: grid;
+    text-align: left;
+    align-content: center;
+    padding: 0rem 5rem;
+
+    h1{
+        @include heading1();
+    }
+}

@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+
+
+.profile{
+    z-index: +9999;
+}
+
+.profile img{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    margin-top: -30px;
+    z-index: +9999;
+    border: 2px solid #ffff;
+}
+.profile_info h1{
+    margin: 0px;
+    text-transform: capitalize;
+    font-size: 32px;
+    color: #050505;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.profile_info p{
+    margin: 0px;
+    text-transform: capitalize;
+    color: #67656B;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.additional_info{
+    padding: 10px 0px ;
+    text-align: end;
+}
+.additional_info p{
+    margin: 0;
+    padding-bottom: 10px;
+}
+.link_info{
+    text-align: end;
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (max-width: 576px) {
+    .profile{
+        z-index: +9999;
+    }
+    
+    .profile img{
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        margin-top: -30px;
+        z-index: +9999;
+        border: 2px solid #ffff;
+    }
+
+    .profile_info{
+        text-align: center;
+    }
+    .additional_info{
+        text-align: center;
+    }
+    
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+    .profile_info{
+        text-align: center;
+    }
+    .additional_info{
+        text-align: center;
+    }
+
+}

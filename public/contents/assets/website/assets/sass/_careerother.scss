@@ -3,12 +3,16 @@
 .job_post{
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(34, 27, 35, 0.15) 0px 0px 0px 1px;
     padding: 2rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    justify-items:start;
 }
 .job_post_image{
     box-shadow: rgba(128, 192, 229, 0.86) 0px 22px 70px 4px;
     height: 11rem;
     width: auto;
     object-fit: cover;
+    border-radius: .8rem;
     img{
         height: 100%;
         width: auto;
@@ -17,7 +21,6 @@
 }
 .job_post_title{
     padding: 0rem 1rem;
-
     h4{
         font-weight: 700;
         padding-bottom: .6rem;
@@ -72,6 +75,7 @@
 // ---------------  job details  ---------------
 .job_details_area{
     background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .details_header_image{
     background-image: url('../img/builidng.jpg');
@@ -207,15 +211,17 @@
     }
 }
 .training_des{
-    padding: 4rem 0rem;
-
+    padding: 2rem 2rem;
     h4{
-        padding-bottom: 2rem;
         text-transform: uppercase;
+        padding-bottom: 0.5rem;
+        font-weight: 700;
+        span{
+            color: #203ec2;
+        }
     }
     p{
         text-align: justify;
-        padding: 1rem 0rem;
     }
 }
 
@@ -299,6 +305,7 @@
         text-align: center;
         text-transform: uppercase;
         padding: 1rem 0rem;
+        color: #121969;
     }
     strong{
         padding: 2rem 0rem;
@@ -329,6 +336,28 @@
     img{
         height: 15rem;
         color: green;
+    }
+}
+.all_notice{
+    padding: 1rem;
+    border-radius: .8rem;
+    height: auto;
+    overflow-y: scroll auto;
+    background-color: #fff;
+
+    ul li{
+       padding: .3rem 0rem;
+       box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+        span{
+            color: #8a94fff6;
+            padding-left: .5rem;
+        }
+        a{
+            color:#131635;
+            &:hover{
+                color: red;
+            }
+        }
     }
 }
 

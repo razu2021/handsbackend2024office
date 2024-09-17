@@ -167,6 +167,32 @@
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="Layouts">User Applications</div>
+              </a>
+
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="{{url('apply_course.all')}}" class="menu-link">
+                    <div data-i18n="Without menu">Applications of Course</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('appoinment_book.all')}}" class="menu-link">
+                    <div data-i18n="Without navbar">Book Appoinment</div>
+                  </a>
+                </li>
+                
+              
+               
+              </ul>
+            </li>
+            <!-- end  -->
+
+
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts">Manage Application </div>
               </a>
               <ul class="menu-sub">
@@ -241,6 +267,11 @@
                 <li class="menu-item">
                   <a href="{{route('micro_service.all')}}" class="menu-link">
                     <div data-i18n="Account"> All Services </div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('allabout.all')}}" class="menu-link">
+                    <div data-i18n="Account"> All Page About </div>
                   </a>
                 </li>
                 <li class="menu-item">
@@ -362,21 +393,119 @@
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                <div data-i18n="Misc">Misc</div>
+                <div data-i18n="Misc">Get Involved </div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="pages-misc-error.html" class="menu-link">
-                    <div data-i18n="Error">Error</div>
+                  <a href="{{route('ourimpact.all')}}" class="menu-link">
+                    <div data-i18n="Error">Our Impact</div>
+                  </a>
+                </li>
+
+                
+                
+
+              </ul>
+            </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                <div data-i18n="Misc">Manage Gallery</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="{{route('photo_gallery.all')}}" class="menu-link">
+                    <div data-i18n="Error">Photo Gallery </div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="{{route('video_gallery.all')}}" class="menu-link">
+                    <div data-i18n="Under Maintenance">Video Gallery </div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link">
-                    <div data-i18n="Under Maintenance">Under Maintenance</div>
+                  <a href="{{route('field_storise.all')}}" class="menu-link">
+                    <div data-i18n="Under Maintenance">Field Storis </div>
                   </a>
                 </li>
+
               </ul>
             </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                <div data-i18n="Misc">Notice & Others</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="{{route('notice.all')}}" class="menu-link">
+                    <div data-i18n="Error">Notice Board</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="{{route('jobpost.all')}}" class="menu-link">
+                    <div data-i18n="Under Maintenance">Job Post</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('course.all')}}" class="menu-link">
+                    <div data-i18n="Under Maintenance">Course </div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('apply_course.all')}}" class="menu-link">
+                    <div data-i18n="Under Maintenance">Course Application</div>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+            <!-- other end  -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                <div data-i18n="Misc">Staff & Other</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="{{route('designation.all')}}" class="menu-link">
+                    <div data-i18n="Error">Designation Manage</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('allstaff.all')}}" class="menu-link">
+                    <div data-i18n="Error">All Staff</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="{{route('jobpost.all')}}" class="menu-link">
+                    <div data-i18n="Under Maintenance">Job Post</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('course.all')}}" class="menu-link">
+                    <div data-i18n="Under Maintenance">Course </div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('apply_course.all')}}" class="menu-link">
+                    <div data-i18n="Under Maintenance">Course Application</div>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+
+
+
+
+
+
             <!-- Components -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
             <!-- Cards -->

@@ -81,7 +81,6 @@
 }
 
  .team_banner{
-    background-image: url(../img/banner3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -122,7 +121,6 @@
 }
 
 .banner_slider{
-    background-image: url(../img/banner-shape1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -134,6 +132,17 @@
     background-size: cover;
     background-position: center;
     object-fit: cover;
+}
+.jobbanner{
+    background-image: url(../img/siteimage/mapbg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+    background-attachment: fixed;
+}
+.jobbannerbg{
+    background-color: rgba(255,255,255,0.84);
 }
 .volunteerbg{
     background-color: rgba(255,255,255,0.60);
@@ -544,9 +553,7 @@
         }
 
 // endex banner end 
-
 // banner4 css start here 
-
 .banner4_content {
     background: linear-gradient(311deg, rgba(255,255,255,1) 54%, rgba(245,4,4,0.14049369747899154) 100%);
     height: 40.5rem;
@@ -560,7 +567,6 @@
         @include heading1($color:rgb(248, 151, 23),$fontsize:5rem)
     }
 }
-
 .banner4_images{
     height: 40.5rem;
     width: 100%;
@@ -571,7 +577,6 @@
         object-fit: cover;
     }
 }
-
 // about page banner 
 .aboutpagebg{
     background-image: url(../img/background/bg-image.png);
@@ -590,6 +595,6 @@
     background-color: rgba(255,255,255,0.85);
 }
 
-
+/* CSS */
 
 

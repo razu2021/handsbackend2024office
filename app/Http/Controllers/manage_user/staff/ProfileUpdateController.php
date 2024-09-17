@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\Your_Profile;
 use Carbon\Carbon;
-use Intervention\Image\Image;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 
 class ProfileUpdateController extends Controller

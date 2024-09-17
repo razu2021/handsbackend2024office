@@ -1,7 +1,6 @@
 @extends('layouts.webmaster')
 @section('web_content') 
   <main>
-    
   @foreach($banner as $data)
     <section class="microfinace_banner" style="background-image: url('{{asset('uploads/website/'.$data->banner_bg_image)}}')">
         <div class="bannerbg">
@@ -23,7 +22,6 @@
         </div>
     </section>
     @endforeach
-
 <section class="section-padding">
     <div class="container">
         <div class="row">

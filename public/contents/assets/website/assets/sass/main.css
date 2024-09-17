@@ -615,6 +615,169 @@ form .submit_button {
   padding: 0rem 1rem;
 }
 
+.hands_video {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: "1rem";
+}
+.hands_video h4 {
+  padding: 0rem 1rem;
+  color: #011a35;
+  font-weight: 700;
+}
+.hands_video p {
+  padding: 0.5rem 1rem;
+}
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #111a2e; /* Background color of the preloader */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* High z-index to ensure it's on top */
+}
+
+.preloaders img {
+  display: block;
+  height: 7rem;
+  width: auto;
+  animation: bounce 1.5s infinite;
+}
+
+.loading {
+  display: flex;
+  font-size: 68px;
+  font-family: Arial, sans-serif;
+}
+
+.loading__letter {
+  animation: bounce 1.5s infinite;
+  animation-fill-mode: both;
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 1rem;
+}
+
+.loading__letter:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.loading__letter:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.loading__letter:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.loading__letter:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.loading__letter:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.loading__letter:nth-child(6) {
+  animation-delay: 0.5s;
+}
+
+.loading__letter:nth-child(7) {
+  animation-delay: 0.6s;
+}
+
+.loading__letter:nth-child(8) {
+  animation-delay: 0.7s;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+.blog_profile {
+  box-shadow: rgba(212, 85, 56, 0.5) 0px 7px 29px 0px;
+  min-height: 50rem;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  border-radius: 2rem;
+}
+
+.blog_profile_image {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: inline-block;
+  padding: 2rem;
+}
+.blog_profile_image img {
+  height: 30rem;
+  width: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 2rem;
+  box-shadow: rgba(212, 85, 56, 0.85) 0px 5px 15px;
+}
+
+.profilesinfo {
+  padding: 2rem;
+  display: block;
+}
+.profilesinfo h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+}
+.profilesinfo h6 {
+  color: #111a2e;
+}
+.profilesinfo button {
+  margin-top: 4rem;
+  background-color: #FD7239;
+  border: none;
+  border-radius: 0.8rem;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: all 0.35s;
+}
+.profilesinfo button a {
+  color: #fff;
+  padding: 1rem;
+}
+.profilesinfo button:hover {
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  transition: all 0.35s;
+}
+
+.p_info {
+  padding: 4rem 2rem;
+}
+
+.pcontact ul li span {
+  color: #FD7239;
+  font-size: 1.6rem;
+  padding: 0.5rem;
+}
+
+.psocial ul li {
+  display: inline-block;
+  padding: 0.5rem 0.3rem;
+}
+.psocial ul li a {
+  color: #FD7239;
+  padding: 0rem 1rem;
+  font-size: 2rem;
+}
+
 .index_banner {
   background-position: center;
   background-repeat: repeat;
@@ -2149,7 +2312,6 @@ form .submit_button {
 }
 
 .team_banner {
-  background-image: url(../img/banner3.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -2198,7 +2360,6 @@ form .submit_button {
 }
 
 .banner_slider {
-  background-image: url(../img/banner-shape1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -2213,6 +2374,20 @@ form .submit_button {
   background-position: center;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.jobbanner {
+  background-image: url(../img/siteimage/mapbg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-attachment: fixed;
+}
+
+.jobbannerbg {
+  background-color: rgba(255, 255, 255, 0.84);
 }
 
 .volunteerbg {
@@ -2625,6 +2800,7 @@ form .submit_button {
   background-color: rgba(255, 255, 255, 0.85);
 }
 
+/* CSS */
 .volunteerbody {
   background-image: url(../img//vactor/v2.png);
   background-repeat: no-repeat;
@@ -3049,6 +3225,9 @@ form .submit_button {
 .job_post {
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(34, 27, 35, 0.15) 0px 0px 0px 1px;
   padding: 2rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  justify-items: start;
 }
 
 .job_post_image {
@@ -3057,6 +3236,7 @@ form .submit_button {
   width: auto;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 0.8rem;
 }
 .job_post_image img {
   height: 100%;
@@ -3120,6 +3300,7 @@ form .submit_button {
 
 .job_details_area {
   background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .details_header_image {
@@ -3257,15 +3438,18 @@ form .submit_button {
 }
 
 .training_des {
-  padding: 4rem 0rem;
+  padding: 2rem 2rem;
 }
 .training_des h4 {
-  padding-bottom: 2rem;
   text-transform: uppercase;
+  padding-bottom: 0.5rem;
+  font-weight: 700;
+}
+.training_des h4 span {
+  color: #203ec2;
 }
 .training_des p {
   text-align: justify;
-  padding: 1rem 0rem;
 }
 
 .course_siderbar_overvew {
@@ -3345,6 +3529,7 @@ form .submit_button {
   text-align: center;
   text-transform: uppercase;
   padding: 1rem 0rem;
+  color: #121969;
 }
 .notice_body strong {
   padding: 2rem 0rem;
@@ -3375,6 +3560,28 @@ form .submit_button {
 .notice_verify img {
   height: 15rem;
   color: green;
+}
+
+.all_notice {
+  padding: 1rem;
+  border-radius: 0.8rem;
+  height: auto;
+  overflow-y: scroll auto;
+  background-color: #fff;
+}
+.all_notice ul li {
+  padding: 0.3rem 0rem;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.all_notice ul li span {
+  color: rgba(138, 148, 255, 0.9647058824);
+  padding-left: 0.5rem;
+}
+.all_notice ul li a {
+  color: #131635;
+}
+.all_notice ul li a:hover {
+  color: red;
 }
 
 .profile_section {

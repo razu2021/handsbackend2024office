@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class faq extends Model
 {
     use HasFactory;
-    use HasFactory;
     use SoftDeletes;
     protected $fillable =[
         'faqs_id',

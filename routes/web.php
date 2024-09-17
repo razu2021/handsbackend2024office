@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Route;
 // website controller 
 use App\Http\Controllers\website\WebsiteController;
 
+
+//admin controller
+
 //admin controller
 use App\Http\Controllers\admin\AdminController;
 
@@ -51,7 +54,7 @@ Route::get('/about-human-and-nature-developmetn-society-(hands)', [WebsiteContro
 Route::post('/about-human-and-nature-developmetn-society-(hands)/submit', [WebsiteController::class, 'testi_insert'])->name('testimonial_insert');
 Route::get('/organizetional-structure', [WebsiteController::class, 'organizetional_structure']);
 Route::get('/financial-statement', [WebsiteController::class, 'financial_statement']);
-Route::get('/chairman-of-hands', [WebsiteController::class, 'chairmam']);
+Route::get('/chairman-of-hands', [WebsiteController::class, 'chairmam'])->name('chairman');
 Route::get('/managing-director-of-hands', [WebsiteController::class, 'managing_director']);
 Route::get('/finance-director-of-hands', [WebsiteController::class, 'finance_director']);
 Route::get('/where-we-work', [WebsiteController::class, 'where_we_work']);
@@ -97,13 +100,13 @@ Route::get('photo-gallery', [WebsiteController::class, 'photo_gallery']);
 Route::get('our-field-stories', [WebsiteController::class, 'field_storis']);
 /*-----news feed section----*/
 Route::get('hands-news-and-blogs-events', [WebsiteController::class, 'hands_blogs']);
-Route::get('our-all-news', [WebsiteController::class, 'news']);
-Route::get('our-blogs-and-events', [WebsiteController::class, 'blog_events']);
+Route::get('our-all-news', [WebsiteController::class, 'news'])->name('all_news');
+Route::get('our-blogs-and-events', [WebsiteController::class, 'blog_events'])->name('all_blog');
 /*-----involved section----*/
 Route::get('get-involved', [WebsiteController::class, 'get_involved']);
 Route::get('volunteer', [WebsiteController::class, 'volunteer']);
 Route::get('become-volunteer', [WebsiteController::class, 'becoome_volunteer']);
-Route::get('other-programs-and-activitis-of-hands', [WebsiteController::class, 'others_program']);
+Route::get('other-programs-and-activitis-of-hands', [WebsiteController::class, 'others_program'])->name('other_program');
 Route::get('our-valueable-donners-and-members', [WebsiteController::class, 'valueable_donner']);
 Route::get('product-for-human-being', [WebsiteController::class, 'product']);
 Route::get('free-medical-and-health-campaign', [WebsiteController::class, 'free_health']);
@@ -114,9 +117,13 @@ Route::get('our-genrel-team', [WebsiteController::class, 'genrel_team']);
 Route::get('our-legal-team', [WebsiteController::class, 'legal_team']);
 /*-----contact and others section ----*/
 Route::get('contact-us', [WebsiteController::class, 'contact']);
-Route::get('interenship-program', [WebsiteController::class, 'internship']);
+Route::get('interenship-program', [WebsiteController::class, 'internship'])->name('internship');
+Route::get('internship-and-Training-Details/{slug}', [WebsiteController::class, 'course'])->name('course');
+Route::post('internship-and-Training-Application-submit', [WebsiteController::class, 'apply_course'])->name('apply_course');
 Route::get('job-and-career-program', [WebsiteController::class, 'career']);
-Route::get('get-appoinment', [WebsiteController::class, 'appoinment']);
+Route::get('job-and-career-details/{slug}', [WebsiteController::class, 'job_career'])->name('job_career');
+Route::get('get-appoinment', [WebsiteController::class, 'appoinment'])->name('appoinment');
+Route::post('get-appoinment-submit', [WebsiteController::class, 'appoinment_book'])->name('appoinment_book');
 Route::get('apply-for-loan', [WebsiteController::class, 'apply_loan'])->name('apply-loan');
 Route::get('make-your-donation', [WebsiteController::class, 'donation']);
 Route::get('privacy-and-policy', [WebsiteController::class, 'privacy_policy']);

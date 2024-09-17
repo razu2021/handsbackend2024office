@@ -22,6 +22,12 @@
 </head>
 
 <body>
+<!-- <div id="preloader" class="preloaders">
+<img src="https://handsbd.org/public/contents/assets/website/assets/img/logo%20(2).png" alt="" >
+  <div class="loading">
+    <div class="loading__letter">H</div><div class="loading__letter">A</div><div class="loading__letter">N</div><div class="loading__letter">D</div><div class="loading__letter">S</div> <div class="loading__letter">.</div> <div class="loading__letter">.</div><div class="loading__letter">.</div>
+  </div>
+</div> -->
     <!-- ===================  main header area start here ============ -->
     <!-- <ul>
         @foreach($mainmenu as $main_menu)
@@ -110,7 +116,7 @@
                                             <li class="list-item"><a href="{{url('organizetional-structure')}}" class="list-link"> Organizational Structure <span> + </span></a>
                                                 <div class="submenu">
                                                     <ul>
-                                                        <li><a href="{{url('chairman-of-hands')}}">Chairman</a></li>
+                                                        <li><a href="{{route('chairman')}}">Chairman</a></li>
                                                         <li><a href="{{url('managing-director-of-hands')}}">Managing
                                                                 Director</a></li>
                                                         <li><a href="{{url('finance-director-of-hands')}}"> Finance
@@ -222,7 +228,7 @@
                                     <!-- main__dropdown end  -->
                                 </li>
                                 <!-- main li end here  -->
-                                <li class="list-item main__dropdown"><a href="{{url('get-involved')}}" class="list-link">get involved<span> + </span> </a>
+                                <li class="list-item main__dropdown"><a href="javascript:void(0);" class="list-link">get involved<span> + </span> </a>
                                     <div class="main__submenu">
                                         <ul>
                                             <li class="list-item"><a href="{{url('volunteer')}}" class="list-link">volunteer</a></li>
@@ -285,16 +291,6 @@
             <!-- row end  -->
         </div>
     </header>
-    <section class="bg-warning p-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center ">
-                    <h1 clas="text-danger p-2 fw-bold"> Our website is under Maintenance</h1>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- modal  -->
     <!-- Button trigger modal -->
 
     <!-- Button trigger modal -->

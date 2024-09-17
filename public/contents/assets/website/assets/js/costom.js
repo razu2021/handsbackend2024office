@@ -1,13 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
-  var typed1 = new Typed('#auto_type1', {
-    strings: [' Contact Us '],
-    typeSpeed: 150,
-    backSpeed: 150,
-    loop: true,
-  });
-});
-
-
 
 // =======   count down code start here ===========
  // Set the upcoming date (year, month, day, hours, minutes, seconds)
@@ -48,7 +38,16 @@ const updateInterval = setInterval(updateCountdown, 1000);
 
 
 
+// preloader code 
 
+
+
+window.addEventListener('load', function() {
+  var preloader = document.getElementById('preloader');
+  preloader.style.display = 'none'; // Hide preloader
+  document.getElementById('content').style.display = 'block'; // Show content
+  document.body.style.overflow = 'auto'; // Re-enable scrolling
+});
 
 
 

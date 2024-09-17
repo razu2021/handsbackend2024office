@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\Service;
 use Carbon\Carbon;
-use Intervention\Image\Image;
+use Intervention\Image\Facades\Image;
 
 class ServiceController extends Controller
 {

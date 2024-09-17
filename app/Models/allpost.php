@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class allpost extends Model
 {
     use HasFactory;
-    use HasFactory;
     use SoftDeletes;
     protected $fillable =[
         'allpost_id',

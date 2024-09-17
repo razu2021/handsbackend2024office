@@ -4,11 +4,9 @@ namespace App\Http\Controllers\website\about;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 use App\Models\easyloan;
 use Carbon\Carbon;
 class easyLoancontroller extends Controller

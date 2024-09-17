@@ -1,255 +1,136 @@
 @extends('layouts.webmaster')
 @section('web_content') 
   <main>
-    <section class="banner_slider">
+@foreach($bannerh as $data)
+    <section class="banner_slider" style="background-image:url('{{asset('uploads/website/'.$data->banner_bg_image)}}')">
+@endforeach
         <div class="banner_slider3bg">
            <div class="owl-carousel owl-theme container_slider">
+            @foreach($banner as $data)
                 <div class="container slider_container_size container_slider_item">
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
                             <div class="container_slider_content">
                                 <div class="container_slider_text">
-                                   <h3> Human and Nature Development Society (HANDS)</h3>
-                                    <h1>we provide some product for our <span> human being</span> </h1>
-                                    <p>Every year Human and Nature Development Society <strong> (HANDS) </strong> makes some products as gifts for people.</p>
+                                   <h3>{{$data->banner_title}}</h3>
+                                    <h1>{{$data->banner_heading}}</h1>
+                                    <p>{{$data->banner_caption}}</p>
                                 </div>
                             </div>
                         </div>
-                        <!-- col end  -->
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
                             <div class="container_slider_images">
                                 <div class="container_slider_images">
-                                    <img src="{{asset('contents/assets/website')}}/assets/img/umbrela.png" alt="product image" class="img-fluid">
+                                    <img src="{{asset('uploads/website/'.$data->banner_image)}}" alt="HANDS Product Image for Human Bing" class="img-fluid" style="height:50rem;width:auto;object-fit:cover">
                                 </div>
                             </div>
                         </div>
-                        <!-- col end  -->
                     </div>
                 </div>
-                <!-- slider end -->
-                <div class="container slider_container_size container_slider_item">
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
-                            <div class="container_slider_content">
-                                <div class="container_slider_text">
-                                    <h3> Human and Nature Development Society (HANDS)</h3>
-                                    <h1>we provide some product for our <span> human being</span> </h1>
-                                    <p>Every year Human and Nature Development Society <strong> (HANDS) </strong> makes some products as gifts for people.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- col end  -->
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
-                            <div class="container_slider_images">
-                                <div class="container_slider_images">
-                                    <img src="{{asset('contents/assets/website')}}/assets/img/pen.png" alt="product image" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- col end  -->
-                    </div>
-                </div>
-                <!-- slider end -->
-                <div class="container slider_container_size container_slider_item">
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
-                            <div class="container_slider_content">
-                                <div class="container_slider_text">
-                                    <h3> Human and Nature Development Society (HANDS)</h3>
-                                    <h1>we provide some product for our <span> human being</span> </h1>
-                                    <p>Every year Human and Nature Development Society <strong> (HANDS) </strong> makes some products as gifts for people.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- col end  -->
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
-                            <div class="container_slider_images">
-                                <div class="container_slider_images">
-                                    <img src="{{asset('contents/assets/website')}}/assets/img/notebook.png" alt="product image" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- col end  -->
-                    </div>
-                </div>
-                <!-- slider end -->
-                <div class="container slider_container_size container_slider_item">
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
-                            <div class="container_slider_content">
-                                <div class="container_slider_text">
-                                    <h3> Human and Nature Development Society (HANDS)</h3>
-                                    <h1>we provide some product for our <span> human being</span> </h1>
-                                    <p>Every year Human and Nature Development Society <strong> (HANDS) </strong> makes some products as gifts for people.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- col end  -->
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
-                            <div class="container_slider_images">
-                                <div class="container_slider_images">
-                                    <img src="{{asset('contents/assets/website')}}/assets/img/bag.png" alt="product image" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- col end  -->
-                    </div>
-                </div>
-                <!-- slider end -->
+                @endforeach
            </div>
         </div>
     </section>
-<!-- banner 3 end herer  -->
-    
+@foreach($desc as $data)
 <section class="about_heath_sec " style="padding:5rem 0rem ">
     <div class="container">
         <div class="row">
-            <!-- col end  -->
             <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 col-xxl-10 offset-lg-1">
                 <div class="health_content pt-4 ">
-                    <h1> Yearly Gifts from Human and Nature Development Society (HANDS)</span></h1>
-                    <p class="first_child pt-4"> Every year, the Human and Nature Development Society (HANDS)  creates thoughtful gifts for people. HANDS a caring organization, understands the joy of giving and spreading happiness. Their gifts are simple yet meaningful.</p>
-
-                    <p>always   We provide deffarent  various Product, including: School bag, Student notebook, Pen & Pencil,Shoping bag. Clothing bag,Tourch light, Umbrela, Office notebook,Blancket, etc </p>
-                    <p>Sometimes, the gifts are aimed towards nurturing our connection with nature. One might receive a tiny seedling, cooked up with nurturing soil from HANDS’ Earth-rich garden. With time and patience, the seedling grows into a strong, vital plant.
-                    </p>
-                    <p>
-                        When the holiday season arrives, HANDS ensures that everyone receives a personalized touch. Their gifts instill feelings of gratitude and connection, warming the hearts of recipients. Not only do they provide the gift itself, but through their dedicated process, they offer a unique, handcrafted experience.
-
-                    </p>
-                    <p>
-                        In summary, HANDS continues its mission year after year, sharing its love and compassion by designing and giving endearing gifts that bring joy and nurture our soul. As the recipient of a HANDS gift, you’ll feel treasured and appreciated, knowing that the gift bears the love and care of the collective community.
-                    </p>
-                
+                    <h1> {{$data->title}}</span></h1>
+                    <p class="first_child pt-4">{!! $data->caption !!}</p>
                 </div>
-            <!-- col end  -->
         </div>
     </div>
 </section>
-<!-- about section end  -->
-<section class="" style="background-image: url({{asset('contents/assets/website')}}/assets/img/headquater.jpg);background-size: cover;background-repeat: no-repeat;background-position:center;background-attachment: fixed;">
-    <div class="make_donation_quickbg">
+@endforeach
+@foreach($slogan as $data)
+<section class="make_D_image" style="background-image:url('{{asset('uploads/website/'.$data->service_image)}}')">
         <div class="container section-padding">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8 offset-lg-2">
                     <div class="make_donation_quick">
-                        <h1 class="pb-2">Human and Nature Development Society (HANDS)</h1>
-                        <h3 class="pb-2">Always dedicated to the   <span> welfare of people </span> and nature </h3>
+                        <h1 class="pb-2">{{$data->heading}}</h1>
+                        <h3 class="pb-2">{{$data->title}}</h3>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- section end  -->
-<section class="about_heath_sec " style="padding-top:5rem">
+@endforeach
+ @foreach($aboutproduct as $data)
+<section class="about_heath_sec" style="padding-top:5rem">
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 ">
-                <div class="health_content pt-4 ">
-                    <h1> About Hands  & <span> Free Health Campaign </span></h1>
-                    <p class="first_child pt-4"> Human and Nature Development Society(HANDS) is a micro-credit lending organization and besides it also works towards environmental protection and sustainable development. HANDS is also working as charitable organization.Hands is always dedicated to the welfare of people and nature</p>
-                    <p>Hands believes that everyone deserves the opportunity to live a happy and prosperous life. To achieve this goal, HANDS regularly distributes various commodities to all members and needy families.</p>
-                    <p>HANDS always gives more priority to employ the talented unemployed youth from the remote areas of the village and work as sachsevak. And also takes important steps to make them financially prosperous and improve their standard of living.</p>
-                    <p>
-                        Every year through various programs HANDS distributes all the products to everyone. This time there was no exception, hands distributed more than 1200 umbrellas to all members and other people.
-                    </p>
+                <div class="health_content pt-4">
+                    <h1> {{$data->title}} <span>{{$data->subtitle}}</span></h1>
+                    <p class="first_child pt-4">{!! $data->caption !!}</p>
                 </div>
              </div>
-         
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 ">
-            <div class="about_product_image">
-                <img src="{{asset('contents/assets/website')}}/assets/img/anaounc.png" alt="doctor image " class="img-fluid" style="padding: 4rem;">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 ">
+                <div class="about_product_image">
+                    <img src="{{asset('uploads/website/'.$data->service_image)}}" alt="Human and Nature Development Society (HANDS) Image" class="img-fluid" style="padding: 4rem;">
+                </div>
             </div>
         </div>
-       
     </div>
 </section>
-<!-- about section end  -->
-
-
-
-<section style="background-image: url('{{asset('contents/assets/website')}}/assets/img/background/1.jpg');background-position: center;background-size: cover;background-repeat: no-repeat; min-height: 40vh;width: 100%;background-attachment: fixed;">
+@endforeach
+<section class="pb-5 section-padding">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 offset-lg-4 text-center">
-               <div class="heading-product">
-                <h4>What make us Different</h4>
-               </div>
+            <div class="col-lg-12">
+                <div class="comon_heading2">
+                    <h1> All <span> Products </span></h1>
+                </div>
             </div>
-            <!-- col end  -->
-
+            @foreach($product as $data)
+            <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 mt-sm-4">
+                <div class="service_two">
+                    <div class="service_tow_profile">
+                        <img src="{{asset('uploads/website/'.$data->service_image)}}" alt="{{$data->title}}" class="img-fluid"/>
+                    </div>
+                    <div class="service_two_cotent">
+                        <h2>{{$data->title}} </h2>
+                        <p>{!! Str::words($data->caption,20) !!}</p>
+                       <div class="stwo_link">
+                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#mymodel{{$data->product_id}}"><span><i class="fas fa-angle-double-right"></i> </span> {{$data->button}} </a>
+                       </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 justify-content-end d-flex mt-4">
+                <div class="custom_pagination">
+                    <div class="row">
+                        {{$product->links()}}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-4 xl-4 xxl-4">
-            <div class="hands_product_card">
-                <div class="hands_product_content">
-                    <div class="product_content">
-                        <p>Every year through various programs HANDS distributes all the products to everyone. This time there was no exception, hands distributed more than 1200 umbrellas to all members and other people.</p>
-                    </div>
-                    <div class="product_image">
-                        <img src="{{asset('contents/assets/website')}}/assets/img/umbrela.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <!-- product end  -->
-        </div>
-        <!-- col end  -->
-        <div class="col-12 col-sm-12 col-md-12 col-lg-4 xl-4 xxl-4"> </div>
-    
-        <!-- col end  -->
-        <div class="col-12 col-sm-12 col-md-12 col-lg-4 xl-4 xxl-4 d-flex justify-content-end ">
-            <div class="hands_product_card-lr">
-                <div class="hands_product_content-lr">
-                    <div class="product_image-lr">
-                        <img src="{{asset('contents/assets/website')}}/assets/img/notebook.png" alt="">
-                    </div>
-                    <div class="product_content-lr">
-                        <p>Every year through various programs HANDS distributes all the products to everyone. This time there was no exception, hands distributed more than 2000 Notebook to all members and other Students.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- product end  -->
-        </div>
-        <!-- col end  -->
-    </div>
-    <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-4 xl-4 xxl-4">
-            <div class="hands_product_card">
-                <div class="hands_product_content">
-                    <div class="product_content">
-                        <p>Every year through various programs HANDS distributes all the products to everyone. This time there was no exception, hands distributed more than 500 Pan  to all members and other's.</p>
-                    </div>
-                    <div class="product_image">
-                        <img src="{{asset('contents/assets/website')}}/assets/img/pen.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <!-- product end  -->
-        </div>
-        <!-- col end  -->
-        <div class="col-12 col-sm-12 col-md-12 col-lg-4 xl-4 xxl-4"> </div>
-    
-        <!-- col end  -->
-        <div class="col-12 col-sm-12 col-md-12 col-lg-4 xl-4 xxl-4 d-flex justify-content-end ">
-            <div class="hands_product_card-lr">
-                <div class="hands_product_content-lr">
-                    <div class="product_image-lr">
-                        <img src="{{asset('contents/assets/website')}}/assets/img/tshirt.png" alt="">
-                    </div>
-                    <div class="product_content-lr">
-                        <p>Every year through various programs HANDS distributes all the products to everyone. This time there was no exception, hands distributed more than 2500 T-Shirt to all members and other people.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- product end  -->
-        </div>
-        <!-- col end  -->
-    </div>
-    <!-- row end here  -->
-
-
-
 </section>
+@foreach($product as $data)
+<div class="modal fade" id="mymodel{{$data->product_id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal_image mt-4 mb-4">
+        <img src="{{asset('uploads/website/'.$data->service_image)}}" alt="" style="width:100%;height:auto;">
+        <p style="color:green;font-style:italic"><strong>Upload Date & Time:</strong> {{$data->created_at->format('Y-m-d H:i:s A')}}</p>
+        </div>
+        <h5 class="pb-2"><strong>{{$data->title}}</strong></h5>
+       <p>{!! $data->caption !!}</p>
+       <div class="loc mt-2">
+       </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
 @endsection

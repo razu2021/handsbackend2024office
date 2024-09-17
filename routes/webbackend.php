@@ -5,6 +5,7 @@ use App\Http\Controllers\website\about\aboutController;
 use App\Http\Controllers\website\about\easyLoancontroller;
 use App\Http\Controllers\website\about\securityTrustController;
 use App\Http\Controllers\website\about\whatwedoController;
+use App\Http\Controllers\website\common\allAboutController;
 use App\Http\Controllers\website\common\bannerBottomController;
 /*--------- website frontend manage constroller start here 
 --------------------------------------------------
@@ -15,15 +16,27 @@ use App\Http\Controllers\website\common\bladeInfoController;
 use App\Http\Controllers\website\common\faqController;
 use App\Http\Controllers\website\common\sloganController;
 use App\Http\Controllers\website\common\testimonialController;
+use App\Http\Controllers\website\gallery\fieldStoriseController;
+use App\Http\Controllers\website\gallery\photoGealleryController;
+use App\Http\Controllers\website\gallery\videoGalleryController;
 use App\Http\Controllers\website\home\dipositAdsController;
 use App\Http\Controllers\website\home\loanStepController;
 use App\Http\Controllers\website\home\serviceOverviewController;
 use App\Http\Controllers\website\home\smeAdsController;
 use App\Http\Controllers\website\home\whatsnewController;
+use App\Http\Controllers\website\invo\ourImpactController;
+use App\Http\Controllers\website\other\allStaffController;
+use App\Http\Controllers\website\other\applyCourseController;
+use App\Http\Controllers\website\other\bookAppoinmentController;
+use App\Http\Controllers\website\other\courseController;
+use App\Http\Controllers\website\other\designationController;
+use App\Http\Controllers\website\other\jobpostController;
+use App\Http\Controllers\website\other\noticeController;
 use App\Http\Controllers\website\wedo\microFinanceServicecontroller;
 use App\Http\Controllers\website\wedo\pageDescriptionController;
 use App\Http\Controllers\website\wedo\postController;
 use App\Http\Controllers\website\wedo\productController;
+use App\Models\designation;
 
 /*--------- website frontend manage constroller end  here -------- */
 
@@ -327,6 +340,193 @@ Route::prefix('admin/dashboard/website-manage/bannerbottom')->name('bannerbottom
     Route::get('/post_deactive/{id}', [bannerBottomController::class, 'post_deactive'])->name('post_deactive');
 });
 // ------ all banner bottom route end   -------
+Route::prefix('admin/dashboard/website-manage/photo_gallery')->name('photo_gallery.')->group(function () {
+    Route::get('/', [photoGealleryController::class, 'index'])->name('all');
+    Route::get('/add', [photoGealleryController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [photoGealleryController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [photoGealleryController::class, 'view'])->name('view');
+    Route::post('/submit', [photoGealleryController::class, 'insert'])->name('submit');
+    Route::post('/update', [photoGealleryController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [photoGealleryController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [photoGealleryController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [photoGealleryController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [photoGealleryController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [photoGealleryController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [photoGealleryController::class, 'post_deactive'])->name('post_deactive');
+});
+Route::prefix('admin/dashboard/website-manage/video_gallery')->name('video_gallery.')->group(function () {
+    Route::get('/', [videoGalleryController::class, 'index'])->name('all');
+    Route::get('/add', [videoGalleryController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [videoGalleryController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [videoGalleryController::class, 'view'])->name('view');
+    Route::post('/submit', [videoGalleryController::class, 'insert'])->name('submit');
+    Route::post('/update', [videoGalleryController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [videoGalleryController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [videoGalleryController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [videoGalleryController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [videoGalleryController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [videoGalleryController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [videoGalleryController::class, 'post_deactive'])->name('post_deactive');
+});
+Route::prefix('admin/dashboard/website-manage/field_storise')->name('field_storise.')->group(function () {
+    Route::get('/', [fieldStoriseController::class, 'index'])->name('all');
+    Route::get('/add', [fieldStoriseController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [fieldStoriseController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [fieldStoriseController::class, 'view'])->name('view');
+    Route::post('/submit', [fieldStoriseController::class, 'insert'])->name('submit');
+    Route::post('/update', [fieldStoriseController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [fieldStoriseController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [fieldStoriseController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [fieldStoriseController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [fieldStoriseController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [fieldStoriseController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [fieldStoriseController::class, 'post_deactive'])->name('post_deactive');
+});
+Route::prefix('admin/dashboard/website-manage/allabout')->name('allabout.')->group(function () {
+    Route::get('/', [allAboutController::class, 'index'])->name('all');
+    Route::get('/add', [allAboutController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [allAboutController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [allAboutController::class, 'view'])->name('view');
+    Route::post('/submit', [allAboutController::class, 'insert'])->name('submit');
+    Route::post('/update', [allAboutController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [allAboutController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [allAboutController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [allAboutController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [allAboutController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [allAboutController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [allAboutController::class, 'post_deactive'])->name('post_deactive');
+});
+Route::prefix('admin/dashboard/website-manage/ourimpact')->name('ourimpact.')->group(function () {
+    Route::get('/', [ourImpactController::class, 'index'])->name('all');
+    Route::get('/add', [ourImpactController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [ourImpactController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [ourImpactController::class, 'view'])->name('view');
+    Route::post('/submit', [ourImpactController::class, 'insert'])->name('submit');
+    Route::post('/update', [ourImpactController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [ourImpactController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [ourImpactController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [ourImpactController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [ourImpactController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [ourImpactController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [ourImpactController::class, 'post_deactive'])->name('post_deactive');
+});
+/*-------------  Gallery route end here ------------------- */
+Route::prefix('admin/dashboard/website-manage/notice')->name('notice.')->group(function () {
+    Route::get('/', [noticeController::class, 'index'])->name('all');
+    Route::get('/add', [noticeController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [noticeController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [noticeController::class, 'view'])->name('view');
+    Route::post('/submit', [noticeController::class, 'insert'])->name('submit');
+    Route::post('/update', [noticeController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [noticeController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [noticeController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [noticeController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [noticeController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [noticeController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [noticeController::class, 'post_deactive'])->name('post_deactive');
+});
+/*-------------  Gallery route end here ------------------- */
+Route::prefix('admin/dashboard/website-manage/jobpost')->name('jobpost.')->group(function () {
+    Route::get('/', [jobpostController::class, 'index'])->name('all');
+    Route::get('/add', [jobpostController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [jobpostController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [jobpostController::class, 'view'])->name('view');
+    Route::post('/submit', [jobpostController::class, 'insert'])->name('submit');
+    Route::post('/update', [jobpostController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [jobpostController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [jobpostController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [jobpostController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [jobpostController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [jobpostController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [jobpostController::class, 'post_deactive'])->name('post_deactive');
+});
+/*-------------  job post route end here ------------------- */
+Route::prefix('admin/dashboard/website-manage/course')->name('course.')->group(function () {
+    Route::get('/', [courseController::class, 'index'])->name('all');
+    Route::get('/add', [courseController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [courseController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [courseController::class, 'view'])->name('view');
+    Route::post('/submit', [courseController::class, 'insert'])->name('submit');
+    Route::post('/update', [courseController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [courseController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [courseController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [courseController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [courseController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [courseController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [courseController::class, 'post_deactive'])->name('post_deactive');
+});
+Route::prefix('admin/dashboard/website-manage/appoinment_book')->name('appoinment_book.')->group(function () {
+    Route::get('/', [bookAppoinmentController::class, 'index'])->name('all');
+    Route::get('/add', [bookAppoinmentController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [bookAppoinmentController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [bookAppoinmentController::class, 'view'])->name('view');
+    Route::post('/submit', [bookAppoinmentController::class, 'insert'])->name('submit');
+    Route::post('/update', [bookAppoinmentController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [bookAppoinmentController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [bookAppoinmentController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [bookAppoinmentController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [bookAppoinmentController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [bookAppoinmentController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [bookAppoinmentController::class, 'post_deactive'])->name('post_deactive');
+    Route::get('/denied/{id}', [bookAppoinmentController::class, 'denied'])->name('denied');
+    Route::get('/resume/{id}', [bookAppoinmentController::class, 'resume'])->name('resume');
+   
+});
+/*-------------  job post route end here ------------------- */
+Route::prefix('admin/dashboard/website-manage/apply_course')->name('apply_course.')->group(function () {
+    Route::get('/', [applyCourseController::class, 'index'])->name('all');
+    Route::get('/add', [applyCourseController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [applyCourseController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [applyCourseController::class, 'view'])->name('view');
+    Route::post('/submit', [applyCourseController::class, 'insert'])->name('submit');
+    Route::post('/update', [applyCourseController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [applyCourseController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [applyCourseController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [applyCourseController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [applyCourseController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [applyCourseController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [applyCourseController::class, 'post_deactive'])->name('post_deactive');
+});
+/*-------------  job post route end here ------------------- */
+Route::prefix('admin/dashboard/website-manage/designation')->name('designation.')->group(function () {
+    Route::get('/', [designationController::class, 'index'])->name('all');
+    Route::get('/add', [designationController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [designationController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [designationController::class, 'view'])->name('view');
+    Route::post('/submit', [designationController::class, 'insert'])->name('submit');
+    Route::post('/update', [designationController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [designationController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [designationController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [designationController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [designationController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [designationController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [designationController::class, 'post_deactive'])->name('post_deactive');
+});
+/*-------------  job post route end here ------------------- */
+Route::prefix('admin/dashboard/website-manage/allstaff')->name('allstaff.')->group(function () {
+    Route::get('/', [allStaffController::class, 'index'])->name('all');
+    Route::get('/add', [allStaffController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [allStaffController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [allStaffController::class, 'view'])->name('view');
+    Route::post('/submit', [allStaffController::class, 'insert'])->name('submit');
+    Route::post('/update', [allStaffController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [allStaffController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [allStaffController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [allStaffController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [allStaffController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [allStaffController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [allStaffController::class, 'post_deactive'])->name('post_deactive');
+});
+/*-------------  job post route end here ------------------- */
+
+
+
+
+
+
+
+
+
 
 
 

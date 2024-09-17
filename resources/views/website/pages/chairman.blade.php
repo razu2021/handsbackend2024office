@@ -19,55 +19,108 @@
     </section>
     <!-- banner end  -->
 
-<section class="pdf_section_bg section-padding">
-    <div class="pdf_design_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 offset-lg-1 pdf_image" id="printSection">
-                    <div class="pdf_sizeing">
-                        <div class="pdf_header"> 
-                            <div class="pdf_header_info">
-                                <div class="profile_image">
-                                    <img src="{{asset('contents/assets/website')}}/assets/img/avatar.png" alt="profile image" class="img-fluid">
+@foreach($chairman as $data)
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="blog_profile">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="blog_profile_image">
+                                @if($data->service_image != "")
+                                <img src="{{asset('uploads/website/'.$data->service_image)}}" alt="{{$data->name}} {{$data->designation}} of Human and Nature Development Sociery (HANDS) " class="img-fluid" />
+                                <div class="p_info">
+                                    <div class="pcontact">
+                                        <ul>
+                                            <li><a href=""><span><i class="fas fa-envelope"></i></span> mdrazuhossairan@gmail.com</a></li>
+                                            <li><a href=""><span><i class="fas fa-phone-square-alt"></i></span> +8801817078309</a></li>
+                                        </ul>
+                                    </div>
+                                    <hr>
+                                    <div class="peducation">
+                                        <h3>Education </h3>
+                                       <div class="pedu">
+                                            <p>2020-2024</p>
+                                            <h3>Dhaka University </h3>
+                                            <h6>Immigration Law</h6>
+                                       </div>
+                                       <div class="pedu">
+                                            <p>2020-2024</p>
+                                            <h3>Dhaka University </h3>
+                                            <h6>Immigration Law</h6>
+                                       </div>
+                                       <div class="pedu">
+                                            <p>2020-2024</p>
+                                            <h3>Dhaka University </h3>
+                                            <h6>Immigration Law</h6>
+                                       </div>
+                                       <div class="pedu">
+                                            <p>2020-2024</p>
+                                            <h3>Dhaka University </h3>
+                                            <h6>Immigration Law</h6>
+                                       </div>
+                                       <div class="pedu">
+                                            <p>2020-2024</p>
+                                            <h3>Dhaka University </h3>
+                                            <h6>Immigration Law</h6>
+                                       </div>
+                                    </div>
+                                    <!-- education end here  -->
+                                     <hr>
+                                    <div class="peducation">
+                                       <div class="pedu">
+                                            <p>2020-2024</p>
+                                            <h3>Dhaka University </h3>
+                                            <h6>Immigration Law</h6>
+                                       </div>
+                                       <div class="pedu">
+                                            <p>2020-2024</p>
+                                            <h3>Dhaka University </h3>
+                                            <h6>Immigration Law</h6>
+                                       </div>
+                                       <div class="pedu">
+                                            <p>2020-2024</p>
+                                            <h3>Dhaka University </h3>
+                                            <h6>Immigration Law</h6>
+                                       </div>
+                                       <div class="pedu">
+                                            <p>2020-2024</p>
+                                            <h3>Dhaka University </h3>
+                                            <h6>Immigration Law</h6>
+                                       </div>
+                                       <div class="pedu">
+                                            <p>2020-2024</p>
+                                            <h3>Dhaka University </h3>
+                                            <h6>Immigration Law</h6>
+                                       </div>
+                                    </div>
+                                    <!-- education end here  -->
+
                                 </div>
-                                <div class="profile_info p-4">
-                                    <h2>md habibur Rahman </h2>
-                                    <p>Chairman <span> Of HAMDS </span></p>
-                                    <img src="{{asset('contents/assets/website')}}/assets/img/vactor/signature.png" alt="" class="img-fluid" style="width: 15rem; border-bottom:1px solid black;">
-                                </div>
+                                @else
+                                <img src="{{asset('contents/assets/website')}}/assets/img/avatar.png" alt="profile image" class="img-fluid">
+                                @endif
                             </div>
                         </div>
-                        <div class="pdf_body">
-                            <h3 class="text-center pb-4"> Human and Nature Development Society <span> (HANDS) </span></h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt saepe consequatur voluptatem maiores, ea recusandae a! Enim impedit quasi accusantium qui? Soluta neque dignissimos accusamus rerum sunt amet est quas?</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit obcaecati sequi nesciunt voluptas. Atque et debitis similique perferendis asperiores ea, quod tempora ipsa eaque saepe officia libero facere tenetur neque laudantium, rem facilis incidunt eos quia minima quo ad soluta id? Perferendis mollitia illum temporibus nemo. Asperiores voluptates esse eveniet dicta doloremque possimus ratione, qui vel molestias, eum quibusdam incidunt maiores voluptate quae quidem animi recusandae aliquid? Tempora aspernatur cupiditate enim cumque id accusantium nostrum mollitia at sint perferendis, quas excepturi voluptatem eveniet qui maxime tempore doloribus optio adipisci culpa quia ipsa rerum amet consectetur! Labore vitae est maiores quibusdam.</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit obcaecati sequi nesciunt voluptas. Atque et debitis similique perferendis asperiores ea, quod tempora ipsa eaque saepe officia libero facere tenetur neque laudantium, rem facilis incidunt eos quia minima quo ad soluta id? Perferendis mollitia illum temporibus nemo. Asperiores voluptates esse eveniet dicta doloremque possimus ratione, qui vel molestias, eum quibusdam incidunt maiores voluptate quae quidem animi recusandae aliquid? Tempora aspernatur cupiditate enim cumque id accusantium nostrum mollitia at sint perferendis, quas excepturi voluptatem eveniet qui maxime tempore doloribus optio adipisci culpa quia ipsa rerum amet consectetur! Labore vitae est maiores quibusdam.</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit obcaecati sequi nesciunt voluptas. Atque et debitis similique perferendis asperiores ea, quod tempora ipsa eaque saepe officia libero facere tenetur neque laudantium, rem facilis incidunt eos quia minima quo ad soluta id? Perferendis mollitia illum temporibus nemo. Asperiores voluptates esse eveniet dicta doloremque possimus ratione, qui vel molestias, eum quibusdam incidunt maiores voluptate quae quidem animi recusandae aliquid? Tempora aspernatur cupiditate enim cumque id accusantium nostrum mollitia at sint perferendis, quas excepturi voluptatem eveniet qui maxime tempore doloribus optio adipisci culpa quia ipsa rerum amet consectetur! Labore vitae est maiores quibusdam.</p>
-                           
-                        </div>
-                        <div class="pdf_footer">
-                           <p>rhd gfxg</p>
+                        <div class="col-lg-8">
+                            <div class="profilesinfo">
+                            <h2>{{$data->name}}</h2>
+                            <p>{{$data->designation}}<span> Of HAMDS </span></p>
+                            <hr>
+                            <p>{!! $data->caption !!}</p>
+                            </div>
                         </div>
                     </div>
+                    <!-- row end  -->
                 </div>
-                <!-- col end  -->
             </div>
+            <!-- col end here -->
         </div>
     </div>
 </section>
+@endforeach
 
-
-
-
-
-
-
-
-
-
-
-
-    
     <!-- ========  main content end herre  -->
   </main>
 

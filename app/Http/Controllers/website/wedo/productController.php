@@ -83,7 +83,7 @@ class productController extends Controller
           if($request->hasFile('service_image')){
             $image=$request->file('service_image');
             $imageName=rand(10000,9999999).'_'.$insert.'-'.time().'.webp'; // .$image->getClientOriginalExtension()   ... replace webp
-            Image::make($image)->fit(1080, 700, function ($constraint) {
+            Image::make($image)->fit(500, 500, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             })->encode('webp', 90)->save('uploads/website/'.$imageName);
@@ -140,7 +140,7 @@ class productController extends Controller
          if($request->hasFile('service_image')){
             $image=$request->file('service_image');
             $imageName=rand(10000,9999999).'_'.$id.'-'.time().'.webp'; // .$image->getClientOriginalExtension()   ... replace webp
-            Image::make($image)->fit(1080, 700, function ($constraint) {
+            Image::make($image)->fit(500, 500, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             })->encode('webp', 90)->save('uploads/website/'.$imageName);

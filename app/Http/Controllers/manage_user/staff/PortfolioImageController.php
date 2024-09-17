@@ -6,13 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
-use App\Models\User;
 use App\Models\PortfolioImage;
 use Carbon\Carbon;
+
 
 class PortfolioImageController extends Controller
 {
@@ -20,8 +18,6 @@ class PortfolioImageController extends Controller
     public function __construct(){
         $this->middleware('auth');
     }
-
-
     public function index(){
         $id= Auth::user()->id;
         $all=PortfolioImage::where('status',1)->where('user_id',$id)->get();
@@ -71,7 +67,7 @@ class PortfolioImageController extends Controller
             $image=$request->file('image2');
             $imageName=rand(10000,9999999).'_'.$insert.'-'.time().'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(300, 300)->save('uploads/'.$imageName);
-      
+
             PortfolioImage::where('Portfolio_id',$insert)->update([
               'image2'=>$imageName,
             ]);

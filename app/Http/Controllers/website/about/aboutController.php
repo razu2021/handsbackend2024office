@@ -78,9 +78,9 @@ class aboutController extends Controller
           $request->validate([
             'service_image' => 'required|mimes:jpeg,jpg,png,gif,avi,webp|max:5120', // Adjust file types and max size as needed
          ],
-             [
-                 'service_image.required' => 'Service Image is Required!',     
-             ]
+          [
+            'service_image.required' => 'Service Image is Required!',
+          ]
          );
           if($request->hasFile('service_image')){
             $image=$request->file('service_image');

@@ -21,7 +21,8 @@
               <!-- aphone end -->
               <div class="col-md-12">
                 <div class="mb-3">
-                <label class="form-label" for="basic-default-fullname">preferable Designation<span class="text-danger"> <i class="fas fa-solid fa-star"></i></span></label>
+                <label class="form-label" for="basic-default-fullname">preferable Designation
+                  <span class="text-danger"> <i class="fas fa-solid fa-star"></i></span></label>
                 <input class="form-control" type="text" name="designation_name" id="designation_name" value="{{old('designation_name')}}" placeholder=" preferable Designation " />
                 <span class="text-danger">@error('designation_name'){{$message}} @enderror</span>
                 </div>
@@ -39,6 +40,8 @@
                   <option value="CDO">Chief Development Officer (CDO)</option>
                   <hr>
                   <option class="text-success pb-2" value="avascript:void(0)" disabled> <strong>Management and Program Leadership</strong></option>
+                  <option value="Managing_Director">Managing Director </option>
+                  <option value="Finance_Director">Finance Director </option>
                   <option value="Program_Director_Manager">Program Director/Manager</option>
                   <option value="Microfinance_Manager">Microfinance Manager</option>
                   <option value="Operations_Manager">Operations Manager</option>

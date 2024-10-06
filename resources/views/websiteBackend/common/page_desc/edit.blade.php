@@ -34,8 +34,10 @@
                   <option value="child_protection">Child Protection ..</option>
                   <option value="education">Education..</option>
                   <option value="health_nutrition">Health and Nutrition..</option>
+                  <option value="health_campaign">Free Health Campaign..</option>
                   <option value="water_sanitaion">Water Sanitation and Hygiene..</option>
                   <option value="products">Product for Human Bing..</option>
+                  <option value="what_we_do">What We Do</option>
                   <option value="internship">Internship..</option>
                   <option value="career">Career..</option>
                 </select>

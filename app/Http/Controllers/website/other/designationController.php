@@ -174,18 +174,18 @@ class designationController extends Controller
     }
     }
 
-            // Recycle bin code is start here 
-            public function recycle(Request $request){
-                $search = $request['search'] ?? "";
-                if($search !=""){
-                 
-                  $all= designation::onlyTrashed()->where('title', 'LIKE', "%$search%")->orwhere('caption','LIKe',"%$search%")
-                  ->paginate(5);
-                }
-                else{
-                  $all = designation::onlyTrashed()->where('status', 1)->orderBy('designation_id', 'ASC')->paginate(5);
-                }
-                $totalpost = designation::count();
-                return view('websiteBackend.other.designation.recycle',compact('all','search','totalpost'));
-            }
+  // Recycle bin code is start here 
+  public function recycle(Request $request){
+      $search = $request['search'] ?? "";
+      if($search !=""){
+        
+        $all= designation::onlyTrashed()->where('title', 'LIKE', "%$search%")->orwhere('caption','LIKe',"%$search%")
+        ->paginate(5);
+      }
+      else{
+        $all = designation::onlyTrashed()->where('status', 1)->orderBy('designation_id', 'ASC')->paginate(5);
+      }
+      $totalpost = designation::count();
+      return view('websiteBackend.other.designation.recycle',compact('all','search','totalpost'));
+  }
 }

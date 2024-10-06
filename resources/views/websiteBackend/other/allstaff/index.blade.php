@@ -39,11 +39,11 @@
                     <thead>
                       <tr>
                         <th scope="col">ID: </th>
-                        <th scope="col">About Category</th>
-                        <th scope="col">About Name</th>
+                        <th scope="col"> Category</th>
+                        <th scope="col">Name</th>
                         <th scope="col">Designation</th>
-                        <th scope="col">About Caption</th>
-                        <th scope="col">Profile Image</th>
+                        <th scope="col"> position</th>
+                        <th scope="col">Profile </th>
                         <th scope="col">status</th>
                         <th scope="col">Mangae</th>
                       </tr>
@@ -53,11 +53,11 @@
                       <tr>
                         <td>{{$data->allstaff_id}}</td>
                         <td>{{$data->category_as}}</td>
-                        <td>{{$data->phone}}</td>
+                        <td>{{$data->name}}</td>
                         <td>{{$data->designation}}</td>
-                        <td> {!! Str::words($data->caption,5) !!}</td>
+                        <td>{{$data->senior_official}}</td>
                         @if($data->service_image != "")
-                          <td><img src="{{asset('uploads/website/'.$data->service_image)}}" alt="{{$data->name}}" height="80px" width="auto"></td>
+                        <td><img src="{{asset('uploads/website/'.$data->service_image)}}" alt="{{$data->name}}" height="80px" width="auto"></td>
                         @else
                         <td> <img src="{{asset('uploads')}}/avatar.jpg" alt="Avater image" height="70px" width="auto"></td>
                         @endif

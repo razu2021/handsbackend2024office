@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('allstaffs', function (Blueprint $table) {
             $table->bigIncrements('allstaff_id');
             $table->string('category_as',255)->nullable();
+            $table->integer('senior_official')->nullable();
             $table->string('name',255)->nullable();
             $table->string('email',255)->nullable();
             $table->string('phone',255)->nullable();

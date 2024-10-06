@@ -18,18 +18,29 @@
                         <div class="ch_form">
                             <h2 class="pb-2">Apply  <span>for Loan </span> now</h2>
                             <p class="pb-4"><span> Note : </span> please provide your information, we will contact you very soon </p>
-                            <form action="#">
+                            <p>     
+                             @if(session('message'))
+                                <div class="alert alert-success ">
+                                    {{ session('message') }}
+                                </div>
+                            @endif
+                            </p>
+                    
+                            <form action="{{route('loan_application')}}" method="post">
+                                @csrf 
                                 <!-- item strat  -->
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="text" name="name" id="name" class="form-control" placeholder="First Name " required/>
+                                            <input type="text" name="fname" id="fname" class="form-control" placeholder="First Name " value="{{old('fname')}}"/>
+                                            <span class="text-danger">@error('fname'){{$message}} @enderror</span>
                                         </div>
                                     </div>
                                     <!-- first name end -->
                                     <div class="col-lg-6">
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="text" name="name" id="name" class="form-control" placeholder="Last Name " required/>
+                                            <input type="text" name="lname" id="lname" class="form-control" placeholder="Last Name " value="{{old('lname')}}"/>
+                                            <span class="text-danger">@error('lname'){{$message}} @enderror</span>
                                         </div>
                                     </div>
                                     <!-- last name end  -->
@@ -38,13 +49,15 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="email" name="name" id="name" class="form-control" placeholder="Email " required/>
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="Email " value="{{old('email')}}"/>
+                                            <span class="text-danger">@error('email'){{$message}} @enderror</span>
                                         </div>
                                     </div>
                                     <!-- first name end -->
                                     <div class="col-lg-6">
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="text" name="name" id="name" class="form-control" placeholder="Phone " required/>
+                                            <input type="text" name="phone" id="phone" class="form-control" placeholder="Phone " value="{{old('phone')}}"/>
+                                            <span class="text-danger">@error('phone'){{$message}} @enderror</span>
                                         </div>
                                     </div>
                                     <!-- last name end  -->
@@ -53,13 +66,39 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="text" name="name" id="name" class="form-control" placeholder="Date of Brith " required/>
+                                            <input type="text" name="nid" id="nid" class="form-control" placeholder="NID Number " value="{{old('nid')}}"/>
+                                            <span class="text-danger">@error('nid'){{$message}} @enderror</span>
                                         </div>
                                     </div>
                                     <!-- first name end -->
                                     <div class="col-lg-6">
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="text" name="name" id="name" class="form-control" placeholder=" NID No" required/>
+                                            <input type="date" name="birth_date" id="birth_date" class="form-control" placeholder=" NID No" value="{{old('birth_date')}}"/>
+                                            <span class="text-danger">@error('birth_date'){{$message}} @enderror</span>
+                                        </div>
+                                    </div>
+                                    <!-- last name end  -->
+                                </div>
+                                <!--------- row end ------->
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <input type="text" name="occupation" id="occupation" class="form-control" placeholder="occupation!" value="{{old('occupation')}}"/>
+                                            <span class="text-danger">@error('occupation'){{$message}} @enderror</span>
+                                        </div>
+                                    </div>
+                                    <!-- first name end -->
+                                    <div class="col-lg-4">
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <input type="number" name="monthly_income" id="monthly_income" class="form-control" placeholder="Monthly Income " value="{{old('monthly_income')}}"/>
+                                            <span class="text-danger">@error('monthly_income'){{$message}} @enderror</span>
+                                        </div>
+                                    </div>
+                                    <!-- last name end  -->
+                                    <div class="col-lg-4">
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <input type="number" name="target_amount" id="target_amount" class="form-control" placeholder="Loan Amount" value="{{old('target_amount')}}"/>
+                                            <span class="text-danger">@error('target_amount'){{$message}} @enderror</span>
                                         </div>
                                     </div>
                                     <!-- last name end  -->
@@ -68,47 +107,25 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="number" name="name" id="name" class="form-control" placeholder="Loan Ammount" required/>
-                                        </div>
-                                    </div>
-                                    <!-- first name end -->
-                                    <div class="col-lg-6">
-                                        <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="number" name="name" id="name" class="form-control" placeholder="Monthly Income " required/>
-                                        </div>
-                                    </div>
-                                    <!-- last name end  -->
-                                </div>
-                                <!--------- row end ------->
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div data-mdb-input-init class="form-outline mb-4">
-                                           <select name="name" id="name" style="width: 100%; padding: .7rem ;">
-                                            <option value="value">Select your Loan Catagorys</option>
-                                            <option value="basic">Basice Loan</option>
-                                            <option value="basic">Special Loan</option>
-                                            <option value="basic">Housing Loan</option>
-                                            <option value="basic">Agriculter Loan</option>
-                                            <option value="basic">Woman Empowerment Loan</option>
-                                            <option value="basic">Higher Education Loan</option>
-                                            <option value="basic">Microenterprise Loan</option>
-                                            <option value="basic">Lovestock Loan</option>
+                                           <select name="loan_category" id="loan_category" style="width: 100%; padding: .7rem ;">
+                                            <option value="">Select your Loan Catagorys</option>
+                                            @foreach($micro as $data)
+                                            <option value="{{$data->title}}">{{$data->title}}</option>
+                                            @endforeach
                                            </select>
+                                           <span class="text-danger">@error('loan_category'){{$message}} @enderror</span>
                                         </div>
                                     </div>
                                     <!-- first name end -->
                                     <div class="col-lg-6">
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                           <select name="brance" id="" style="width: 100%;padding: .7rem;">
-                                                <option value="value">Select Your Branch Name</option>
-                                                <option value="value">Tangail Branch</option>
-                                                <option value="value">Mirzapur Branch</option>
-                                                <option value="value">Goraki Branch</option>
-                                                <option value="value">Dhaka Branch</option>
-                                                <option value="value">Savar Brach </option>
-                                                <option value="value">Mymonsingh Branch</option>
-                                                <option value="value">Head office Brach</option>
+                                           <select name="branch_name" id="branch_name" style="width: 100%;padding: .7rem;">
+                                                <option value="">Select Your Branch Name</option>
+                                                @foreach($branch as $data)
+                                                <option value="{{$data->name}}">{{$data->name}}</option>
+                                                @endforeach
                                             </select>
+                                            <span class="text-danger">@error('branch_name'){{$message}} @enderror</span>
                                         </div>
                                     </div>
                                     <!-- last name end  -->
@@ -117,10 +134,17 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <textarea name="" id=""  rows="4" placeholder="Write your Massages" style="width: 100%;padding: 1rem;"></textarea>
+                                            <input type="text" name="address" id="address" class="form-control" placeholder="Address !" value="{{old('address')}}">
+                                            <span class="text-danger">@error('address'){{$message}} @enderror</span>
                                         </div>
                                     </div>
-                                    <!-- first name end -->
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <textarea name="caption" id="caption"  rows="4" placeholder="Write your Massages" style="width: 100%;padding: 1rem;"></textarea>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!--------- row end ------->
                                 <!-- Submit button -->

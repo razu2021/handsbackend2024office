@@ -1,15 +1,20 @@
 @extends('layouts.webmaster')
 @section('web_content')  
   <main>
-    <section class="team_banner">
+
+    <!-- banner end  -->
+
+<div class="main_impact_section">
+@foreach($banner as $data)
+<section class="team_banner" style="background-image: url('{{asset('uploads/website/'.$data->banner_bg_image)}}');">
         <div class="banner_3_bg">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                         <div class="banner_3">
-                            <h1> Our Social  <span style="color: red;"> Impact </span>  </h1>
-                            <a href="index.html">Home /</a>
-                            <a href="valueable_donner.html"> Our Donner </a>
+                            <h1> {{$data->banner_heading}} </h1>
+                            <a href="{{route('index')}}">Home /</a>
+                            <a href="{{route('our_impact')}}"> Our Impact </a>
                         </div>
                     </div>
                     <!-- col end  -->
@@ -17,117 +22,144 @@
             </div>
         </div>
     </section>
-    <!-- banner end  -->
- 
-   <section class="section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8">
-                <div class="Our_impact_area">
-                    <div class="impact_image">
-                        <figure class="image_figure">
-                            <img src="{{asset('contents/assets/website')}}/assets/img/street_children_1_0.jpg" alt="Trulli" class="img-fluid">
-                            <figcaption class="p-2">Image caption </figcaption>
-                        </figure>
-                    </div>
-                    <div class="impect_content pt-4">
-                        <h1 class="pb-2">image title is here </h1>
-                       <p class="pb-4"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae tenetur neque ratione reprehenderit! Voluptatem sequi tempore consectetur? Architecto fugiat at, distinctio ipsa hic eos quisquam eum minus itaque tempore nostrum sit beatae, consectetur molestias sapiente omnis odio nihil quia. Maxime sit ut assumenda consectetur voluptatum? Quis esse et expedita. In, quia totam, necessitatibus ratione obcaecati dicta ipsa unde culpa nisi dignissimos provident vero minus voluptatem delectus! Minima repellendus quaerat nostrum quis quo earum unde quia, consectetur dolorum .</p>
-                       <div class="impect_slogan">
-                        <p> * Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur placeat sequi voluptate voluptatibus perspiciatis minus nihil debitis at quo architecto, atque beatae ad vel pariatur ab iure, sunt, tenetur eius!  * </p>
+    @endforeach
+    <div class="section section-padding main_area">
+        <div class="container-fluid">
+            <div class="row">
+            <div class="col-lg-3">
+                <div class="impact-side-bar">
+                   <h3 style="color:#939497;font-weight:700;padding:1rem"> Our All Projects </h3>
+                    <hr>
+                @foreach($allprojects as $pro)
+                <div class="alldonner_pro mt-4">
+                    <h4>
+                    <a href="{{route('all_projects')}}"> 
+                        @if($pro->service_image !="")
+                            <img src="{{asset('uploads/website/'.$pro->service_image)}}" alt="" >
+                        @else
+                            <img src="{{asset('contents/assets/website')}}/assets/img/logo (2).png" alt="" >
+                        @endif
+                    <span>{{$pro->pro_name}}</span>
+                    </a>
+                    </h4>
+                </div>
+                @endforeach
+               
+                </div>
+            </div>
+           
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+                @foreach($allimpact as $data)
+                <div class="impact_area">
+                    <div class="impact_card mt-4">
+                    <div class="donner_top">
+                            <div class="or_log">
+                              <img src="{{asset('contents/assets/website')}}/assets/img/logo (2).png" alt="Hands logo">
+                            </div>
+                            <div class="or_name">
+                                @if($data->heading !="" || $data->title !="")
+                                <h3>{{$data->heading}}</h3>
+                                <h6>{{$data->title}}  <span>  </span></h6>
+                                @else
+                                <h3>Anonymous post</h3>
+                                @endif
+                                <p> 
+                                @php
+                                    $postedAt =  \Carbon\Carbon::parse($data->created_at); // The date and time the post was created
+                                    $currentDateTime = new DateTime(); // Current date and time
+                                    // Create DateTime objects for the post's creation time and the current time
+                                    $postedTime = new DateTime($postedAt);
+                                    // Calculate the time difference
+                                    $timeDifference = $postedTime->diff($currentDateTime);
+                                    // Display the posting time in a user-friendly format
+                                    if ($timeDifference->y > 0) {
+                                        echo $timeDifference->y . " year" . ($timeDifference->y > 1 ? "s" : "") . " ago";
+                                    } elseif ($timeDifference->m > 0) {
+                                        echo $timeDifference->m . " month" . ($timeDifference->m > 1 ? "s" : "") . " ago";
+                                    } elseif ($timeDifference->d > 0) {
+                                        echo $timeDifference->d . " day" . ($timeDifference->d > 1 ? "s" : "") . " ago";
+                                    } elseif ($timeDifference->h > 0) {
+                                        echo $timeDifference->h . " hour" . ($timeDifference->h > 1 ? "s" : "") . " ago";
+                                    } elseif ($timeDifference->i > 0) {
+                                        echo $timeDifference->i . " minute" . ($timeDifference->i > 1 ? "s" : "") . " ago";
+                                    } else {
+                                        echo "Just now";
+                                    }
+                                @endphp
+                                <i class="fa-solid fa-earth-europe"></i>
+                                 </p>
+                            </div>
                        </div>
-                       <p class="pb-4"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae tenetur neque ratione reprehenderit! Voluptatem sequi tempore consectetur? Architecto fugiat at, distinctio ipsa hic eos quisquam eum minus itaque tempore nostrum sit beatae, consectetur molestias sapiente omnis odio nihil quia. Maxime sit ut assumenda consectetur voluptatum? Quis esse et expedita. In, quia totam, necessitatibus ratione obcaecati.</p>
-
+                        <div class="donner_cap mt-4"> 
+                            <!-- Short content (truncated to 30 words) -->
+                           <h3 class="pb-2">{{$data->subtitle}}</h3>
+                            <p id="short-content-{{ $data->ourimpact_id }}" class="short-content">
+                                <span>{!! Str::words(strip_tags($data->caption), 30) !!}</span>
+                            </p>
+                            <!-- Full content (hidden by default) -->
+                            <p id="full-content-{{ $data->ourimpact_id }}" class="full-content" style="display: none;">
+                            <span>{!! strip_tags($data->caption) !!}</span>
+                            </p>
+                            <!-- Toggle button -->
+                            <button class="toggle-button mb-2" id="toggle-btn-{{ $data->ourimpact_id }}" onclick="toggleContent('{{ $data->ourimpact_id }}')" 
+                                    style="background-color: transparent; border: none; color: #287CD8; cursor: pointer; font-weight: bold;">
+                                See More
+                            </button>
+                        </div>
+                        <!-- end  -->
+                       <div class="donner_profile">
+                            @if($data->service_image !="")
+                            <img src="{{asset('uploads/website/'.$data->service_image)}}" alt="Donor {{$data->heading}}  from HANDS">
+                            @endif
+                       </div>
                        
-                       <section class="text-center border-top border-bottom py-4 mb-4">
-                        <p><strong>Share with your friends:</strong></p>
-            
-                        <button type="button" class="btn btn-primary me-1" data-mdb-ripple-init style="background-color: #3b5998;">
-                          <i class="fab fa-facebook-f"></i>
-                        </button>
-                        <button type="button" class="btn btn-primary me-1" data-mdb-ripple-init style="background-color: #55acee;">
-                          <i class="fab fa-twitter"></i>
-                        </button>
-                        <button type="button" class="btn btn-primary me-1" data-mdb-ripple-init style="background-color: #0082ca;">
-                          <i class="fab fa-linkedin"></i>
-                        </button>
-                        <button type="button" class="btn btn-primary me-1" data-mdb-ripple-init>
-                          <i class="fas fa-comments me-2"></i>Add comment
-                        </button>
-                      </section>
                     </div>
-                    <div class="impact_comment">
-                        <h6>Comments : </h6>
-                            <div class="row comsec">
-                                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
-                                    <img src="{{asset('contents/assets/website')}}/assets/img/razu.jpg" alt="profile" class="img-fluid shadow-1-strong rounded">
-                                </div>
-                                <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
-                                    <h4> md razu hossain raj </h4>
-                                    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, culpa recusandae. Corrupti exercitationem porro dolorum amet? Nesciunt, repellat. Quia odio distinctio ipsum? Blanditiis at impedit esse repellat sint est. Minus atque culpa porro odio quia labore temporibus non placeat voluptate, dolorum delectus aliquid explicabo id dicta corrupti at doloremque corporis mollitia commodi est maiores eius totam ducimus? Dolor qui magni sequi enim ad blanditiis consectetur facilis </p>
-                                </div>
+                    </div>
+                    @endforeach
+                </div>
+                <!-- col end -->
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 mt-4">
+                    <div class="impact-side-bar">
+                        <div class="impact_card px-2">
+                            <h2 style="color:#939497;font-weight:700;padding:1rem">Share our Impact From Facebook </h2>
+                            <div class="facebookpost_timeline d-flex justify-content-center">
+                                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhumanandnaturedevelopmentsociety&tabs=timeline&width=400&height=1000&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="400" height="1000" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                             </div>
-                            <!-- row end here  -->
-                            <div class="row comsec">
-                                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
-                                    <img src="{{asset('contents/assets/website')}}/assets/img/it2.jpeg" alt="profile" class="img-fluid shadow-1-strong rounded">
-                                </div>
-                                <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
-                                    <h4> israt jahan trisha</h4>
-                                    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, culpa recusandae. Corrupti exercitationem porro dolorum amet? Nesciunt, repellat. Quia odio distinctio ipsum? Blanditiis at impedit esse repellat sint est. Minus atque culpa porro odio quia labore temporibus non placeat voluptate, dolorum delectus aliquid explicabo id dicta corrupti at doloremque corporis mollitia commodi est maiores eius totam ducimus? Dolor qui magni sequi enim ad blanditiis consectetur facilis </p>
-                                </div>
-                            </div>
-                            <!-- row end here  -->
-                    </div>
-                    <div class="comment_impect_form">
-                        <p class="text-center p-4"><strong>write your Comment </strong></p>
-
-                        <form>
-                          <!-- Name input -->
-                          <div class="form-outline mb-4" data-mdb-input-init>
-                            <input type="text" id="form4Example1" class="form-control" placeholder="write your name"/>
-                          </div>
-            
-                          <!-- Email input -->
-                          <div class="form-outline mb-4" data-mdb-input-init>
-                            <input type="email" id="form4Example2" class="form-control" placeholder="write your Email"/>
-                          </div>
-            
-                          <!-- Message input -->
-                          <div class="form-outline mb-4" data-mdb-input-init>
-                            <textarea class="form-control" id="form4Example3" rows="4"></textarea>
-                          </div>
-                          <!-- Submit button -->
-                          <button type="submit" class="btn btn-primary btn-block mb-4 text-center"  data-mdb-ripple-init> Submit you Comments </button>
-                        </form>
+                        </div>
                     </div>
                 </div>
+                <!-- col end -->
             </div>
-            <!-- col end  -->
-            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4">
-                <div class="impact_sidebar mt-4">
-                    <div class="impact_video">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/KN2LeNfKgpY?si=MlCrXa0GV_SZVXM7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <div class="impact_sidebar mt-4">
-                    <div class="impact_video">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/KN2LeNfKgpY?si=MlCrXa0GV_SZVXM7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-            </div>
-            <!-- col end  -->
         </div>
     </div>
-   </section>
-
+</div>
 
 
 
 
 <!--  -->
-    
+<script>
+    // see more and see less script is here 
+function toggleContent(postId) {
+    // Get the short content, full content, and the toggle button based on the postId
+    var shortContent = document.getElementById('short-content-' + postId);
+    var fullContent = document.getElementById('full-content-' + postId);
+    var toggleButton = document.getElementById('toggle-btn-' + postId);
+
+    // Toggle visibility of the content
+    if (fullContent.style.display === "none") {
+        // Hide the short content and show the full content
+        shortContent.style.display = "none";
+        fullContent.style.display = "block";
+        toggleButton.innerText = "See Less";
+    } else {
+        // Show the short content and hide the full content
+        shortContent.style.display = "block";
+        fullContent.style.display = "none";
+        toggleButton.innerText = "See More";
+    }
+}
+</script>
     <!-- ========  main content end herre  -->
   </main>
 @endsection

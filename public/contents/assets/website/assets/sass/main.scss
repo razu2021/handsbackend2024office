@@ -238,55 +238,43 @@ background: #fff;
     }
 }
 .or_team_content{
-    text-align: center;
+    text-align: left;
     padding: 1rem;
     h2{
         @include heading1($color:$color3);
         font-size: 2.5rem;
     }
+    h4{
+        color: #e93c05;
+        padding-bottom: .5rem;
+        font-style: italic;
+        font-size: 1.6rem;
+    }
+    p{
+        span{
+            color: #FD7239;
+            padding-right: .5rem;
+        }
+        a{color:#0046c0}
+    }
+    a{
+        padding-top: 2rem;
+        color: #0046c0;
+        font-size: 2rem;
+        text-align: center;
+        &:hover{
+            color: #FD7239;
+            transition: all .35s;
+        }
+    }
 }
+
 
 .sinior_officials{
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     
 }
 // get involved 
-.about_heath_sec{
-    overflow: hidden;
-}
-.about_campain_image{
-    position: relative;
-    object-fit: cover;
-    img{
-        object-fit: cover;
-        z-index: +1;
-    }
-    &::before {
-        content: '';
-        position: absolute;
-        top: -30%;
-        left: -70%;
-        width: 100%;
-        height:60rem;
-        background-image: url("../img/vactor/svgdoctor.png");
-        background-repeat: no-repeat;
-        background-size:contain;
-        background-position: center;
-        z-index: -1;
-        animation: rotation2 8s linear infinite; // Apply animation to only the background
-    }
-}
-@keyframes rotation2 {
-    0% {
-      
-        transform: rotate(0deg);
-      
-    }
-    100% {
-
-        transform: rotate(360deg);
-    }
-}
 .health_content{
     display: grid;
     h1{

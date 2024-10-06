@@ -149,7 +149,7 @@
                     @if($data->button !="")
                     <button> <a href="{{$data->button_url}}">{{$data->button}}</a></button>
                     @else 
-                    <button> <a href="{{route('sme-loans')}}">sme financing</a></button>
+                    <button> <a href="{{route('micro_finance')}}">sme financing</a></button>
                     @endif
                    </div>
                 </div>

@@ -62,8 +62,6 @@
 .owl-carousel .owl-item.active .container_slider_item .container_slider_text p {
     animation:fadeInUp 2s linear;
 }
-
-
 // banner image start here ===============
 .volunteer_bg_image{
     background-image: url(../img/contactbanner.jpg);
@@ -72,14 +70,12 @@
     background-position: center;
     object-fit: cover;
 }
-
 .legal_aid_banner{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     object-fit: cover;
 }
-
  .team_banner{
     background-repeat: no-repeat;
     background-size: cover;
@@ -127,7 +123,6 @@
     object-fit: cover;
 }
 .bcome_volunteer{
-    background-image: url(../img/volunteer.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -251,24 +246,12 @@
 
 // comon about css start here 
 .common_about_image{
-    position: relative;
     object-fit: cover;
     img{
         height: 40rem;
-        width: auto;
+        width: 100%;
         object-fit: cover;
-        clip-path: polygon(0 0, 75% 0%, 100% 50%, 75% 100%, 0 100%, 0% 50%);
-    }
-    .other_imge{
-        position: absolute;
-        bottom: 15%;
-        right: 0;
-        img{
-            height: 20rem;
-            width: auto;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-           
-        }
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
 }
 .common_about_content{
@@ -292,36 +275,7 @@
     @include peragraph($color:#011a41,$fw:300);
     padding-bottom: 2rem;
 }
-.comon_overview{
-    display: flex;
-    justify-content: space-between;
-    justify-items: center;
-    align-items: center;
-    .overview{
-        display: flex;
-        justify-content: space-between;
-        justify-items: center;
-        align-items: center;
-        .icon{
-            span{
-                font-size: 4rem;
-                padding: 0rem 1rem;
-                color: $color4;
-            }
-        }
-        .common_count{
-            strong{
-                font-size: 4rem;
-                font-weight: 900;
-              
-            }
-            p{
-                color: $color4;
-                font-weight: 600;
-            }
-        }
-    }
-}
+
 
 // image
 .profile{
@@ -329,9 +283,33 @@
     object-fit: cover;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
+.allprojects{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 2rem;
+}
+.overview{
+    text-align: center;
 
-
-
+}
+.icon{
+    span{
+        color: #00102b;
+        font-size: 4rem;
+    }
+}
+.common_count{
+    strong{
+      font-size: 6rem;
+      padding: 1rem 0rem;
+      color: #011a41;
+      font-weight: 700;
+    }
+    p{
+        color: #011a41;
+        font-style: italic;
+        font-size: 1.8rem;
+    }
+}
 
 
 // banner 3 start here ==============

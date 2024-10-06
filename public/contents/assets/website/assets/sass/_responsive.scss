@@ -12,7 +12,6 @@
       display: grid;
       padding: 4rem 1rem;
     }
-
     .product_image-lr{
       background-color: #fff;
       padding: 2rem;
@@ -73,10 +72,35 @@
       margin: 1rem;
     }
   }
-
   .our_strtigy{
     padding: 1rem;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
    overflow-x:none ;
   }
+  .donner_card_area{
+    width: 95%;
+  }
+.alldonnerarea{
+  display: none;
+}
+.donor_canvas{
+  button{
+      display: block;
+      margin-right: 2%;
+  }
+}
+.card3{
+  width: 75%;
+  margin: 0 auto;
+}
+.project_details_area{
+  width: 95%;
+  margin: 0 auto;
+}
+.project_details_area{
+  width: 95%;
+  margin: 0 auto;
+}
+
+// end 
 }

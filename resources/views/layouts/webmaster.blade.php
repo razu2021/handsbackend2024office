@@ -10,6 +10,7 @@
     <!-- external css  -->
     <link rel="stylesheet" href="{{asset('contents/assets/website')}}/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('contents/assets/website')}}/assets/css/font.all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{asset('contents/assets/website')}}/assets/css/animate.min.css">
     <link rel="stylesheet" href="{{asset('contents/assets/website')}}/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="{{asset('contents/assets/website')}}/assets/css/owl.theme.default.min.css">
@@ -22,33 +23,6 @@
 </head>
 
 <body>
-<!-- <div id="preloader" class="preloaders">
-<img src="https://handsbd.org/public/contents/assets/website/assets/img/logo%20(2).png" alt="" >
-  <div class="loading">
-    <div class="loading__letter">H</div><div class="loading__letter">A</div><div class="loading__letter">N</div><div class="loading__letter">D</div><div class="loading__letter">S</div> <div class="loading__letter">.</div> <div class="loading__letter">.</div><div class="loading__letter">.</div>
-  </div>
-</div> -->
-    <!-- ===================  main header area start here ============ -->
-    <!-- <ul>
-        @foreach($mainmenu as $main_menu)
-        <li class="text-dark"> {{$main_menu->menu_name}} 
-            @foreach($category as $cat)
-                @if($cat->main_menu_id == $main_menu->menu_id)
-                <li class="text-warning">{{$cat->category_name}}
-                    @foreach($subcategory as $subcat)
-                        @if($subcat->category_menu_id == $cat->category_id)
-                        <li class="text-danger"> {{$subcat->subcategory_name}} </li>
-                        @endif
-                    @endforeach
-                </li>
-                @endif
-            @endforeach
-        </li>
-        @endforeach
-    </ul>
- -->
-
-
     <div id="desktop_header_bg">
         <div class="container">
             <div class="desktop__header ">
@@ -221,6 +195,7 @@
                                 <li class="list-item main__dropdown"><a href="{{url('hands-news-and-blogs-events')}}" class="list-link"> News/Feeds<span> + </span> </a>
                                     <div class="main__submenu">
                                         <ul>
+                                            <li class="list-item"><a href="{{route('all_projects')}}" class="list-link">All Projects</a></li>
                                             <li class="list-item"><a href="{{url('our-all-news')}}" class="list-link">news</a></li>
                                             <li class="list-item"><a href="{{url('our-blogs-and-events')}}" class="list-link">blog/events</a></li>
                                         </ul>
@@ -244,12 +219,22 @@
                                     <!-- main__dropdown end  -->
                                 </li>
                                 <!-- main li end here  -->
-                                <li class="list-item main__dropdown"><a href="{{url('our-team')}}" class="list-link">
+                                <li class="list-item main__dropdown"><a href="javascript:void(0);" class="list-link">
                                         Our Team <span> + </span> </a>
                                     <div class="main__submenu">
                                         <ul>
-                                            <li class="list-item"><a href="{{url('our-genrel-team')}}" class="list-link">Genarel Team</a></li>
-                                            <li class="list-item"><a href="{{url('our-legal-team')}}" class="list-link">Leagal Team</a></li>
+                                            <li class="list-item"><a href="{{route('administrative_support')}}" class="list-link">Administrative and Support</a></li>
+                                            <li class="list-item"><a href="{{route('management_program')}}" class="list-link">Management and Program </a></li>
+                                            <li class="list-item"><a href="{{route('finance_credit')}}" class="list-link">Finance and Credit Roles </a></li>
+                                            <li class="list-item"><a href="{{route('research_development')}}" class="list-link">Research and Development </a></li>
+                                            <li class="list-item"><a href="{{route('legal_comliance')}}" class="list-link">Legal and Compliance </a></li>
+                                            <li class="list-item"><a href="{{route('monitoring_evaluation')}}" class="list-link">Monitoring & Evaluation</a></li>
+                                            <li class="list-item"><a href="{{route('marketing_outreach')}}" class="list-link">Marketing and Outreach </a></li>
+                                            <li class="list-item"><a href="{{route('field_staff')}}" class="list-link">Field-Level Staff </a></li>
+                                            <li class="list-item"><a href="{{route('technology_innovation')}}" class="list-link">Technology and Innovation </a></li>
+                                            <li class="list-item"><a href="{{route('trainig_capacity')}}" class="list-link">Training and Capacity Building</a></li>
+                                            <li class="list-item"><a href="{{route('intern_position')}}" class="list-link">Intern Positions</a></li>
+                                            <li class="list-item"><a href="{{route('consultant_other')}}" class="list-link">Consultant & Other</a></li>
                                         </ul>
                                     </div>
                                     <!-- main__dropdown end  -->
@@ -275,9 +260,7 @@
                             <ul>
                                 <li class="list-item"><a href="{{url('make-your-donation')}}" class="lisct-link"><i class="fa-solid fa-hand-holding-dollar"></i> <span> Donate </span></a></li>
                                 <li class="list-item">
-                                    <a href="{{url('#')}}" class="lisct-link"><i class="fa-solid fa-user"></i> <span>
-                                Razu</span></a>
-                                </li>
+                                    <a href="{{route('site_map')}}" class="lisct-link"><i class="fa-solid fa-sitemap"></i><span> Sitemap</span></a></li>
                                 <li class="list-item"><a href="#" class="lisct-link" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-bars-staggered"></i></a>
                                 </li>
                             </ul>
@@ -513,10 +496,31 @@
     <script src="{{asset('contents/assets/website')}}/assets/js/owl.carousel.min.js"></script>
     <script src="{{asset('contents/assets/website')}}/assets/js/owl.js"></script>
     <script src="{{asset('contents/assets/website')}}/assets/js/wow.min.js"></script>
-    <script src="{{asset('contents/assets/website')}}/assets/js/typed.js"></script>
     <script src="{{asset('contents/assets/website')}}/assets/js/costom.js"></script>
     <script src="{{asset('contents/assets/website')}}/assets/js/script.js"></script>
     <script src="{{asset('contents/assets/website')}}/assets/js/fontall.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let lazyImages = document.querySelectorAll('.lazyload');
+    let imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          let img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.remove('lazyload');
+          observer.unobserve(img);
+        }
+      });
+    });
+
+    lazyImages.forEach(img => {
+      imageObserver.observe(img);
+    });
+  });
+</script>
+
+
 </body>
 
 </html>

@@ -160,162 +160,313 @@
 }
 
 // ----------  valuable donner ccss
-.donner_card_area{
-    min-height: 40rem;
-    border: .5rem solid #ffac30;
-    outline: 1.2rem solid #0c273e;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+.main-section{
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-y: scroll;
+    background-color: #F0F2F5;
 }
-.info_bg{
-    background-color: rgba(255,255,255,0.78);
+.alldonnerarea {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: hidden; /* Makes sidebars scrollable */
+    background-color: #F0F2F5; /* Sidebar background color */
 }
-.donner_all_info{
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-    background-image: url(../img/vactor/images1.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: center;
-    text-align: center;
-    padding: 2rem;
-    .logo{
-        padding-bottom: 2rem ;
-        img{
-            height: 5rem ;
-            width: auto;
-        }
-        h1{
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-        span{
-            font-size: 2.8rem;
-            color: $color3;
-        }
-        p{
-            letter-spacing: 1rem;
-            font-style: italic;
-        }
+.alldonnerarea:hover {
+    overflow-y: scroll; /* Activate scroll on hover for smoother interaction */
+}
+.donner_search{
+    input{
+        border: none;
+        border-radius: .8rem;
+        background-color: #E4E6E9;
+    }
+    button{
+        background-color: #E4E6E9;
+        border: none;
     }
 }
 
-.d_info{
-    h1{
-        font-family: "Dancing Script", cursive;
-        font-size: 4.5rem;
-        &::after{
-            content: '';
-            height: .1rem;
-            width: 100%;
-            background: $color3;
-            display: block;
-
-        }
-    }
-    p{
-        padding-top:.5rem;
-        text-align: center;
-        font-family: "Dancing Script", cursive;
-        font-size: 2.7rem;
-    }
-}
-.d_footer{
-    padding-top: 4rem;
+// ================
+.alldonner_pro a{
+    height: 4rem;
+    width: 4rem;
+    object-fit: cover;
+    border-radius: 50%;
+   
     img{
-        
-        height: 5.5rem;
-        margin: 0rem;
+        height: 4rem;
+        width: 4rem;
+        object-fit: cover;
+        border-radius: 50%;
     }
-    h6{
-        position: relative;
-        padding-top: 1rem;
-        font-weight: 700;
-        &::before{
-            position: absolute;
-            top: 0;
-            left:40%;
-            content: '';
-            height: .1rem;
-            width: 20%;
-            background: $color3;
-            display: block;
-        }
+    span{
+        padding: 0rem 1rem;
+        color: #1F2020;
     }
+}
+.donner_card_area{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: .7rem;
+    background-color: #fff;
+    padding: .8rem ;
+    width: 75%;
+    margin: 0 auto;
+}
+.donor_canvas{
+    background-color: transparent;
+    padding: .8rem ;
+   width: 100%;
+   padding: .8rem ;
+    button{
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        border-radius: .7rem;
+        background-color: #fff;
+        border: none;
+        padding: 1rem;
+        font-size: 2.0rem;
+        display: none;
+        margin-right: 10%;
+
+    }
+}
+.donner_top{
+    display: flex;
+    justify-content: start;
+
+
+}
+.or_log{
+    background-color: #fff;
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right:1rem;
+    img{
+        height: 6rem;
+        width: 6rem;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px solid #0861F2;
+        padding: .2rem;
+    }
+
+}
+.or_name{
+   h3{
+    font-weight: 700;
+    padding-bottom: .5rem;
+   }
+   h6{
+    color: #050505;
+    font-weight: 500;
+    font-size: 1.8rem;
+    span{color:#939497};
+    
+   }
+   p{
+    color: #939497;
+    font-size: 1.5rem;
+   }
+}
+.donner_profile{
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+    img{
+        height: auto;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+.donner_bottom{
+    display: flex;
+    justify-content: space-between;
+   padding: 0rem 1rem;
+}
+.d_social{
+    ul li{
+        span{
+            color: #8d8e8f;
+            padding-right:  .8rem;
+         }
+    }
+    a{
+        color: #8d8e8f;
+    }
+}
+// programs
+.programs{
+    p{
+        color: #050505;
+        span{
+            color: #2371e6;
+            font-size: 2.3rem ;
+            margin-right:1rem;
+        };
+    }
+}
+.short_content {
+    display: none;
 }
 //  our impact page css start here 
-.Our_impact_area{
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-    padding: 2rem;
+.main_impact_section{
+    background-color: #F0F2F5;  
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-y: scroll;
 }
-.impact_image{
-    .image_figure{
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-        img{
-            width: 100%;
-            height: auto;
+.impact_card{
+    box-shadow: rgba(158, 162, 167, 0.2) 0px 8px 24px;
+    border-radius: .7rem;
+    background-color: #fff;
+    padding: .8rem ;
+    margin: 0 auto;
+    width: 85%;
+}
+.impact-side-bar{
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-y: hidden;
+    &:hover{
+        overflow-y: scroll;
+    }
+}
+// 
+.sitemap{
+    h4{
+        font-weight: 400;
+    }
+    ul li{
+        padding: .4rem 0rem;
+        span{
+            color: #2371e6;
+            transition: all 0.5s;
         }
     }
 }
-.impect_content{
-    h1{
-        @include heading1($color:$color3);
-        font-weight: 700;
-    }
-    p{
-        text-align: justify;
+// project details image 
+.details_main_section{
+  height: 100vh;
+  position: sticky;
+  background-color: #F0F2F5;
+  overflow-y: scroll;
+}
+.post_side_bar{
+    height: 100vh;
+    position: sticky;
+    top: 5%;
+    overflow-y: hidden;
+    transition: all 0.40s;
+    &:hover{
+        overflow-y: scroll;
+        transition: all 0.40s;
     }
 }
-.impect_slogan{
-    background-color: #cecfcf;
-    padding: 2.3rem;
-    border-left: .5rem solid red;
-    margin-bottom: 1rem;
-    p{
-        color: #000;
-        text-align: justify;
+.project_details_area{
+    width: 75%;
+    margin: 0 auto;
+}
+.post_details{
+    box-shadow: rgba(158, 162, 167, 0.2) 0px 8px 24px;
+    border-radius: .7rem;
+    background-color: #fff;
+    padding: .8rem ;
+    margin: 0 auto;
+    width: 85%;
+}
+.pro_head{
+    padding: 2rem 0rem;
+    h4{
+        font-weight: 700;
+        color: #2371e6;
+        border-bottom: .3rem solid #2371e6;
+        display: inline-block;
     }
+    h1{
+        padding: 2rem 0rem;
+        font-weight: 700;
+    }
+}
+.pro_image{
+    padding: 1.5rem 0rem;
+    margin: 0rem 4rem;
+    img{
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+    p{
+        padding: .5rem 0rem;
+        border-bottom: 1px solid #000;
+    }
+}
+.goolge_ads{
+    img{
+        height: 20rem;
+        width: auto;
+        margin: 0 auto
+    };
 }
 
-.impact_comment{
+.pro_dates{
+    background-color: #FFF7F7;
     padding: 2rem;
-    h6{
-        text-align: center;
-        padding-bottom: 5rem;
-        font-weight: 700;
-    }
+}
+.hands_product{
+    padding: 1.5rem;
+}
+.sidebar_product{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    padding: 1rem;
+    background: #ffffff;
     img{
-        box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
-        height: auto;
+        height: 25rem;
         width: auto;
     }
+// where we work
+}
+.branchnote{
+    padding:2rem;
+    border: 1px solid #fff;
+    border-radius: .8rem;
+    p{
+        a{
+            color: #ffff;
+        }
+    }
+}
+.wedo_service{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    background-color:#19032C ;
+    height: 10rem;
+    padding: 1rem;
+    overflow-y: hidden;
+    &:hover{
+        overflow-y: scroll;
+    }
+}
+.wedo_over_cont{
     h4{
-        font-weight: 600;
-        text-transform: capitalize;
-        padding-bottom: 2rem;
+        a{
+            color: #fff;
+            font-weight: 700;
+        }
+       
     }
     p{
-        text-align: justify;
+        color: #fff;
+    }
+    &:hover{
+        h4 a{
+            color: #0861F2;
+        }
     }
 
 }
-.comsec{
-    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
-    margin-bottom: 2rem;
-    padding: 2rem;
-}
-.comment_impect_form{
-    padding: 4rem;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-}
-
-
-
-
-
-
-
-
-
-
-
 

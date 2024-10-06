@@ -49,7 +49,6 @@ class socialMediaUrlController extends Controller
       }
     /* ------  this is submit or insert page --------*/
       public function insert(Request $request){
-      
           $slug='admin'.uniqid('20');
           $creator=Auth::guard('admin')->user()->id;
           $insert=socialmediaurl::insertGetId([

@@ -181,6 +181,26 @@
                     <div data-i18n="Without navbar">Book Appoinment</div>
                   </a>
                 </li>
+                <li class="menu-item">
+                  <a href="{{route('contactform.all')}}" class="menu-link">
+                    <div data-i18n="Without navbar">Contact Messagea</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('becomevolunteer.all')}}" class="menu-link">
+                    <div data-i18n="Without navbar">Become Volunteer </div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('makeDonation.all')}}" class="menu-link">
+                    <div data-i18n="Without navbar"> Donation </div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('applyloan.all')}}" class="menu-link">
+                    <div data-i18n="Without navbar"> Loan Application </div>
+                  </a>
+                </li>
                 
               
                
@@ -309,8 +329,31 @@
                     <div data-i18n="Account"> Slogan Management  </div>
                   </a>
                 </li>
-                
-                
+                <li class="menu-item">
+                  <a href="{{route('fstatement.all')}}" class="menu-link">
+                    <div data-i18n="Account"> Financial Statement</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('strategy.all')}}" class="menu-link">
+                    <div data-i18n="Account"> Our Strategy  </div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('allprojects.all')}}" class="menu-link">
+                    <div data-i18n="Account">All Projects</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('whaydonate.all')}}" class="menu-link">
+                    <div data-i18n="Account">Make Donation</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('branch.all')}}" class="menu-link">
+                    <div data-i18n="Account">our Branch</div>
+                  </a>
+                </li>
               </ul>
             </li>
             <li class="menu-item">
@@ -481,6 +524,16 @@
                     <div data-i18n="Error">All Staff</div>
                   </a>
                 </li>
+                <li class="menu-item">
+                  <a href="{{route('customer.all')}}" class="menu-link">
+                    <div data-i18n="Error">All Customer</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{route('doctors.all')}}" class="menu-link">
+                    <div data-i18n="Error">Doctors</div>
+                  </a>
+                </li>
 
                 <li class="menu-item">
                   <a href="{{route('jobpost.all')}}" class="menu-link">
@@ -497,6 +550,23 @@
                     <div data-i18n="Under Maintenance">Course Application</div>
                   </a>
                 </li>
+
+              </ul>
+            </li>
+
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                <div data-i18n="Misc">Member & Customer</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="{{route('member_donner.all')}}" class="menu-link">
+                    <div data-i18n="Error">Member & Donner </div>
+                  </a>
+                </li>
+               
 
               </ul>
             </li>

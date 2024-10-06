@@ -167,4 +167,6 @@ class noticeController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+
+
 }

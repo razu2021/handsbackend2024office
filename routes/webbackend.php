@@ -25,17 +25,31 @@ use App\Http\Controllers\website\home\serviceOverviewController;
 use App\Http\Controllers\website\home\smeAdsController;
 use App\Http\Controllers\website\home\whatsnewController;
 use App\Http\Controllers\website\invo\ourImpactController;
+use App\Http\Controllers\website\other\allprojectsController;
 use App\Http\Controllers\website\other\allStaffController;
 use App\Http\Controllers\website\other\applyCourseController;
+use App\Http\Controllers\website\other\applyLoanController;
+use App\Http\Controllers\website\other\becomeVolunteerController;
 use App\Http\Controllers\website\other\bookAppoinmentController;
+use App\Http\Controllers\website\other\branchController;
+use App\Http\Controllers\website\other\ContactFormController;
 use App\Http\Controllers\website\other\courseController;
+use App\Http\Controllers\website\other\customerController;
 use App\Http\Controllers\website\other\designationController;
+use App\Http\Controllers\website\other\doctorsController;
+use App\Http\Controllers\website\other\fstatementController;
 use App\Http\Controllers\website\other\jobpostController;
+use App\Http\Controllers\website\other\makeDonationController;
+use App\Http\Controllers\website\other\memberDonnerController;
 use App\Http\Controllers\website\other\noticeController;
+use App\Http\Controllers\website\other\strategyController;
+use App\Http\Controllers\website\other\whayDonateController;
+use App\Http\Controllers\website\other\whyDonateController;
 use App\Http\Controllers\website\wedo\microFinanceServicecontroller;
 use App\Http\Controllers\website\wedo\pageDescriptionController;
 use App\Http\Controllers\website\wedo\postController;
 use App\Http\Controllers\website\wedo\productController;
+use App\Models\allprojects;
 use App\Models\designation;
 
 /*--------- website frontend manage constroller end  here -------- */
@@ -518,6 +532,186 @@ Route::prefix('admin/dashboard/website-manage/allstaff')->name('allstaff.')->gro
     Route::get('/post_deactive/{id}', [allStaffController::class, 'post_deactive'])->name('post_deactive');
 });
 /*-------------  job post route end here ------------------- */
+Route::prefix('admin/dashboard/website-manage/strategy')->name('strategy.')->group(function () {
+    Route::get('/', [strategyController::class, 'index'])->name('all');
+    Route::get('/add', [strategyController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [strategyController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [strategyController::class, 'view'])->name('view');
+    Route::post('/submit', [strategyController::class, 'insert'])->name('submit');
+    Route::post('/update', [strategyController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [strategyController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [strategyController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [strategyController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [strategyController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [strategyController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [strategyController::class, 'post_deactive'])->name('post_deactive');
+});
+/*-------------  strategt route end here ------------------- */
+Route::prefix('admin/dashboard/website-manage/fstatement')->name('fstatement.')->group(function () {
+    Route::get('/', [fstatementController::class, 'index'])->name('all');
+    Route::get('/add', [fstatementController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [fstatementController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [fstatementController::class, 'view'])->name('view');
+    Route::post('/submit', [fstatementController::class, 'insert'])->name('submit');
+    Route::post('/update', [fstatementController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [fstatementController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [fstatementController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [fstatementController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [fstatementController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [fstatementController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [fstatementController::class, 'post_deactive'])->name('post_deactive');
+});
+/*-------------  strategt route end here ------------------- */
+Route::prefix('admin/dashboard/website-manage/contactform')->name('contactform.')->group(function () {
+    Route::get('/', [ContactFormController::class, 'index'])->name('all');
+    Route::get('/add', [ContactFormController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [ContactFormController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [ContactFormController::class, 'view'])->name('view');
+    Route::post('/submit', [ContactFormController::class, 'insert'])->name('submit');
+    Route::post('/update', [ContactFormController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [ContactFormController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [ContactFormController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [ContactFormController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [ContactFormController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [ContactFormController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [ContactFormController::class, 'post_deactive'])->name('post_deactive');
+});
+/*-------------  strategt route end here ------------------- */
+Route::prefix('admin/dashboard/website-manage/allprojects')->name('allprojects.')->group(function () {
+    Route::get('/', [allprojectsController::class, 'index'])->name('all');
+    Route::get('/add', [allprojectsController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [allprojectsController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [allprojectsController::class, 'view'])->name('view');
+    Route::post('/submit', [allprojectsController::class, 'insert'])->name('submit');
+    Route::post('/update', [allprojectsController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [allprojectsController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [allprojectsController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [allprojectsController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [allprojectsController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [allprojectsController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [allprojectsController::class, 'post_deactive'])->name('post_deactive');
+});
+/*-------------  strategt route end here ------------------- */
+Route::prefix('admin/dashboard/website-manage/becomevolunteer')->name('becomevolunteer.')->group(function () {
+    Route::get('/', [becomeVolunteerController::class, 'index'])->name('all');
+    Route::get('/add', [becomeVolunteerController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [becomeVolunteerController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [becomeVolunteerController::class, 'view'])->name('view');
+    Route::post('/submit', [becomeVolunteerController::class, 'insert'])->name('submit');
+    Route::post('/update', [becomeVolunteerController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [becomeVolunteerController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [becomeVolunteerController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [becomeVolunteerController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [becomeVolunteerController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [becomeVolunteerController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [becomeVolunteerController::class, 'post_deactive'])->name('post_deactive');
+});
+/*-------------  strategt route end here ------------------- */
+Route::prefix('admin/dashboard/website-manage/member_donner')->name('member_donner.')->group(function () {
+    Route::get('/', [memberDonnerController::class, 'index'])->name('all');
+    Route::get('/add', [memberDonnerController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [memberDonnerController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [memberDonnerController::class, 'view'])->name('view');
+    Route::post('/submit', [memberDonnerController::class, 'insert'])->name('submit');
+    Route::post('/update', [memberDonnerController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [memberDonnerController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [memberDonnerController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [memberDonnerController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [memberDonnerController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [memberDonnerController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [memberDonnerController::class, 'post_deactive'])->name('post_deactive');
+});
+/*-------------  strategt route end here ------------------- */
+Route::prefix('admin/dashboard/website-manage/doctors')->name('doctors.')->group(function () {
+    Route::get('/', [doctorsController::class, 'index'])->name('all');
+    Route::get('/add', [doctorsController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [doctorsController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [doctorsController::class, 'view'])->name('view');
+    Route::post('/submit', [doctorsController::class, 'insert'])->name('submit');
+    Route::post('/update', [doctorsController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [doctorsController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [doctorsController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [doctorsController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [doctorsController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [doctorsController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [doctorsController::class, 'post_deactive'])->name('post_deactive');
+});
+/*-------------  strategt route end here ------------------- */
+Route::prefix('admin/dashboard/website-manage/whaydonate')->name('whaydonate.')->group(function () {
+    Route::get('/', [whyDonateController::class, 'index'])->name('all');
+    Route::get('/add', [whyDonateController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [whyDonateController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [whyDonateController::class, 'view'])->name('view');
+    Route::post('/submit', [whyDonateController::class, 'insert'])->name('submit');
+    Route::post('/update', [whyDonateController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [whyDonateController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [whyDonateController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [whyDonateController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [whyDonateController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [whyDonateController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [whyDonateController::class, 'post_deactive'])->name('post_deactive');
+});
+/*-------------  strategt route end here ------------------- */
+Route::prefix('admin/dashboard/website-manage/makeDonation')->name('makeDonation.')->group(function () {
+    Route::get('/', [makeDonationController::class, 'index'])->name('all');
+    Route::get('/add', [makeDonationController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [makeDonationController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [makeDonationController::class, 'view'])->name('view');
+    Route::post('/submit', [makeDonationController::class, 'insert'])->name('submit');
+    Route::post('/update', [makeDonationController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [makeDonationController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [makeDonationController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [makeDonationController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [makeDonationController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [makeDonationController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [makeDonationController::class, 'post_deactive'])->name('post_deactive');
+});
+/*-------------  strategt route end here ------------------- */
+Route::prefix('admin/dashboard/website-manage/branch')->name('branch.')->group(function () {
+    Route::get('/', [branchController::class, 'index'])->name('all');
+    Route::get('/add', [branchController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [branchController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [branchController::class, 'view'])->name('view');
+    Route::post('/submit', [branchController::class, 'insert'])->name('submit');
+    Route::post('/update', [branchController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [branchController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [branchController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [branchController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [branchController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [branchController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [branchController::class, 'post_deactive'])->name('post_deactive');
+});
+/*-------------  strategt route end here ------------------- */
+Route::prefix('admin/dashboard/website-manage/customer')->name('customer.')->group(function () {
+    Route::get('/', [customerController::class, 'index'])->name('all');
+    Route::get('/add', [customerController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [customerController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [customerController::class, 'view'])->name('view');
+    Route::post('/submit', [customerController::class, 'insert'])->name('submit');
+    Route::post('/update', [customerController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [customerController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [customerController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [customerController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [customerController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [customerController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [customerController::class, 'post_deactive'])->name('post_deactive');
+});
+/*-------------  strategt route end here ------------------- */
+Route::prefix('admin/dashboard/website-manage/applyloan')->name('applyloan.')->group(function () {
+    Route::get('/', [applyLoanController::class, 'index'])->name('all');
+    Route::get('/add', [applyLoanController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [applyLoanController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [applyLoanController::class, 'view'])->name('view');
+    Route::post('/submit', [applyLoanController::class, 'insert'])->name('submit');
+    Route::post('/update', [applyLoanController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [applyLoanController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [applyLoanController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [applyLoanController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [applyLoanController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [applyLoanController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [applyLoanController::class, 'post_deactive'])->name('post_deactive');
+});
+/*-------------  strategt route end here ------------------- */
 
 
 

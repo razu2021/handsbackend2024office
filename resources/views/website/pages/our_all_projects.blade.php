@@ -50,7 +50,7 @@
                         <div class="news_content">
                             <h2>{{$data->title}} </h2>
                             <p>{!! Str::words($data->caption,30) !!}</p>
-                            <a href="" data-bs-toggle="modal" data-bs-target="#mymodel{{$data->allpost_id}}">Read More</a>
+                            <a href="{{route('post_details',$data->slug)}}">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                         <div class="news_content">
                             <h2>{{$data->title}} </h2>
                             <p>{!! Str::words($data->caption,30) !!}</p>
-                            <a href="" data-bs-toggle="modal" data-bs-target="#mymodel{{$data->allpost_id}}">Read More</a>
+                            <a href="{{route('post_details',$data->slug)}}" >Read More</a>
                         </div>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                 <span> <i class="fas fa-hand-holding-heart"></i> </span>
             </div>
             <div class="col-12 d-flex justify-content-end mb-4">
-                <a style="border: 1px dotted black;padding:.5rem;" href="{{route('other_activitis')}}">About More Activitis</a>
+                <a style="border: 1px dotted black;padding:.5rem;" href="{{route('other_program')}}">About More Activitis</a>
             </div>
             @foreach($others as $data)
             <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4 mt-sm-4 mt-4">
@@ -129,7 +129,7 @@
                         <div class="news_content">
                             <h2>{{$data->title}} </h2>
                             <p>{!! Str::words($data->caption,30) !!}</p>
-                            <a href="" data-bs-toggle="modal" data-bs-target="#mymodel{{$data->allpost_id}}">Read More</a>
+                            <a href="{{route('post_details',$data->slug)}}">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -139,67 +139,5 @@
     </div>
 </section>
 <!-- section end -->
- @foreach($others as $data)
-<div class="modal fade" id="mymodel{{$data->allpost_id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="modal_image mt-4 mb-4">
-            <img src="{{asset('uploads/website/'.$data->service_image)}}" alt="HANDSBD {{$data->title}} image" style="height:auto ; width:100%;object-fit:cover">
-            <p style="color:green;font-style:italic">{{$data->created_at->format('Y-m-d H:i:s A')}}</p>
-        </div>
-        <h5 class="pb-2"><strong>{{$data->title}}</strong></h5>
-       <p>{!! $data->caption !!}</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-@endforeach
- @foreach($news as $data)
-<div class="modal fade" id="mymodel{{$data->allpost_id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="modal_image mt-4 mb-4">
-            <img src="{{asset('uploads/website/'.$data->service_image)}}" alt="HANDSBD {{$data->title}} image" style="height:auto ; width:100%;object-fit:cover">
-            <p style="color:green;font-style:italic">{{$data->created_at->format('Y-m-d H:i:s A')}}</p>
-        </div>
-        <h5 class="pb-2"><strong>{{$data->title}}</strong></h5>
-       <p>{!! $data->caption !!}</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-@endforeach
- @foreach($blog as $data)
-<div class="modal fade" id="mymodel{{$data->allpost_id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="modal_image mt-4 mb-4">
-            <img src="{{asset('uploads/website/'.$data->service_image)}}" alt="HANDSBD {{$data->title}} image" style="height:auto ; width:100%;object-fit:cover">
-            <p style="color:green;font-style:italic">{{$data->created_at->format('Y-m-d H:i:s A')}}</p>
-        </div>
-        <h5 class="pb-2"><strong>{{$data->title}}</strong></h5>
-       <p>{!! $data->caption !!}</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-@endforeach
-
-
-
-
-    <!-- ========  main content end herre  -->
   </main>
 @endsection

@@ -22,12 +22,12 @@
                 <input type="hidden" class="form-control" id="basic-default-fullname" name="admin_id"  value="{{ Auth::guard('admin')->user()->id; }}" />
                 <input type="hidden" class="form-control" id="basic-default-fullname" name="slug"  value="{{ $data->slug }}" />
               <!-- aphone end -->
-              <div class="col-md-12">
+              <div class="col-md-6">
                 <div class="mb-3">
                 <label class="form-label" for="basic-default-fullname">Name<span class="text-danger"> <i class="fas fa-solid fa-star"></i></span></label>
                <select class="form-control" name="category_as" id="category_as">
-                <option value="">{{$data->category_as}} </option>
-                <option value="Executive_Leadership">Executive Leadership:</option>  
+                <option value="{{$data->category_as}}">{{$data->category_as}} </option>
+                <option value="Executive_Leadership">Executive Leadership</option>  
                 <option value="Management_and_Program_Leadership"> Management and Program Leadership</option>  
                 <option value="Field_Level_Staff">  Field-Level Staff</option>
                 <option value="Administrative_and_Support_Roles">Administrative and Support Roles</option>
@@ -40,11 +40,33 @@
                 <option value="Monitoring_Evaluation">Monitoring & Evaluation (M&E)</option>
                 <option value="Volunteer_and">Volunteer </option>
                 <option value="Intern_Positions"> Intern Positions</option>
+                <option value="consultant_other"> Consultant & Other</option>
                </select>
                 <span class="text-danger">@error('category_as'){{$message}} @enderror</span>
                 </div>
               </div>
               <!-- categpry end -->
+              <div class="col-md-6">
+                <div class="mb-3">
+                <label class="form-label" for="basic-default-fullname">Senior Officials <span class="text-danger"> <i class="fas fa-solid fa-star"></i></span></label>
+                <select class="form-control" name="senior_official" id="">
+                  <option value="{{$data->senior_official}}"> position No : {{$data->senior_official}}</option>
+                @php
+                  $totalPost = 9; // Assuming this value is dynamically set
+                  @endphp
+
+                  @if($totalPost)
+                      @for($i = 1; $i <= $totalPost; $i++)
+                          <option value="{{ $i }}">position No : {{ $i }} </option>
+                      @endfor
+                  @else
+                      No posts available.
+                  @endif
+                </select>
+                <span class="text-danger">@error('name'){{$message}} @enderror</span>
+                </div>
+              </div>
+               <!-- serial count  -->
               <div class="col-md-6">
                 <div class="mb-3">
                 <label class="form-label" for="basic-default-fullname">Name<span class="text-danger"> <i class="fas fa-solid fa-star"></i></span></label>
@@ -72,7 +94,12 @@
               <div class="col-md-6">
                 <div class="mb-3">
                 <label class="form-label" for="basic-default-fullname">Designation<span class="text-danger"> <i class="fas fa-solid fa-star"></i></span></label>
-                <input type="text" class="form-control" id="basic-default-fullname" placeholder="Write your Designation " name="designation" value="{{$data->designation}}"/>
+                <select class="form-control" name="designation" id="designation">
+                  <option value="{{$data->designation}}">{{$data->designation}}</option>
+                  @foreach($designation as $desi)
+                    <option value="{{$data->designation_name}}">{{$desi->designation_name}}</option>
+                  @endforeach
+                </select>
                 <span class="text-danger">@error('designation'){{$message}} @enderror</span>
                 </div>
               </div>
@@ -80,8 +107,8 @@
               <div class="col-md-12">
                 <div class="mb-3">
                 <label class="form-label" for="basic-default-fullname">Add Caption<span class="text-danger"> <i class="fas fa-solid fa-star"></i></span></label>
-                <textarea class="form-control" name="caption" id="editor" value="{!! $data->caption !!}">{!! $data->caption !!}</textarea>
-                <span class="text-danger">@error('subtitle'){{$message}} @enderror</span>
+                <textarea class="form-control" name="caption" id="editor" value="{!! $data->caption !!}">{!! $data->caption !!} </textarea>
+                <span class="text-danger">@error('caption'){{$message}} @enderror</span>
                 </div>
               </div>
               <!-- aphone end -->

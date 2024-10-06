@@ -420,7 +420,7 @@ form .submit_button {
   text-align: left;
 }
 
-.profile_content h3 {
+.profile_content a h3 {
   font-size: 3rem;
   font-weight: 700;
   color: #06284D;
@@ -437,6 +437,7 @@ form .submit_button {
   transition: all 0.35s;
   overflow: hidden;
   background: #fff;
+  min-height: 70rem;
 }
 
 .card3:hover {
@@ -495,7 +496,7 @@ form .submit_button {
   padding: 1rem 0rem;
 }
 .card3_info h1 {
-  font-size: 3rem;
+  font-size: 2.8rem;
   color: #27477d;
   font-weight: 700;
   font-family: "Open Sans", sans-serif;
@@ -506,7 +507,7 @@ form .submit_button {
 }
 .card3_info p {
   color: #888c92;
-  padding: 1rem 0rem;
+  padding: 0.5rem 0rem;
 }
 .card3_info ul li span {
   color: #07ccec;
@@ -719,10 +720,12 @@ form .submit_button {
      object-fit: cover;
   display: inline-block;
   padding: 2rem;
+  box-shadow: rgba(212, 85, 56, 0.85) 0px 5px 15px;
+  border-radius: 2rem;
 }
 .blog_profile_image img {
-  height: 30rem;
-  width: auto;
+  height: auto;
+  width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 2rem;
@@ -758,24 +761,36 @@ form .submit_button {
   transition: all 0.35s;
 }
 
-.p_info {
-  padding: 4rem 2rem;
+.pinfo p span {
+  color: #FD7239;
+  padding-right: 0.5rem;
+}
+.pinfo p a {
+  color: #293de9;
 }
 
-.pcontact ul li span {
-  color: #FD7239;
-  font-size: 1.6rem;
-  padding: 0.5rem;
+.our_strategy {
+  padding: 2rem 4rem;
+}
+.our_strategy h2 {
+  color: #111a2e;
+  padding: 1rem 0rem;
+  font-weight: 700;
 }
 
-.psocial ul li {
-  display: inline-block;
-  padding: 0.5rem 0.3rem;
+.google_ads_section {
+  padding: 2rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  justify-content: center;
+  text-align: center;
 }
-.psocial ul li a {
-  color: #FD7239;
-  padding: 0rem 1rem;
-  font-size: 2rem;
+.google_ads_section img {
+  height: 25rem;
+  width: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .index_banner {
@@ -1159,21 +1174,8 @@ form .submit_button {
           clip-path: circle(69% at 76% 32%);
 }
 
-.about_us_content {
-  min-height: 50rem;
-  width: 100%;
-  background: transparent;
-  display: grid;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  flex-direction: row;
-  align-content: center;
-  padding: 1rem;
-  margin: 2rem 0rem;
-}
 .about_us_content h1 {
-  color: #fff;
+  color: #000;
   padding-bottom: 1rem;
 }
 .about_us_content h1 span {
@@ -1186,10 +1188,10 @@ form .submit_button {
   -webkit-text-fill-color: transparent;
   background-repeat: repeat;
   background-color: rgb(0, 89, 255);
-  background-image: linear-gradient(90deg, rgb(255, 23, 129) 0%, rgb(255, 7, 216) 33.34%, rgb(255, 76, 16) 67.86%, rgb(255, 225, 0) 100%);
+  background-image: linear-gradient(90deg, rgb(46, 23, 255) 0%, rgb(60, 206, 16) 33.34%, rgb(17, 136, 204) 67.86%, rgb(255, 225, 0) 100%);
 }
 .about_us_content p {
-  color: #fff;
+  color: #000;
   text-align: left;
 }
 
@@ -1220,7 +1222,7 @@ form .submit_button {
 .rivew h3 {
   font-size: 3.4rem;
   font-weight: 700;
-  color: white;
+  color: #000;
   display: block;
   background-size: 100%;
   -webkit-background-clip: text;
@@ -1231,7 +1233,7 @@ form .submit_button {
   background-image: linear-gradient(90deg, rgb(255, 23, 129) 0%, rgb(255, 7, 216) 33.34%, rgb(255, 76, 16) 67.86%, rgb(255, 225, 0) 100%);
 }
 .rivew span {
-  color: yellow;
+  color: rgb(245, 160, 2);
 }
 
 .our_happy_customer {
@@ -1265,24 +1267,12 @@ form .submit_button {
   border: 2px solid #fff;
 }
 
-.storybg {
-  background-image: url("../img/background/vector-stroke.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: scroll;
-}
-
-.storybogcolor {
-  background-color: rgba(255, 255, 255, 0.65);
-}
-
 .our_story_bord {
   text-align: center;
   margin-top: -5rem;
 }
 .our_story_bord h3 {
-  color: #fff;
+  color: #000;
   font-weight: 700;
   font-size: 5rem;
   padding-bottom: 2rem;
@@ -1296,30 +1286,32 @@ form .submit_button {
 
 .membership {
   display: flex;
-  justify-content: left;
+  justify-content: start;
   height: 10rem;
-  background-color: transparent;
   width: auto;
   align-content: center;
   align-items: center;
   padding: 1rem;
-  border: 1px solid gray;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .members_icon {
   padding-right: 1rem;
   overflow: hidden;
+  margin-right: 1.5rem;
 }
 .members_icon img {
   height: 6rem;
   width: 6rem;
   border-radius: 50%;
   overflow: hidden;
+  border: 1px solid #fff;
+  padding: 0.3rem;
 }
 
 .members_info h4 {
-  color: #fff;
+  color: #000;
 }
 
 .service_overview {
@@ -1330,13 +1322,13 @@ form .submit_button {
 
 .over_cont {
   padding: 1rem 1rem;
-  background-color: #19032c;
-  box-shadow: rgba(230, 231, 231, 0.12) 0px 2px 4px 0px, rgba(238, 239, 240, 0.32) 0px 2px 16px 0px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .over_cont h4 {
   font-size: 3rem;
   font-weight: 700;
-  color: white;
+  color: #000;
   display: block;
   background-size: 100%;
   -webkit-background-clip: text;
@@ -1347,14 +1339,17 @@ form .submit_button {
   background-image: linear-gradient(90deg, rgb(255, 23, 129) 0%, rgb(255, 7, 216) 33.34%, rgb(255, 76, 16) 67.86%, rgb(255, 225, 0) 100%);
 }
 .over_cont p {
-  color: #fff;
+  color: #000;
   text-align: left;
   padding-top: 1rem;
 }
 
+.trust_content {
+  background-color: #fff;
+}
 .trust_content button {
   margin: 2rem 0rem;
-  border: 1px solid #fff;
+  border: 1px solid #000;
   background-color: transparent;
   color: #fff;
   padding: 1rem;
@@ -1363,12 +1358,12 @@ form .submit_button {
   color: #f750d2;
 }
 .trust_content h2 {
-  color: #fff;
+  color: #000;
   padding: 1rem 0rem;
   font-weight: 700;
 }
 .trust_content p {
-  color: #fff;
+  color: #000;
 }
 
 .ready_to_apply {
@@ -1379,7 +1374,7 @@ form .submit_button {
 
 .ready_con h1 {
   font-size: 5rem;
-  color: #fff;
+  color: #000;
   font-weight: 700;
 }
 .ready_con h1 span {
@@ -1396,14 +1391,16 @@ form .submit_button {
 }
 .ready_con p {
   padding: 1rem 0rem;
-  color: #fff;
+  color: #000;
 }
 
 .our_clients_reviews {
-  background-color: transparent;
+  background-color: #fff;
   padding: 5rem 2rem;
   margin: 3rem 1rem;
-  box-shadow: rgba(230, 231, 231, 0.12) 0px 2px 4px 0px, rgba(238, 239, 240, 0.32) 0px 2px 16px 0px;
+  border: 1px solid #011a41;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  min-height: 37rem;
 }
 
 .clients_profile {
@@ -1416,9 +1413,11 @@ form .submit_button {
 
 .cl_pro img {
   height: 10rem;
-  width: 10rem;
-  border-radius: 50%;
-  border: 2px solid #fff;
+  width: 100%;
+  border: 1px solid #000;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 1.5rem;
   box-shadow: rgba(230, 231, 231, 0.12) 0px 2px 4px 0px, rgba(238, 239, 240, 0.32) 0px 2px 16px 0px;
 }
 
@@ -1427,7 +1426,7 @@ form .submit_button {
 }
 .cl_info h2 {
   font-weight: 700;
-  color: white;
+  color: #000;
   display: block;
   background-size: 100%;
   -webkit-background-clip: text;
@@ -1438,11 +1437,11 @@ form .submit_button {
   background-image: linear-gradient(90deg, rgb(255, 23, 129) 0%, rgb(255, 7, 216) 33.34%, rgb(255, 76, 16) 67.86%, rgb(255, 225, 0) 100%);
 }
 .cl_info span {
-  color: #fff;
+  color: #000;
 }
 
 .reviews p {
-  color: #fff;
+  color: #000;
 }
 
 .faq_head_about {
@@ -1463,7 +1462,7 @@ form .submit_button {
   background-color: #141d3b;
 }
 .faq_head_about p {
-  color: #fff;
+  color: #000;
 }
 
 #banner_texts {
@@ -1480,7 +1479,7 @@ form .submit_button {
 }
 
 .feed h1 {
-  color: #fff;
+  color: #000;
   font-weight: 700;
   padding: 2rem 0rem;
 }
@@ -1762,6 +1761,16 @@ form .submit_button {
   background-attachment: fixed;
 }
 
+.make_D_image2 {
+  background-image: url("../img/background/aboutbg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-attachment: scroll;
+}
+
 .make_donation_quickbg {
   background: rgba(0, 0, 0, 0.58);
 }
@@ -1929,12 +1938,12 @@ form .submit_button {
 
 .ch_mission {
   width: 100%;
-  min-height: auto;
+  min-height: 12rem;
   justify-content: space-between;
   display: flex;
   justify-items: center;
   align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   padding: 1rem;
 }
 
@@ -2368,7 +2377,6 @@ form .submit_button {
 }
 
 .bcome_volunteer {
-  background-image: url(../img/volunteer.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -2503,27 +2511,15 @@ form .submit_button {
 }
 
 .common_about_image {
-  position: relative;
   -o-object-fit: cover;
      object-fit: cover;
 }
 .common_about_image img {
   height: 40rem;
-  width: auto;
+  width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  -webkit-clip-path: polygon(0 0, 75% 0%, 100% 50%, 75% 100%, 0 100%, 0% 50%);
-          clip-path: polygon(0 0, 75% 0%, 100% 50%, 75% 100%, 0 100%, 0% 50%);
-}
-.common_about_image .other_imge {
-  position: absolute;
-  bottom: 15%;
-  right: 0;
-}
-.common_about_image .other_imge img {
-  height: 20rem;
-  width: auto;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .common_about_content {
@@ -2555,37 +2551,37 @@ form .submit_button {
   padding-bottom: 2rem;
 }
 
-.comon_overview {
-  display: flex;
-  justify-content: space-between;
-  justify-items: center;
-  align-items: center;
-}
-.comon_overview .overview {
-  display: flex;
-  justify-content: space-between;
-  justify-items: center;
-  align-items: center;
-}
-.comon_overview .overview .icon span {
-  font-size: 4rem;
-  padding: 0rem 1rem;
-  color: #e93c05;
-}
-.comon_overview .overview .common_count strong {
-  font-size: 4rem;
-  font-weight: 900;
-}
-.comon_overview .overview .common_count p {
-  color: #e93c05;
-  font-weight: 600;
-}
-
 .profile {
   height: 30rem;
   -o-object-fit: cover;
      object-fit: cover;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.allprojects {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 2rem;
+}
+
+.overview {
+  text-align: center;
+}
+
+.icon span {
+  color: #00102b;
+  font-size: 4rem;
+}
+
+.common_count strong {
+  font-size: 6rem;
+  padding: 1rem 0rem;
+  color: #011a41;
+  font-weight: 700;
+}
+.common_count p {
+  color: #011a41;
+  font-style: italic;
+  font-size: 1.8rem;
 }
 
 .banner3 {
@@ -2975,159 +2971,318 @@ form .submit_button {
   color: green;
 }
 
-.donner_card_area {
-  min-height: 40rem;
-  border: 0.5rem solid #ffac30;
-  outline: 1.2rem solid #0c273e;
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-}
-
-.info_bg {
-  background-color: rgba(255, 255, 255, 0.78);
-}
-
-.donner_all_info {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  background-image: url(../img/vactor/images1.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: center;
-  text-align: center;
-  padding: 2rem;
-}
-.donner_all_info .logo {
-  padding-bottom: 2rem;
-}
-.donner_all_info .logo img {
-  height: 5rem;
-  width: auto;
-}
-.donner_all_info .logo h1 {
-  text-transform: uppercase;
-  font-weight: 700;
-}
-.donner_all_info .logo span {
-  font-size: 2.8rem;
-  color: #111a2e;
-}
-.donner_all_info .logo p {
-  letter-spacing: 1rem;
-  font-style: italic;
-}
-
-.d_info h1 {
-  font-family: "Dancing Script", cursive;
-  font-size: 4.5rem;
-}
-.d_info h1::after {
-  content: "";
-  height: 0.1rem;
-  width: 100%;
-  background: #111a2e;
-  display: block;
-}
-.d_info p {
-  padding-top: 0.5rem;
-  text-align: center;
-  font-family: "Dancing Script", cursive;
-  font-size: 2.7rem;
-}
-
-.d_footer {
-  padding-top: 4rem;
-}
-.d_footer img {
-  height: 5.5rem;
-  margin: 0rem;
-}
-.d_footer h6 {
-  position: relative;
-  padding-top: 1rem;
-  font-weight: 700;
-}
-.d_footer h6::before {
-  position: absolute;
+.main-section {
+  height: 100vh;
+  position: sticky;
   top: 0;
-  left: 40%;
-  content: "";
-  height: 0.1rem;
-  width: 20%;
-  background: #111a2e;
-  display: block;
+  overflow-y: scroll;
+  background-color: #F0F2F5;
 }
 
-.Our_impact_area {
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-  padding: 2rem;
+.alldonnerarea {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: hidden; /* Makes sidebars scrollable */
+  background-color: #F0F2F5; /* Sidebar background color */
 }
 
-.impact_image .image_figure {
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+.alldonnerarea:hover {
+  overflow-y: scroll; /* Activate scroll on hover for smoother interaction */
 }
-.impact_image .image_figure img {
+
+.donner_search input {
+  border: none;
+  border-radius: 0.8rem;
+  background-color: #E4E6E9;
+}
+.donner_search button {
+  background-color: #E4E6E9;
+  border: none;
+}
+
+.alldonner_pro a {
+  height: 4rem;
+  width: 4rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+.alldonner_pro a img {
+  height: 4rem;
+  width: 4rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+.alldonner_pro a span {
+  padding: 0rem 1rem;
+  color: #1F2020;
+}
+
+.donner_card_area {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 0.7rem;
+  background-color: #fff;
+  padding: 0.8rem;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.donor_canvas {
+  background-color: transparent;
+  padding: 0.8rem;
+  width: 100%;
+  padding: 0.8rem;
+}
+.donor_canvas button {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 0.7rem;
+  background-color: #fff;
+  border: none;
+  padding: 1rem;
+  font-size: 2rem;
+  display: none;
+  margin-right: 10%;
+}
+
+.donner_top {
+  display: flex;
+  justify-content: start;
+}
+
+.or_log {
+  background-color: #fff;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 1rem;
+}
+.or_log img {
+  height: 6rem;
+  width: 6rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #0861F2;
+  padding: 0.2rem;
+}
+
+.or_name h3 {
+  font-weight: 700;
+  padding-bottom: 0.5rem;
+}
+.or_name h6 {
+  color: #050505;
+  font-weight: 500;
+  font-size: 1.8rem;
+}
+.or_name h6 span {
+  color: #939497;
+}
+.or_name p {
+  color: #939497;
+  font-size: 1.5rem;
+}
+
+.donner_profile {
+  height: auto;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.donner_profile img {
+  height: auto;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.donner_bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 0rem 1rem;
+}
+
+.d_social ul li span {
+  color: #8d8e8f;
+  padding-right: 0.8rem;
+}
+.d_social a {
+  color: #8d8e8f;
+}
+
+.programs p {
+  color: #050505;
+}
+.programs p span {
+  color: #2371e6;
+  font-size: 2.3rem;
+  margin-right: 1rem;
+}
+
+.short_content {
+  display: none;
+}
+
+.main_impact_section {
+  background-color: #F0F2F5;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: scroll;
+}
+
+.impact_card {
+  box-shadow: rgba(158, 162, 167, 0.2) 0px 8px 24px;
+  border-radius: 0.7rem;
+  background-color: #fff;
+  padding: 0.8rem;
+  margin: 0 auto;
+  width: 85%;
+}
+
+.impact-side-bar {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: hidden;
+}
+.impact-side-bar:hover {
+  overflow-y: scroll;
+}
+
+.sitemap h4 {
+  font-weight: 400;
+}
+.sitemap ul li {
+  padding: 0.4rem 0rem;
+}
+.sitemap ul li span {
+  color: #2371e6;
+  transition: all 0.5s;
+}
+
+.details_main_section {
+  height: 100vh;
+  position: sticky;
+  background-color: #F0F2F5;
+  overflow-y: scroll;
+}
+
+.post_side_bar {
+  height: 100vh;
+  position: sticky;
+  top: 5%;
+  overflow-y: hidden;
+  transition: all 0.4s;
+}
+.post_side_bar:hover {
+  overflow-y: scroll;
+  transition: all 0.4s;
+}
+
+.project_details_area {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.post_details {
+  box-shadow: rgba(158, 162, 167, 0.2) 0px 8px 24px;
+  border-radius: 0.7rem;
+  background-color: #fff;
+  padding: 0.8rem;
+  margin: 0 auto;
+  width: 85%;
+}
+
+.pro_head {
+  padding: 2rem 0rem;
+}
+.pro_head h4 {
+  font-weight: 700;
+  color: #2371e6;
+  border-bottom: 0.3rem solid #2371e6;
+  display: inline-block;
+}
+.pro_head h1 {
+  padding: 2rem 0rem;
+  font-weight: 700;
+}
+
+.pro_image {
+  padding: 1.5rem 0rem;
+  margin: 0rem 4rem;
+}
+.pro_image img {
   width: 100%;
   height: auto;
+  margin: 0 auto;
 }
-
-.impect_content h1 {
-  font-size: 3.4rem;
-  color: #111a2e;
-  font-weight: 700;
-  font-family: "Open Sans", sans-serif;
+.pro_image p {
   padding: 0.5rem 0rem;
-  font-weight: 700;
-}
-.impect_content p {
-  text-align: justify;
+  border-bottom: 1px solid #000;
 }
 
-.impect_slogan {
-  background-color: #cecfcf;
-  padding: 2.3rem;
-  border-left: 0.5rem solid red;
-  margin-bottom: 1rem;
-}
-.impect_slogan p {
-  color: #000;
-  text-align: justify;
+.goolge_ads img {
+  height: 20rem;
+  width: auto;
+  margin: 0 auto;
 }
 
-.impact_comment {
+.pro_dates {
+  background-color: #FFF7F7;
   padding: 2rem;
 }
-.impact_comment h6 {
-  text-align: center;
-  padding-bottom: 5rem;
-  font-weight: 700;
+
+.hands_product {
+  padding: 1.5rem;
 }
-.impact_comment img {
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
-  height: auto;
+
+.sidebar_product {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  padding: 1rem;
+  background: #ffffff;
+}
+.sidebar_product img {
+  height: 25rem;
   width: auto;
 }
-.impact_comment h4 {
-  font-weight: 600;
-  text-transform: capitalize;
-  padding-bottom: 2rem;
-}
-.impact_comment p {
-  text-align: justify;
-}
 
-.comsec {
-  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
-  margin-bottom: 2rem;
+.branchnote {
   padding: 2rem;
+  border: 1px solid #fff;
+  border-radius: 0.8rem;
+}
+.branchnote p a {
+  color: white;
 }
 
-.comment_impect_form {
-  padding: 4rem;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+.wedo_service {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  background-color: #19032C;
+  height: 10rem;
+  padding: 1rem;
+  overflow-y: hidden;
+}
+.wedo_service:hover {
+  overflow-y: scroll;
+}
+
+.wedo_over_cont h4 a {
+  color: #fff;
+  font-weight: 700;
+}
+.wedo_over_cont p {
+  color: #fff;
+}
+.wedo_over_cont:hover h4 a {
+  color: #0861F2;
 }
 
 .contact_banner {
-  background-image: url(../img/banner/handsbanner.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -3756,6 +3911,28 @@ form .submit_button {
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     overflow-x: none;
   }
+  .donner_card_area {
+    width: 95%;
+  }
+  .alldonnerarea {
+    display: none;
+  }
+  .donor_canvas button {
+    display: block;
+    margin-right: 2%;
+  }
+  .card3 {
+    width: 75%;
+    margin: 0 auto;
+  }
+  .project_details_area {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .project_details_area {
+    width: 95%;
+    margin: 0 auto;
+  }
 }
 body {
   background-color: #fff;
@@ -4004,7 +4181,7 @@ body {
 }
 
 .or_team_content {
-  text-align: center;
+  text-align: left;
   padding: 1rem;
 }
 .or_team_content h2 {
@@ -4015,48 +4192,34 @@ body {
   padding: 0.5rem 0rem;
   font-size: 2.5rem;
 }
+.or_team_content h4 {
+  color: #e93c05;
+  padding-bottom: 0.5rem;
+  font-style: italic;
+  font-size: 1.6rem;
+}
+.or_team_content p span {
+  color: #FD7239;
+  padding-right: 0.5rem;
+}
+.or_team_content p a {
+  color: #0046c0;
+}
+.or_team_content a {
+  padding-top: 2rem;
+  color: #0046c0;
+  font-size: 2rem;
+  text-align: center;
+}
+.or_team_content a:hover {
+  color: #FD7239;
+  transition: all 0.35s;
+}
 
 .sinior_officials {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
-.about_heath_sec {
-  overflow: hidden;
-}
-
-.about_campain_image {
-  position: relative;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-.about_campain_image img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  z-index: 1;
-}
-.about_campain_image::before {
-  content: "";
-  position: absolute;
-  top: -30%;
-  left: -70%;
-  width: 100%;
-  height: 60rem;
-  background-image: url("../img/vactor/svgdoctor.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  z-index: -1;
-  animation: rotation2 8s linear infinite;
-}
-
-@keyframes rotation2 {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 .health_content {
   display: grid;
 }

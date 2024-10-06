@@ -162,6 +162,14 @@
     object-fit: cover;
     background-attachment: fixed;
 }
+.make_D_image2{
+    background-image:url('../img/background/aboutbg.jpg') ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+    background-attachment: scroll;
+}
 .make_donation_quickbg{
     background: rgba(0,0,0,0.58);
 }
@@ -316,12 +324,12 @@
 }
 .ch_mission{
     width: 100%;
-    min-height: auto;
+    min-height: 12rem;
     justify-content: space-between;
     display: flex;
     justify-items: center;
     align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     padding: 1rem;
 }
 .mission_icon{

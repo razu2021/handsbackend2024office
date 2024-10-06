@@ -28,7 +28,7 @@
                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 mt-4">
                     <div class="mentors_profile">
                         <div class="mprofile">
-                            <img src="{{asset('contents/{{asset('contents/assets/website')}}/assets/website')}}/{{asset('contents/assets/website')}}/assets/img/team/it2.jpeg" alt="Human and Nature Development Society" class="img-fluid">
+                            <img src="" alt="Human and Nature Development Society" class="img-fluid">
                         </div>
                         <div class="profile_social">
                             <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -48,7 +48,7 @@
                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 mt-4">
                     <div class="mentors_profile">
                         <div class="mprofile">
-                            <img src="{{asset('contents/{{asset('contents/assets/website')}}/assets/website')}}/{{asset('contents/assets/website')}}/assets/img/team/image2.png" alt="Human and Nature Development Society" class="img-fluid">
+                        <img src="" alt="Human and Nature Development Society" class="img-fluid">
                         </div>
                         <div class="profile_social">
                             <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -68,7 +68,7 @@
                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 mt-4">
                     <div class="mentors_profile">
                         <div class="mprofile">
-                            <img src="{{asset('contents/{{asset('contents/assets/website')}}/assets/website')}}/{{asset('contents/assets/website')}}/assets/img/team/razu.jpg" alt="Human and Nature Development Society" class="img-fluid">
+                        <img src="" alt="Human and Nature Development Society" class="img-fluid">
                         </div>
                         <div class="profile_social">
                             <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -88,7 +88,7 @@
                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 mt-4">
                     <div class="mentors_profile">
                         <div class="mprofile">
-                            <img src="{{asset('contents/{{asset('contents/assets/website')}}/assets/website')}}/{{asset('contents/assets/website')}}/assets/img/team/image4.png" alt="Human and Nature Development Society" class="img-fluid">
+                        <img src="" alt="Human and Nature Development Society" class="img-fluid">
                         </div>
                         <div class="profile_social">
                             <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -110,7 +110,7 @@
     </section>   
     <!-- profile section end here -->
     <section class="section_position section-padding">
-        <div class="bg_top"><img src="{{asset('contents/{{asset('contents/assets/website')}}/assets/website')}}/{{asset('contents/assets/website')}}/assets/img/vactor/shap1.png" alt=""></div>
+        <div class="bg_top"><img src="" alt=""></div>
         <section class="section-padding">
             <div class="container">
                 <div class="row">
@@ -121,7 +121,7 @@
                     <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 mt-4">
                         <div class="mentors_profile">
                             <div class="mprofile">
-                                <img src="{{asset('contents/{{asset('contents/assets/website')}}/assets/website')}}/{{asset('contents/assets/website')}}/assets/img/team/roni.png" alt="Human and Nature Development Society" class="img-fluid">
+                            <img src="" alt="Human and Nature Development Society" class="img-fluid">
                             </div>
                             <div class="profile_social">
                                 <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -141,7 +141,7 @@
                     <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 mt-4">
                         <div class="mentors_profile">
                             <div class="mprofile">
-                                <img src="{{asset('contents/{{asset('contents/assets/website')}}/assets/website')}}/{{asset('contents/assets/website')}}/assets/img/team/image2.png" alt="Human and Nature Development Society" class="img-fluid">
+                            <img src="" alt="Human and Nature Development Society" class="img-fluid">
                             </div>
                             <div class="profile_social">
                                 <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -161,7 +161,7 @@
                     <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 mt-4">
                         <div class="mentors_profile">
                             <div class="mprofile">
-                                <img src="{{asset('contents/{{asset('contents/assets/website')}}/assets/website')}}/{{asset('contents/assets/website')}}/assets/img/team/image4.png" alt="Human and Nature Development Society" class="img-fluid">
+                            <img src="" alt="Human and Nature Development Society" class="img-fluid">
                             </div>
                             <div class="profile_social">
                                 <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -181,7 +181,7 @@
                     <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 mt-4">
                         <div class="mentors_profile">
                             <div class="mprofile">
-                                <img src="{{asset('contents/{{asset('contents/assets/website')}}/assets/website')}}/{{asset('contents/assets/website')}}/assets/img/team/kuntola.png" alt="Human and Nature Development Society" class="img-fluid">
+                            <img src="" alt="Human and Nature Development Society" class="img-fluid">
                             </div>
                             <div class="profile_social">
                                 <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -204,10 +204,9 @@
         <!-- profile section end here -->
         <!-- container end here  -->
         
-        <div class="bg_bottom"><img src="{{asset('contents/{{asset('contents/assets/website')}}/assets/website')}}/{{asset('contents/assets/website')}}/assets/img/vactor/shap1.png" alt=""></div>
+        <div class="bg_bottom"><img src="" alt=""></div>
     </section>
-<!--  -->
-    <!-- ========  main content end herre  -->
+    <!-- ======== main content end herre ===========-->
   </main>
 @endsection
 

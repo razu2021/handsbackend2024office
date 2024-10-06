@@ -1,31 +1,21 @@
 @extends('layouts.webmaster')
 @section('web_content') 
   <main>
-  @foreach($banner as $banners)
-    @foreach($pageIds as $pageid)
-    @if($pageid->menu_id == $banners->main_page_id)
-        <h1> {{$banners->banner_title}}</h1>
-    @endif
-
-
-  @endforeach
-  @endforeach
-
-<section class="contact_banner">
+@foreach($banner as $data)
+<section class="contact_banner" style="background-image:url('{{asset('uploads/website/'.$data->banner_bg_image)}}')">
     <div class="bannerbg">
         <div class="container ">
             <div class="row justify-content-sm-center">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                     <div class="banner_contents">
-                     <!-- <h1> Let's  <span id="auto_type1"> </span> </h1> -->
-                     <h1>Contact Us</h1>
+                     <h1>{{$data->banner_heading}}</h1>
                     </div>
                 </div>
-                <!-- col end  -->
             </div>
         </div>
     </div>
 </section>
+@endforeach
 <!-- banner section end here  -->
 <section class="section-padding">
     <div class="container">
@@ -37,7 +27,9 @@
                     </div>
                     <div class="details_info">
                         <p> Have Any Question?</p>
-                        <a href="tel:+8801602-351089">++880 1602-351089</a>
+                        @foreach($phone as $phones)
+                        <a href="tel:+88{{$phones->phone_number}}">{{$phones->phone_number}} ,</a> 
+                        @endforeach
                     </div>
                 </div>
                 <!-- contact details end here  -->
@@ -50,7 +42,9 @@
                     </div>
                     <div class="details_info">
                         <p> Have Any Question?</p>
-                        <a href="mailto:hands7@yahoo.com">hands7@yahoo.com</a>
+                        @foreach($email as $emails)
+                        <a href="mailto:{{$emails->email_name}}">{{$emails->email_name}} ,</a>
+                        @endforeach
                     </div>
                 </div>
                 <!-- contact details end here  -->
@@ -85,42 +79,51 @@
                             <strong class="text-danger">Contact us ||</strong>
                             <h3>Feel free to get in touch</h3>
                             <p>We are always here to help and listen to your thoughts and concerns. You easily contact us through email, phone, or even social media. We value your input and strive to provide the best service possible.</p>
+                            
                             <div class="social_icon pt-4">
-                                <a target="_blank" href="https://www.facebook.com/humanandnaturedevelopmentsociety"><i class="fa-brands fa-square-facebook"></i></a>
+                                
+                                <a target="_blank" href="#"><i class="fa-brands fa-square-facebook"></i></a>
+                                
                                 <a target="_blank" href="https://twitter.com/hands_bd"><i class="fa-brands fa-square-x-twitter"></i></a>
                                 <a target="_blank" href="https://www.linkedin.com/in/human-and-nature-development-society-hands-8133862b8/"><i class="fa-brands fa-linkedin"></i></a>
                                 <a target="_blank" href="https://www.instagram.com/hands_bd/"><i class="fa-brands fa-square-instagram"></i></a>
                             </div>
+                           
                         </div>
                     </div>
                     <!-- col end  -->
                     <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8">
+                        @if(session('message'))
+                            <div class="alert alert-primary ">
+                                {{ session('message') }}
+                            </div>
+                        @endif
                         <div class="contact_form" style="border:1px solid gray">
                             <p class="pb-4 text-success fw-bold">Fill out the form and our agent will contact you within the next 24 hours.</p>
-                            <form>
-                                <!-- Name input -->
-                                <div data-mdb-input-init class="form-outline ">
-                                  <input type="text" id="form4Example1" class="form-control mb-4" placeholder="Name" />
-                                 
-                                </div>
-                              
+                            <form action="{{route('contact_form')}}" method="post">
+                                @csrf
                                 <!-- Email input -->
-                                <div data-mdb-input-init class="form-outline ">
-                                  <input type="email" id="form4Example2" class="form-control mb-4" placeholder="Email"/>
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                 <input type="text" name="name" id="name" class="form-control" placeholder="Name" value="{{old('name')}}"/>
+                                 <span class="text-danger">@error('name'){{$message}} @enderror</span>
                                 </div>
-                                <!-- Message input -->
-                                <div data-mdb-input-init class="form-outline ">
-                                  <input type="email" id="form4Example2" class="form-control mb-4" placeholder="Phone"/>
+                                <!-- name end -->
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                 <input type="email" name="email" id="email" class="form-control" placeholder="Email" value="{{old('email')}}"/>
+                                 <span class="text-danger">@error('email'){{$message}} @enderror</span>
                                 </div>
-                                <!-- Message input -->
-                                <div data-mdb-input-init class="form-outline ">
-                                  <textarea class="form-control" id="form4Example3" rows="4" placeholder="Write your Messages"></textarea>
-                              
+                                <!-- name end -->
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                 <input type="text" name="phone" id="" class="form-control" placeholder="Phone" value="{{old('phone')}}"/>
+                                 <span class="text-danger">@error('phone'){{$message}} @enderror</span>
+                                </div>
+                                <!-- address -->
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                 <textarea name="caption" id="caption" cols="6" style="width: 100%;padding: 1rem;" placeholder="Write your Message" >{{old('caption')}}</textarea>
+                                 <span class="text-danger">@error('caption'){{$message}} @enderror</span>
                                 </div>
                                 <!-- Submit button -->
-                                <div class="d-flex justify-content-center text-center">
-                                    <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block  submit_button mt-4 p-2 ">Send Your Massages</button>
-                                </div>
+                                <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">Submit Now </button>
                                 
                               </form>
                         </div>

@@ -39,10 +39,11 @@ class allStaffController extends Controller
     }
     /* ------  this is edit page --------*/
     public function edit($slug){
+      $totalpost = allstaff::count();
       $id= Auth::guard('admin')->user()->id;
-      $data=allstaff::where('status',1)->where('slug',$slug)->firstOrFail();
       $designation = designation::where('post_status',1)->get();
-        return view('websiteBackend.other.allstaff.edit',compact('data','designation'));
+      $data=allstaff::where('status',1)->where('slug',$slug)->firstOrFail();
+        return view('websiteBackend.other.allstaff.edit',compact('data','designation','totalpost'));
       }
       /* ------  this is view page --------*/
       public function view($slug){
@@ -63,7 +64,8 @@ class allStaffController extends Controller
               ]
           );
           $slugname = $request['name'];
-          $slug=$slugname.'-'.uniqid('20');
+          $removespace = str_replace(' ', '', $slugname);
+          $slug=$removespace.'-'.uniqid('20');
           $creator=Auth::guard('admin')->user()->id;
           $insert=allstaff::insertGetId([
             'category_as'=>$request['category_as'],
@@ -104,6 +106,7 @@ class allStaffController extends Controller
         $editor = Auth::guard('admin')->user()->id;
         $update=allstaff::where('status',1)->where('allstaff_id',$id)->where('slug',$slug)->update([
             'category_as'=>$request['category_as'],
+            'senior_official'=>$request['senior_official'],
             'name'=>$request['name'],
             'email'=>$request['email'],
             'phone'=>$request['phone'],
@@ -205,19 +208,19 @@ class allStaffController extends Controller
     }
     }
 
-        // Recycle bin code is start here 
-        public function recycle(Request $request){
-            $search = $request['search'] ?? "";
-            if($search !=""){
-             
-              $all= allstaff::onlyTrashed()->where('name', 'LIKE', "%$search%")->orwhere('category_as','LIKE',"%$search%")->orwhere('phone','LIKE',"%$search%")->orwhere('email','LIKe',"%$search%")
-              ->paginate(5);
-            }
-            else{
-              $all = allstaff::onlyTrashed()->where('status', 1)->orderBy('allstaff_id', 'ASC')->paginate(5);
-            }
-            $totalpost = allstaff::count();
-            return view('websiteBackend.other.allstaff.recycle',compact('all','search','totalpost'));
+    // Recycle bin code is start here 
+    public function recycle(Request $request){
+        $search = $request['search'] ?? "";
+        if($search !=""){
+          
+          $all= allstaff::onlyTrashed()->where('name', 'LIKE', "%$search%")->orwhere('category_as','LIKE',"%$search%")->orwhere('phone','LIKE',"%$search%")->orwhere('email','LIKe',"%$search%")
+          ->paginate(5);
         }
+        else{
+          $all = allstaff::onlyTrashed()->where('status', 1)->orderBy('allstaff_id', 'ASC')->paginate(5);
+        }
+        $totalpost = allstaff::count();
+        return view('websiteBackend.other.allstaff.recycle',compact('all','search','totalpost'));
+    }
     
 }

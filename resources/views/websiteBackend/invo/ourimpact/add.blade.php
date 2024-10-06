@@ -43,14 +43,11 @@
                 </div>
               </div>
               <!-- item 2 ends -->
-
-           
-
               <div class="col-md-12">
                 <div class="mb-3">
                 <label class="form-label" for="basic-default-fullname"> Caption <span class="text-danger"> <i class="fas fa-solid fa-star"></i></span></label>
-                <textarea class="form-control" name="caption" id="editor" value="{{old('subtitle')}}"></textarea>
-                <span class="text-danger">@error('button'){{$message}} @enderror</span>
+                <textarea class="form-control" name="caption" id="editor" value="{{old('caption')}}"></textarea>
+                <span class="text-danger">@error('caption'){{$message}} @enderror</span>
                 </div>
               </div>
               <!-- item 2 ends -->

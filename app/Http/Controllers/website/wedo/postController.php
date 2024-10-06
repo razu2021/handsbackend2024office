@@ -60,7 +60,10 @@ class postController extends Controller
           
             ]
         );
-          $slug='admin'.uniqid('20');
+
+        $slugname = $request['title'];
+          $removespace = str_replace(' ', '', $slugname);
+          $slug=$removespace.'-'.uniqid('30');
           $creator=Auth::guard('admin')->user()->id;
           $insert=allpost::insertGetId([
             'category_as'=>$request['category_as'],

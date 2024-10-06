@@ -1,6 +1,5 @@
 @extends('layouts.webmaster')
 @section('web_content') 
-
 @if(session('message'))
     <div class="alert alert-success" id="sessionMessage">
         {{ session('message') }}
@@ -19,7 +18,7 @@
 </div>
 </section>
 @endforeach
-<main class="aboutpagebg">
+<main class="">
       <section >
       @foreach($aboutus as $data)
             <section class="section-padding">
@@ -40,7 +39,6 @@
                 </div>
             </section>
     @endforeach
-<!-- bout section end  -->
 
 <section class="">
     <div class="container">
@@ -52,13 +50,15 @@
                 </div>
                 <div class="our_happy_customer">
                     <ul>
-                        <li><img src="{{asset('contents/assets/website')}}/assets/img/11.jpeg" alt="customer image" class="img-fluid"></li>
-                        <li><img src="{{asset('contents/assets/website')}}/assets/img/it2.jpeg" alt="customer image" class="img-fluid"></li>
-                        <li><img src="{{asset('contents/assets/website')}}/assets/img/it.jpg" alt="customer image" class="img-fluid"></li>
-                        <li><img src="{{asset('contents/assets/website')}}/assets/img/razu.jpg" alt="customer image" class="img-fluid"></li>
-                        <li><img src="{{asset('contents/assets/website')}}/assets/img/doctor.jpg" alt="customer image" class="img-fluid"></li>
+                        @foreach($customer as $data)
+                        @if($data->service_image !="")
+                        <li><img src="{{asset('uploads/website/customer/'.$data->service_image)}}" data-src="{{asset('uploads/website/customer/'.$data->service_image)}}" alt="Customer of HANDS {{$data->name}} profile image" class="img-fluid lazyload"></li>
+                        @else
+                        <li><img src="{{asset('contents/assets/website')}}/assets/img/profile-picture.png" alt="Customer of HANDS {{$data->name}} profile image" class="img-fluid"></li>
+                        @endif
+                        @endforeach
                     </ul>
-                    <span>+ 2500 </span>
+                    <span>{{$customercount}} +</span>
                 </div>
             </div>
             <!--  -->
@@ -69,89 +69,42 @@
 <section class="section-padding " >
     <div class="container ">
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8 offset-lg-2 ">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 ">
                <div class="Membership_about row">
+               @foreach($member as $data)
                 <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mt-4">
                     <div class="membership">
                         <div class="members_icon">
-                            <img src="{{asset('contents/assets/website')}}/assets/img/otherlogo1.jpg" alt="membership info" class="img-fluid">
+                        @if($data->service_image !="" && $data->or_logo !="")
+                            <img src="{{asset('uploads/website/'.$data->or_logo)}}" alt="Donor Organization image">
+                        @elseif($data->service_image != "")
+                            <img src="{{asset('uploads/website/'.$data->service_image)}}" alt="Donor Image">
+                        @elseif($data->or_logo !="")
+                            <img src="{{asset('uploads/website/'.$data->or_logo)}}" alt="Donor Organization image">
+                        @else
+                            <img src="{{asset('contents/assets/website')}}/assets/img/profile-picture.png" alt="Hands logo">
+                        @endif
                         </div>
                         <div class="members_info">
-                            <h4>Technical Hotline Ltd</h4>
+                            @if($data->name !="" && $data->or_name !="")
+                            <h4>{{$data->or_name}}</h4>
+                            @elseif($data->name !="")
+                            <h4>{{$data->name}}</h4>
+                            @else
+                            <h4>Anonymous participant</h4>
+                            @endif
                         </div>
                     </div>
-                    <!-- end  -->
                 </div>
-                <!-- col end  -->
-                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mt-4">
-                    <div class="membership">
-                        <div class="members_icon">
-                            <img src="{{asset('contents/assets/website')}}/assets/img/icon/educationicon.jpg" alt="membership info" class="img-fluid">
-                        </div>
-                        <div class="members_info">
-                            <h4>Education.owner</h4>
-                        </div>
-                    </div>
-                    <!-- end  -->
-                </div>
-                <!-- col end  -->
-                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mt-4">
-                    <div class="membership">
-                        <div class="members_icon">
-                            <img src="{{asset('contents/assets/website')}}/assets/img/otherlogo2.jpg" alt="membership info" class="img-fluid">
-                        </div>
-                        <div class="members_info">
-                            <h4>Web Support IT</h4>
-                        </div>
-                    </div>
-                    <!-- end  -->
-                </div>
-                <!-- col end  -->
-                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mt-4">
-                    <div class="membership">
-                        <div class="members_icon">
-                            <img src="{{asset('contents/assets/website')}}/assets/img/mylogo.jpg" alt="membership info" class="img-fluid">
-                        </div>
-                        <div class="members_info">
-                            <h4>Universitas Law Chambers</h4>
-                        </div>
-                    </div>
-                    <!-- end  -->
-                </div>
-                <!-- col end  -->
-                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mt-4">
-                    <div class="membership">
-                        <div class="members_icon">
-                            <img src="{{asset('contents/assets/website')}}/assets/img/icon/healthicon.jpg" alt="membership info" class="img-fluid">
-                        </div>
-                        <div class="members_info">
-                            <h4>Manob Sheba </h4>
-                        </div>
-                    </div>
-                    <!-- end  -->
-                </div>
-                <!-- col end  -->
-                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mt-4">
-                    <div class="membership">
-                        <div class="members_icon">
-                            <img src="{{asset('contents/assets/website')}}/assets/img/icon/loanicon.png" alt="membership info" class="img-fluid">
-                        </div>
-                        <div class="members_info">
-                            <h4>Logistic Dimand</h4>
-                        </div>
-                    </div>
-                    <!-- end  -->
-                </div>
-                <!-- col end  -->
+                @endforeach
                </div>
             </div>
         </div>
     </div>
 </section>
-<!-- section end here  -->
-<section class="section-padding storybg" >
-    <div class="container ">
-        <div class="row">
+<section class="section-padding">
+    <div class="container">
+    <div class="row">
         @foreach($whatwedo_head as $data)
             <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 offset-lg-2">
                 <div class="our_story_bord">
@@ -161,6 +114,10 @@
             </div>
         @endforeach
         </div>
+    </div>
+</section>
+<section class="section-padding storybg" >
+    <div class="container">
         <div class="row">
             @foreach($whatwedo as $data)
             <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 ">
@@ -199,7 +156,11 @@
     </div>
 </section>
 @endforeach
-<!-- section end  -->
+
+
+
+
+
 
 <section class="section-padding">
     <div class="container">
@@ -216,8 +177,13 @@
         </div>
     </div>
 </section>
-<!-- section end  -->
-<!-- SME or Microfinance end here  -->
+
+
+
+
+
+
+
 
 <section class="storybg section-padding">
     <div class="container">
@@ -225,69 +191,59 @@
             <div class="col-lg-12">
                 <div class="feed">
                     <h1>Happy Customer Feedback</h1>
-
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="owl-carousel owl-theme about_reviws">
+                    @foreach($testi as $data)
                     <div class="our_clients_reviews">
                         <div class="reviews">
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa distinctio aliquid, veritatis amet accusamus eos. Architecto, reiciendis nobis! Commodi vel rem recusandae fugit accusamus officiis ut delectus ipsam aperiam voluptatum velit totam, quaerat ab debitis sunt. Aperiam natus delectus sequi dignissimos quisquam iusto libero qui, maxime voluptate ratione, cupiditate illo.</p>
+                            <p>{!! Str::words($data->caption,50) !!}</p>
                         </div>
                         <div class="clients_profile">
                             <div class="cl_pro">
-                                <img src="{{asset('contents/assets/website')}}/assets/img/it2.jpeg" alt="our Clients Reviws" class="img-fluid">
+                                @if($data->service_image !="")
+                                <img src="{{asset('uploads/website/'.$data->service_image)}}" alt="our Clients Reviws" class="img-fluid">
+                                @else
+                                <img src="{{asset('contents/assets/website')}}/assets/img/profile-picture.png" alt="our Clients Reviws" class="img-fluid">
+                                @endif
                             </div>
                             <div class="cl_info">
-                                <h2>Israt Jahan Trisha</h2>
-                                <span> Technical Hotline Ltd </span>
+                                <h2>{{$data->name}}</h2>
+                                @if($data->organization_name !="")
+                                <span> {{$data->organization_name}} </span>
+                                @endif
                             </div>
                         </div>
                     </div>
-                    <!-- slider end  -->
-                    <div class="our_clients_reviews">
-                        <div class="reviews">
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa distinctio aliquid, veritatis amet accusamus eos. Architecto, reiciendis nobis! Commodi vel rem recusandae fugit accusamus officiis ut delectus ipsam aperiam voluptatum velit totam, quaerat ab debitis sunt. Aperiam natus delectus sequi dignissimos quisquam iusto libero qui, maxime voluptate ratione, cupiditate illo.</p>
-                        </div>
-                        <div class="clients_profile">
-                            <div class="cl_pro">
-                                <img src="{{asset('contents/assets/website')}}/assets/img/it.jpg" alt="our Clients Reviws" class="img-fluid">
-                            </div>
-                            <div class="cl_info">
-                                <h2>Israt Jahan Trisha</h2>
-                                <span> Technical Hotline Ltd </span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- slider end  -->
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 <div class="container section-padding">
     <div class="row">
         <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8 offset-lg-2">
         <div class="">
             <div class="ch_form mx-4" style="background:#fff;border-radius:3rem;box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;">
                 <h2 class="pb-2 text-dark">make <span> Reviews</span> now</h2>
-                <p class="pb-4 text-dark"><span> Note : </span> please provide your information, we will contact you very soon </p>
+                <p class="pb-4 text-dark"><span> Note : </span> please provide your Reviews, we will Reviews your Messages very soon than we Published !</p>
                 <form action="{{route('testimonial_insert')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <!-- Email input -->
                     <div data-mdb-input-init class="form-outline mb-4" >
-                        <input type="text" name="name" id="name" class="form-control" placeholder="Name"/>
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Name" value="{{old('name')}}"/>
                         <span class="text-danger">@error('name'){{$message}} @enderror</span>
                     </div>
                     <!-- name end  -->
                     <div data-mdb-input-init class="form-outline mb-4">
-                        <input type="text" name="organization_name" id="organization_name" class="form-control" placeholder="Optiional! Organization Name"/>
+                        <input type="text" name="organization_name" id="organization_name" class="form-control" placeholder="Optiional! Organization Name" value="{{old('organization_name')}}"/>
                         <span class="text-danger">@error('organization_name'){{$message}} @enderror</span>
                     </div>
                     <!-- name end -->
                     <div data-mdb-input-init class="form-outline mb-4">
-                        <textarea name="caption" id="caption" cols="6" style="width: 100%;padding: 1rem;" class="form-control" placeholder="optional! Write your Reviews" ></textarea>
+                        <textarea name="caption" id="caption" cols="6" style="width: 100%;padding: 1rem;" class="form-control" placeholder="optional! Write your Reviews" value="{{old('caption')}}"> {{old('caption')}}</textarea>
                         <span class="text-danger">@error('caption'){{$message}} @enderror</span>
                     </div>
                     <!-- image -->
@@ -296,30 +252,28 @@
                     <span class="text-danger">@error('service_image'){{$message}} @enderror</span>
                     </div>
                     <!-- Submit button -->
-                    <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">Submit Now </button>
+                    <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">Submit Review Now </button>
                     </form>
             </div>
         </div>
         </div>
-        <!-- col end -->
-        <!-- col end -->
     </div>
 </div>
-<section class="section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 col-xxl-10 offset-lg-1">
-                <div class="ready_to_apply" style="background-image:url('{{asset('contents/assets/website')}}/assets/img/background/Image.png');background-repeat: no-repeat;background-position: center;">
-                    <div class="ready_con">
-                        <h1>HANDS  Always dedicated to the welfare of  <span>people and nature</span>  </h1>
+@foreach($slogan as $data)
+<section class="make_D_image" style="background-image:url('{{asset('uploads/website/'.$data->service_image)}}')">
+        <div class="container section-padding">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8 offset-lg-2">
+                    <div class="make_donation_quick">
+                        <h1 class="pb-2">{{$data->heading}}</h1>
+                        <h3 class="pb-2">{{$data->title}}</h3>
                     </div>
                 </div>
             </div>
-            <!-- col end -->
         </div>
     </div>
 </section>
-<!-- section end  -->
+@endforeach
 </main>
 <script>
     document.addEventListener("DOMContentLoaded", function() {

@@ -24,7 +24,7 @@
                 <label class="form-label" for="basic-default-fullname">Name<span class="text-danger"> <i class="fas fa-solid fa-star"></i></span></label>
                <select class="form-control" name="category_as" id="category_as">
                 <option value="">Select Category </option>
-                <option value="Executive_Leadership">Executive Leadership:</option>  
+                <option value="Executive_Leadership">Executive Leadership</option>  
                 <option value="Management_and_Program_Leadership"> Management and Program Leadership</option>  
                 <option value="Field_Level_Staff">  Field-Level Staff</option>
                 <option value="Administrative_and_Support_Roles">Administrative and Support Roles</option>
@@ -37,6 +37,7 @@
                 <option value="Monitoring_Evaluation">Monitoring & Evaluation (M&E)</option>
                 <option value="Volunteer_and">Volunteer </option>
                 <option value="Intern_Positions"> Intern Positions</option>
+                <option value="consultant_other"> Consultant & Other</option>
                </select>
                 <span class="text-danger">@error('category_as'){{$message}} @enderror</span>
                 </div>
@@ -69,8 +70,8 @@
                 <select class="form-control" name="designation" id="designation">
                   <option value="">Select Designation</option>
                   @foreach($designation as $data)
-                <option value="{{$data->title}}">{{$data->title}}</option>
-               @endforeach
+                  <option value="{{$data->designation_name}}">{{$data->designation_name}}</option>
+                  @endforeach
                 </select>
                 <span class="text-danger">@error('designation'){{$message}} @enderror</span>
                 </div>

@@ -17,21 +17,6 @@ function calculateTimeDifference() {
     return {days, hours, minutes, seconds};
 }
 
-function updateCountdown() {
-    const timeDifference = calculateTimeDifference();
-
-    // Display the result in an element with id="countdown"
-    document.getElementById("countdown").innerHTML = `${timeDifference.days}d ${timeDifference.hours}h ${timeDifference.minutes}m ${timeDifference.seconds}s `;
-
-    // If the countdown is over, write some text 
-    if (timeDifference.total <= 0) {
-        clearInterval(updateInterval);
-        document.getElementById("countdown").innerHTML = "The specified date has arrived!";
-    }
-}
-
-// Update the countdown every 1 second
-const updateInterval = setInterval(updateCountdown, 1000);
 
 // end 
 
@@ -40,16 +25,15 @@ const updateInterval = setInterval(updateCountdown, 1000);
 
 // preloader code 
 
+// window.addEventListener('load', function() {
+//   var preloader = document.getElementById('preloader');
+//   preloader.style.display = 'none'; // Hide preloader
+//   document.getElementById('content').style.display = 'block'; // Show content
+//   document.body.style.overflow = 'auto'; // Re-enable scrolling
+// });
 
 
-window.addEventListener('load', function() {
-  var preloader = document.getElementById('preloader');
-  preloader.style.display = 'none'; // Hide preloader
-  document.getElementById('content').style.display = 'block'; // Show content
-  document.body.style.overflow = 'auto'; // Re-enable scrolling
-});
-
-
+/*=========  shor content and full content  */
 
 
 

@@ -25,7 +25,7 @@
                           <select name="social_mediaid" id="social_mediaid" class="form-control">
                             <option value=""> URL Set as</option>
                           @foreach($all as $data)
-                          <option value="{{$data->url_id}}">{{$data->social_media_name}}</option>
+                          <option value="{{$data->social_media_id}}">{{$data->social_media_name}}</option>
                           @endforeach
                           </select>
                           </div>

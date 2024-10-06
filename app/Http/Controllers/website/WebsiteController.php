@@ -13,21 +13,34 @@ use Illuminate\Support\Facades\File;
 /*----------  use model -----*/
 use App\Models\allbanner;
 use App\Models\allpost;
+use App\Models\allprojects;
 use App\Models\allstaff;
 use App\Models\apply_course;
+use App\Models\applyloan;
 use App\Models\appoinment_book;
 use App\Models\bannerbottom;
+use App\Models\becomevolunteer;
+use App\Models\branch;
+use App\Models\contactform;
 use App\Models\course;
+use App\Models\customer;
 use App\Models\designation;
 use App\Models\dipositads;
+use App\Models\doctors;
+use App\Models\email;
 use App\Models\faq;
 use App\Models\field_storise;
+use App\Models\fstatement;
 use App\Models\jobpost;
 use App\Models\testimonial;
 use App\Models\loansteps;
+use App\Models\makeDonation;
+use App\Models\member_donner;
 use App\Models\micro_service;
 use App\Models\notice;
+use App\Models\ourimpact;
 use App\Models\page_desc;
+use App\Models\phone;
 use App\Models\photo_gallery;
 use App\Models\product;
 use App\Models\security_trust;
@@ -35,8 +48,12 @@ use App\Models\whatsnew;
 use App\Models\serviceOverview;
 use App\Models\slogan;
 use App\Models\smeads;
+use App\Models\socialmediaurl;
+use App\Models\strategy;
 use App\Models\video_gallery;
 use App\Models\whatwedo;
+use App\Models\whaydonate;
+use Illuminate\Support\Facades\DB;
 
 /*-----------  end  model -----*/
 
@@ -64,8 +81,12 @@ class WebsiteController extends Controller
         $whatwedo= whatwedo::where('post_status',1)->orderby('whatwedo_id','ASC')->limit(4)->get();
         $whatwedo_head= whatwedo::where('post_status',1)->orderby('whatwedo_id','ASC')->limit(1)->get();
         $security= security_trust::where('post_status',1)->orderby('security_trust_id','ASC')->limit(1)->get();
-        //dd($banner);
-        return view('website.pages.about_us',compact('banner','aboutus','whatwedo','whatwedo_head','security'));
+        $slogan= slogan::where('post_status',1)->where('set_as','organization_slogan')->limit(1)->get();
+        $customer = customer::where('post_status',1)->orderby('customer_id','DESC')->limit(15)->get();
+        $customercount = customer::count();
+        $member = member_donner::where('post_status',1)->limit(12)->get();
+        $testi = testimonial::where('post_status',1)->get();
+        return view('website.pages.about_us',compact('banner','aboutus','whatwedo','whatwedo_head','security','member','slogan','testi','customer','customercount'));
     }
     // testimonial form 
     public function testi_insert(Request $request){
@@ -119,39 +140,85 @@ class WebsiteController extends Controller
     }
   }
 //   testimonial end here 
+
     public function organizetional_structure(){
-        return view('website.pages.organizetional_structure');
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','organizetional_structure_page')->limit(1)->get();
+        $ececutive = allstaff::where('post_status',1)->where('category_as','Executive_Leadership')->limit(4)->get();
+        $ganarelbody = allstaff::where('post_status',1)->where('category_as','Management_and_Program_Leadership')->limit(4)->get();
+        $serial = allstaff::where('post_status',1)->orderby('senior_official','ASC')->get(); 
+        return view('website.pages.organizetional_structure',compact('banner','ececutive','ganarelbody','serial'));
+    }
+    public function staff_details($slug){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','sataff_details_page')->limit(1)->get();
+        $data = allstaff::where('post_status',1)->where('slug',$slug)->firstOrFail();
+        return view('website.pages.sataff_details',compact('data'));
     }
     public function chairmam(){
         $banner= allbanner::where('post_status',1)->where('page_unique_name','chairman_page')->limit(1)->get();
         $chairman = allstaff::where('post_status',1)->where('designation','CEO')->get();
-    
         return view('website.pages.chairman',compact('banner','chairman'));
     }
     public function managing_director(){
-        return view('website.pages.maneging_director');
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','maneging_director_page')->limit(1)->get();
+        $chairman = allstaff::where('post_status',1)->where('designation','managing director')->get();
+        return view('website.pages.maneging_director',compact('banner','chairman'));
     }
-    public function chaifinance_directorrmam(){
-        return view('website.pages.organizetional_structure');
+    public function finance_directore(){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','finance_director_page')->limit(1)->get();
+        $chairman = allstaff::where('post_status',1)->where('designation','Finance Director')->get();
+        return view('website.pages.finance_director',compact('banner','chairman'));
     }
     public function financial_statement(){
-        return view('website.pages.financial_statement');
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','financial_statement_page')->limit(1)->get();
+        $annualreport = fstatement::where('post_status',1)->where('report_type','annual_report')->get();
+        $short = fstatement::where('post_status',1)->where('report_type','monthly_report')->get();
+        $half = fstatement::where('post_status',1)->where('report_type','half_year_report')->get();
+        return view('website.pages.financial_statement',compact('banner','annualreport','short','half'));
     }
     public function where_we_work(){
-        return view('website.pages.where_we_work');
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','where_we_work_page')->limit(1)->get();
+        $branchh = branch::where('post_status',1)->orderby('branch_id','ASC')->limit(1)->get();
+        $whatwedo_head= whatwedo::where('post_status',1)->orderby('whatwedo_id','ASC')->limit(1)->get();
+        $slogan= slogan::where('post_status',1)->where('set_as','organization_slogan')->limit(1)->get();
+        $makedonation= slogan::where('post_status',1)->where('set_as','donation_slogan')->limit(1)->get();
+        $seving = micro_service::where('post_status',1)->where('category_as','seving_service')->get();
+        $micro = micro_service::where('post_status',1)->where('category_as','micro_finance')->get();
+        $legal = micro_service::where('post_status',1)->where('category_as','legal_aid')->get();
+        $lastproject= allprojects::where('post_status',1)->orderby('allprojects_id','DESC')->limit(11)->get();
+        $branch = branch::where('post_status',1)->get();
+        return view('website.pages.where_we_work',compact('banner','branch','branchh','whatwedo_head','slogan','makedonation','micro','seving','legal','lastproject'));
     }
     public function our_stratiegy(){
-        return view('website.pages.our_stratiegy');
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','strategy_page')->limit(1)->get();
+        $allstrategy =strategy::where('post_status',1)->paginate(8);
+        return view('website.pages.strategy',compact('allstrategy','banner'));
+    }
+    public function strategy_details($slug){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','strategy_details_page')->limit(1)->get();
+        $data =strategy::where('post_status',1)->where('slug',$slug)->firstOrFail();
+        return view('website.pages.strategy_details',compact('data','banner'));
     }
     public function mission_vision(){
-        return view('website.pages.mission_vision');
+        $about = allabout::where('post_status',1)->where('category_as','about_mission')->limit(1)->get();
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','mission_vision_page')->limit(1)->get();
+     
+        return view('website.pages.mission_vision',compact('about','banner'));
     }
     public function our_faith(){
-        return view('website.pages.faith');
+        $about = allabout::where('post_status',1)->where('category_as','about_faith')->limit(1)->get();
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','faith_page')->limit(1)->get();
+        return view('website.pages.faith',compact('about','banner'));
     }
    /*------- what we do page and linked page -------*/ 
    public function what_we_do(){
-        return view('website.pages.what_we_do');
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','what_we_do_page')->limit(1)->get();
+        $slogan= slogan::where('post_status',1)->where('set_as','organization_slogan')->limit(1)->get();
+        $seving = micro_service::where('post_status',1)->where('category_as','seving_service')->get();
+        $micro = micro_service::where('post_status',1)->where('category_as','micro_finance')->get();
+        $legal = micro_service::where('post_status',1)->where('category_as','legal_aid')->get();
+        $desc= page_desc::where('post_status',1)->where('category_as',' what_we_do')->limit(1)->get();
+        $lastproject= allprojects::where('post_status',1)->orderby('allprojects_id','DESC')->limit(11)->get();
+        return view('website.pages.what_we_do',compact('banner','micro','legal','lastproject','seving','slogan','desc'));
    }
    public function micro_finance(){
     $banner= allbanner::where('post_status',1)->where('page_unique_name','micro_finance_Page')->limit(1)->get();
@@ -286,8 +353,40 @@ class WebsiteController extends Controller
         return view('website.pages.emergency_relife',compact('banner','desc','slogan','post','bannerbt'));
     }
     public function child_protection(){
-        return view('website.pages.child_protection');
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','child_protection_page')->get();
+        $whydonateh = whaydonate::where('post_status',1)->limit(1)->get();
+        $whydonate = whaydonate::where('post_status',1)->limit(4)->get();
+        $slogan= slogan::where('post_status',1)->where('set_as','donation_slogan')->get();
+        $post = allpost::where('post_status',1)->where('category_as','child_protection')->get();
+        $totaldonner= member_donner::count();
+        $totalprojects= allprojects::count();
+        $people = allprojects::sum('people');
+        $cost = allprojects::sum('cost');
+        $lastproject= allprojects::where('post_status',1)->orderby('allprojects_id','DESC')->limit(4)->get();
+        $upcoming= allprojects::where('post_status',1)->where('pro_status','upcooming')->limit(3)->get();
+        return view('website.pages.child_protection',compact('banner','whydonateh','whydonate','slogan','post','totaldonner','totalprojects','people','cost','lastproject','upcoming'));
     }
+
+    public function post_details($slug){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','post_details_page')->get();
+        $product = product::where('post_status',1)->orderby('product_id','DESC')->limit(4)->get();
+        $slogan= slogan::where('post_status',1)->where('set_as','organization_slogan')->limit(1)->get();
+        $post = allpost::where('post_status',1)->where('slug',$slug)->firstOrFail();
+        
+        return view('website.pages.post_details',compact('banner','post','product','slogan'));
+    }
+    public function all_projects(){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','all_projects_page')->get();
+        $allprojects = allprojects::where('post_status',1)->orderby('allprojects_id','DESC')->get();
+        return view('website.pages.all_projects',compact('banner','allprojects'));
+    }
+    public function all_projects_details($slug){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','all_projects_details_page')->get();
+        $product = product::where('post_status',1)->orderby('product_id','DESC')->limit(4)->get();
+        $data = allprojects::where('post_status',1)->where('slug',$slug)->firstOrFail();
+        return view('website.pages.all_projects_details',compact('banner','data','product'));
+    }
+
     public function education_program(){
         $banner= allbanner::where('post_status',1)->where('page_unique_name','education_page')->limit(1)->get();
         $desc= page_desc::where('post_status',1)->where('category_as', 'education')->limit(1)->get();
@@ -381,19 +480,87 @@ class WebsiteController extends Controller
         return view('website.pages.involved_involved');
     }
     public function volunteer(){
-        return view('website.pages.volunteer');
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','volunteer_page')->limit(1)->get();
+        $successful = allprojects::where('post_status',1)->where('pro_status','successfull')->count();
+        $running = allprojects::where('post_status',1)->where('pro_status','running')->count();
+        $upcoming = allprojects::where('post_status',1)->where('pro_status','upcooming')->count();
+        $aboutvolunteer = allabout::where('post_status',1)->where('category_as','about_volunteer')->limit(1)->get();
+        $staff= allstaff::where('post_status',1)->where('category_as','Volunteer_and')->paginate(6);
+        return view('website.pages.volunteer',compact('banner','successful','running','upcoming','aboutvolunteer','staff'));
     }
     public function becoome_volunteer(){
-        return view('website.pages.become_a_volunteer');
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','become_a_volunteer_page')->limit(1)->get();
+        $staff= allstaff::where('post_status',1)->where('category_as','Volunteer_and')->get();
+        return view('website.pages.become_a_volunteer',compact('banner','staff'));
     }
+    public function volunteer_application(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'subject' => 'required',
+        ],
+        [
+            'name.required' => '  Name is Required.',
+            'email.required' => ' Email is Required.',
+            'phone.required' => ' Phone Number is Required.',
+            'address.required' => ' Address is Required.',
+            'subject.required' => ' Purpose is Required.',
+        ]
+        );
+        $slug=uniqid('20');
+        $insert=becomevolunteer::insertGetId([
+          'name'=>$request['name'],
+          'email'=>$request['email'],
+          'phone'=>$request['phone'],
+          'address'=>$request['address'],
+          'subject'=>$request['subject'],
+          'caption'=>$request['caption'],
+          'slug'=>$slug,
+          'creator'=>$request['name'],
+          'created_at'=>Carbon::now()->toDateTimeString(),
+        ]);
+          if ($insert) {
+            Session::flash('success','value');
+            return redirect()->back()->with('message',' Application Submit successful !');
+        } else {
+            Session::flash('error','value');
+            return redirect()->back()->with('error',' Application Submit Failed !');
+        }
+      }
+// become a volunteer end 
+        public function volunteer_details($slug){
+            $banner= allbanner::where('post_status',1)->where('page_unique_name','volunteer_details_page')->get();
+            $data= allstaff::where('post_status',1)->where('slug',$slug)->firstOrFail();
+            return view('website.pages.volunteer_details',compact('banner','data'));
+        }
     public function others_program(){
         $banner= allbanner::where('post_status',1)->where('page_unique_name','others_program_page')->get();
         $bannerh= allbanner::where('post_status',1)->where('page_unique_name','others_program_page')->limit(1)->get();
         $post= allpost::where('post_status',1)->where('category_as','other_activitis')->get();
         return view('website.pages.others_program',compact('bannerh','banner','post'));
     }
-    public function valueable_donner(){
-        return view('website.pages.valueable_donner');
+    public function valueable_donner(Request $request){
+        $search = $request['search'] ?? "";
+        if($search !=""){
+          $donner= member_donner::where('status',1)->where('name', 'LIKE', "%$search%")->orwhere('or_name','LIKE',"%$search%")->orwhere('phone','LIKE',"%$search%")
+          ->get();
+        }
+        else{
+            $donner = member_donner::where('post_status',1)->orderby('member_donner_id','DESC')->paginate(10);
+        }
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','valueable_donner_page')->get();
+        $lastproject =allprojects::where('post_status',1)->where('pro_status','successfull')->orderby('allprojects_id','DESC')->limit(5)->get();
+        $totalsuccess =allprojects::where('pro_status','successfull')->count();
+        $totalrunning = allprojects::where('pro_status','running')->count();
+        $totalupcoming = allprojects::where('pro_status','upcooming')->count();
+        $people = allprojects::sum('people');
+        $raised = allprojects::sum('target_amount');
+        $cost = allprojects::sum('cost');
+        $totaldonner = member_donner::count();
+        $totalprojetc = allprojects::count();
+        return view('website.pages.valueable_donner',compact('banner','donner','lastproject','totaldonner','totalprojetc','totalsuccess','totalrunning','totalupcoming','people','raised','cost'));
     }
     public function product(){
         $banner= allbanner::where('post_status',1)->where('page_unique_name','product_page')->get();
@@ -402,28 +569,92 @@ class WebsiteController extends Controller
         $desc= page_desc::where('post_status',1)->where('category_as', 'products')->limit(1)->get();
         $slogan= slogan::where('post_status',1)->where('set_as','organization_slogan')->get();
         $aboutproduct = allabout::where('post_status',1)->where('category_as','about_product')->limit(1)->get();
-
         return view('website.pages.product',compact('banner','desc','slogan','product','bannerh','aboutproduct'));
     }
-
-
-
     public function free_health(){
-        return view('website.pages.health_campaign');
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','health_campaign_page')->limit(1)->get();
+        $about = allabout::where('post_status',1)->where('category_as','about_health')->limit(1)->get();
+        $doctor = doctors::where('post_status',1)->orderby('doctors_id','DESC')->limit(4)->get();
+        $desc= page_desc::where('post_status',1)->where('category_as', 'health_campaign')->limit(1)->get();
+        $allprojects =allprojects::where('post_status',1)->where('category_as','health_campaign')->count();
+        $upcoming =allprojects::where('post_status',1)->where('category_as','health_campaign')->where('pro_status','upcooming')->count();
+        $people = allprojects::where('category_as','health_campaign')->sum('people');
+        $doctorcount = doctors::count();
+        
+    return view('website.pages.health_campaign',compact('banner','about','doctor','desc','allprojects','upcoming','people','doctorcount'));
     }
     public function our_impact(){
-        return view('website.pages.our_impact');
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','our_impact_page')->get();
+        $allprojects =allprojects::where('post_status',1)->where('pro_status','successfull')->orderby('allprojects_id','DESC')->get();
+        $allimpact = ourimpact::where('post_status',1)->get();
+        return view('website.pages.our_impact',compact('allimpact','allprojects','banner'));
     }
     /*----  our team-------- */
-    public function our_Team(){
-        return view('website.pages.our_team');
+   
+    public function team_details($slug){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','team_details.blade_page')->limit(1)->get();
+        $data= allstaff::where('post_status',1)->where('slug',$slug)->firstOrFail();
+        return view('website.pages.team_details',compact('data'));
     }
-    public function genrel_team(){
-        return view('website.pages.genarel_team');
+    public function administrative_support(){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','administrative_support_page')->limit(1)->get();
+        $staff= allstaff::where('post_status',1)->where('category_as','Administrative_and_Support_Roles')->get();
+        return view('website.pages.administrative_support',compact('banner','staff'));
     }
-
-    public function legal_team(){
-        return view('website.pages.legal_team');
+    public function management_program(){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','management_program_page')->limit(1)->get();
+        $staff= allstaff::where('post_status',1)->where('category_as','Management_and_Program_Leadership')->get();
+        return view('website.pages.management_program',compact('banner','staff'));
+    }
+    public function finance_credit(){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','finance_credit_page')->limit(1)->get();
+        $staff= allstaff::where('post_status',1)->where('category_as','Finance_and_Credit_Roles')->get();
+        return view('website.pages.finance_credit',compact('banner','staff'));
+    }
+    public function research_development(){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','research_development_page')->limit(1)->get();
+        $staff= allstaff::where('post_status',1)->where('category_as','Research_and_Development')->get();
+        return view('website.pages.research_development',compact('banner','staff'));
+    }
+    public function legal_comliance(){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','legal_comliance_page')->limit(1)->get();
+        $staff= allstaff::where('post_status',1)->where('category_as','Legal_and_Compliance_Roles')->get();
+        return view('website.pages.legal_comliance',compact('banner','staff'));
+    }
+    public function marketing_outreach(){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','marketing_outreach_page')->limit(1)->get();
+        $staff= allstaff::where('post_status',1)->where('category_as','Marketing_and_Outreach')->get();
+        return view('website.pages.marketing_outreach',compact('banner','staff'));
+    }
+    public function monitoring_evaluation(){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','monitoring_evaluation_page')->limit(1)->get();
+        $staff= allstaff::where('post_status',1)->where('category_as','Monitoring_Evaluation')->get();
+        return view('website.pages.monitoring_evaluation',compact('banner','staff'));
+    }
+    public function field_staff(){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','field_staff_page')->limit(1)->get();
+        $staff= allstaff::where('post_status',1)->where('category_as','Field_Level_Staff')->get();
+        return view('website.pages.field_staff',compact('banner','staff'));
+    }
+    public function technology_innovation(){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','technology_innovation_page')->limit(1)->get();
+        $staff= allstaff::where('post_status',1)->where('category_as','Technology_and_Innovation_Roles')->get();
+        return view('website.pages.technology_innovation',compact('banner','staff'));
+    }
+    public function trainig_capacity(){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','trainig_capacity_page')->limit(1)->get();
+        $staff= allstaff::where('post_status',1)->where('category_as','Training_and_Capacity_Building')->get();
+        return view('website.pages.trainig_capacity',compact('banner','staff'));
+    }
+    public function intern_position(){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','intern_position_page')->limit(1)->get();
+        $staff= allstaff::where('post_status',1)->where('category_as','Intern_Positions')->get();
+        return view('website.pages.intern_position',compact('banner','staff'));
+    }
+    public function consultant_other(){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','consultant_other_page')->limit(1)->get();
+        $staff= allstaff::where('post_status',1)->where('category_as','consultant_other')->get();
+        return view('website.pages.consultant_other',compact('banner','staff'));
     }
 /*------  othes page and linked  */
 
@@ -507,9 +738,6 @@ class WebsiteController extends Controller
         $data = jobpost::where('post_status',1)->where('slug',$slug)->firstOrFail();
         return view('website.pages.job_details_post',compact('data'));
     }
-
-
-
     public function appoinment(){
         return view('website.pages.appoinment');
     }
@@ -549,16 +777,50 @@ class WebsiteController extends Controller
       }
 
     } // apply course end here 
-
-
-
-
-    public function apply_loan(){
-        return view('website.pages.apply_loan');
-    }
     public function donation(){
-        return view('website.pages.make_donation');
+        $whydonateh = whaydonate::where('post_status',1)->limit(1)->get();
+        $whydonate = whaydonate::where('post_status',1)->limit(4)->get();
+        $slogan= slogan::where('post_status',1)->where('set_as','donation_slogan')->get();
+        $alldoner = member_donner::where('post_status',1)->orderby('member_donner_id','DESC')->get();
+        return view('website.pages.make_donation',compact('whydonateh','whydonate','slogan','alldoner'));
     }
+    public function donation_submit(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'subject' => 'required',
+        ],
+        [
+            'name.required' => '  Name is Required.',
+            'email.required' => ' Email is Required.',
+            'phone.required' => ' Phone Number is Required.',
+            'address.required' => ' Address is Required.',
+            'subject.required' => ' Purpose is Required.',
+        ]
+        );
+        $slug=uniqid('20');
+        $insert=makeDonation::insertGetId([
+          'name'=>$request['name'],
+          'email'=>$request['email'],
+          'phone'=>$request['phone'],
+          'address'=>$request['address'],
+          'subject'=>$request['subject'],
+          'caption'=>$request['caption'],
+          'slug'=>$slug,
+          'creator'=>$request['name'],
+          'created_at'=>Carbon::now()->toDateTimeString(),
+        ]);
+          if ($insert) {
+            Session::flash('success','value');
+            return redirect()->back()->with('message','Thank You! Messages Submit successful !');
+        } else {
+            Session::flash('error','value');
+            return redirect()->back()->with('error',' Messages Submit Failed !');
+        }
+      }
+// make  valueable donation end here 
     public function privacy_policy(){
         return view('website.pages.privacy_policy');
     }
@@ -627,26 +889,125 @@ class WebsiteController extends Controller
             return redirect()->route('faq')->with('error',' Information Submited Failed !');
         }
     }
-
-
-
-
-
     // coming soon  page 
     public function contact(){
-        $currenturl = URL::current();
-        //dd($currenturl);
-       // $subs= subcategory::where('status', 1)->get();
-       $pageIds = allbanner::where('status', 1)->where('menu_url',$currenturl)->get();
-      
-
-       //dd($pageIds);
-        $banner= allbanner::where('status',1)->get();
-        //dd($banner);
-        return view('website.pages.contact',compact('banner','pageIds'));
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','contact_page')->limit(1)->get();
+        $phone = phone::where('post_status',1)->limit(3)->get();
+        $email = email::where('post_status',1)->limit(2)->get();
+        $social = socialmediaurl::where('post_status',1)->get();
+        return view('website.pages.contact',compact('banner','phone','email','social'));
     }
 
+    public function contact_form(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'caption' => 'required',
+        ],
+        [
+            'name.required' => '  Name is Required.',
+            'email.required' => ' Email is Required.',
+            'phone.required' => ' Phone Number is Required.',
+            'caption.required' => ' Message is Required.',
+        ]
+        );
+        $slug=uniqid('20');
+        $insert=contactform::insertGetId([
+          'name'=>$request['name'],
+          'email'=>$request['email'],
+          'phone'=>$request['phone'],
+          'caption'=>$request['caption'],
+          'slug'=>$slug,
+          'creator'=>$request['name'],
+          'created_at'=>Carbon::now()->toDateTimeString(),
+        ]);
+          if ($insert) {
+            Session::flash('success','value');
+            return redirect()->back()->with('message',' Message Submit successful !');
+        } else {
+            Session::flash('error','value');
+            return redirect()->back()->with('error',' Message Submit Failed !');
+        }
+
+    }
+//site map 
+public function sitemap(){
+    $banner= allbanner::where('post_status',1)->where('page_unique_name','sitemap_page')->limit(1)->get();
+    return view('website.pages.sitemap',compact('banner'));
+}
+
+public function apply_loan(){
+    $branch = branch::where('post_status',1)->get();
+    $micro = micro_service::where('post_status',1)->where('category_as','micro_finance')->get();
+    return view('website.pages.apply_loan',compact('branch','micro'));
+}
+
+public function loan_application(Request $request){
+    $request->validate([
+      'fname' => 'required',
+      'lname' => 'required',
+      'phone' => 'required',
+      'email' => 'required',
+      'nid' => 'required',
+      'birth_date' => 'required',
+      'occupation' => 'required',
+      'monthly_income' => 'required',
+      'target_amount' => 'required',
+      'loan_category' => 'required',
+      'branch_name' => 'required',
+      'address' => 'required',
+  ],
+      [
+        'fname.required' => 'Firt Name is Required.',
+        'lname.required' => 'Last Name is Required.',
+        'phone.required' => 'Phone  is Required.',
+        'email.required' => 'Email is Required.',
+        'nid.required' => 'NID Number is Required.',
+        'birth_date.required' => 'Birth Date is Required.',
+        'occupation.required' => 'Occupation Name is Required.',
+        'monthly_income.required' => 'Monthly Income is Required.',
+        'target_amount.required' => 'Loan Amount is Required.',
+        'loan_category.required' => 'Loan Category is Required.',
+        'branch_name.required' => 'Branch Name is Required.',
+        'address.required' => 'Full Address is Required.',
+        
+        
+      ]
+  );
+  $slugname = $request['name'];
+  $removespace = str_replace(' ', '', $slugname);
+  $slug=$removespace.'-'.uniqid('20');
+  $insert=applyloan::insertGetId([
+    'fname'=>$request['fname'],
+    'lname'=>$request['lname'],
+    'name' => $request['fname'] . ' ' . $request['lname'],
+    'phone'=>$request['phone'],
+    'email'=>$request['email'],
+    'nid'=>$request['nid'],
+    'birth_date'=>$request['birth_date'],
+    'occupation'=>$request['occupation'],
+    'monthly_income'=>$request['monthly_income'],
+    'target_amount'=>$request['target_amount'],
+    'loan_category'=>$request['loan_category'],
+    'branch_name'=>$request['branch_name'],
+    'address'=>$request['address'],
+    'caption'=>$request['caption'],
+    'slug'=>$slug,
+    'creator'=>$request['fname'],
+    'created_at'=>Carbon::now()->toDateTimeString(),
+  ]);
+  
+  if ($insert) {
+    Session::flash('success','value');
+    return redirect()->back()->with('message','Application submission successful! . We will contact you as soon as possible after reviewing your application!, Thank You ');
+} else {
+    Session::flash('error','value');
+    return redirect()->back()->with('error',' Information Added Failed !');
+}
+}
 
 
+// end 
 
 }

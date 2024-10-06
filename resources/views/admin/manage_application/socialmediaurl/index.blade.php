@@ -69,12 +69,12 @@
                             <ul class="dropdown-menu">
                               <li><a class="dropdown-item" href="{{url('admin/dashboard/manage-application/socialmediaurl/edit/'.$data->slug)}}">Edit</a></li>
                               <li><a class="dropdown-item" href="{{url('admin/dashboard/manage-application/socialmediaurl/view/'.$data->slug)}}">View</a></li>
-                              <li><a class="dropdown-item" onclick="return confirm('Delete this Information')" href="{{url('admin/dashboard/manage-application/socialmediaurl/softdelete/'.$data->social_media_id)}}">Delete</a></li>
+                              <li><a class="dropdown-item" onclick="return confirm('Delete this Information')" href="{{url('admin/dashboard/manage-application/socialmediaurl/softdelete/'.$data->url_id)}}">Delete</a></li>
                               <li><hr class="dropdown-divider"></li>
                               @if ($data->post_status == 2) 
-                              <li><a class="dropdown-item text-success fw-bold" href="{{url('admin/dashboard/manage-application/socialmediaurl/post_active/'.$data->social_media_id)}}">Publish</a></li>
+                              <li><a class="dropdown-item text-success fw-bold" href="{{url('admin/dashboard/manage-application/socialmediaurl/post_active/'.$data->url_id)}}">Publish</a></li>
                               @elseif($data->post_status == 1)
-                              <li><a class="dropdown-item text-warning fw-bold " href="{{url('admin/dashboard/manage-application/socialmediaurl/post_deactive/'.$data->social_media_id)}}">Unpublished</a></li>
+                              <li><a class="dropdown-item text-warning fw-bold " href="{{url('admin/dashboard/manage-application/socialmediaurl/post_deactive/'.$data->url_id)}}">Unpublished</a></li>
                               @endif
                           
                             </ul>

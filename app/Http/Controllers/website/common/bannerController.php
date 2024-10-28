@@ -31,7 +31,8 @@ class bannerController extends Controller
            $all = allbanner::where('status', 1)->orderBy('banner_id', 'ASC')->paginate(5);
          }
         $totalpost = allbanner::count();
-        return view('websiteBackend.common.allbanner.index',compact('all','search','totalpost'));
+        $deletecount = allbanner::onlyTrashed()->count();
+        return view('websiteBackend.common.allbanner.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = allbanner::count();
@@ -119,10 +120,10 @@ class bannerController extends Controller
           // *********
           if ($insert) {
             Session::flash('success','value');
-            return redirect('admin/dashboard/website-manage/home-banner/add')->with('message',' Information Added successful !');
+            return redirect()->route('allbanner.add')->with('message',' Information Added successful !');
         } else {
             Session::flash('error','value');
-            return redirect('admin/dashboard/website-manage/home-banner/add')->with('error',' Information Added Failed !');
+            return redirect()->route('allbanner.add')->with('error',' Information Added Failed !');
         }
       }
       /* ------  this is update page --------*/
@@ -180,10 +181,10 @@ class bannerController extends Controller
       /*------- image start here ------ */
         if($update){
           Session::flash('success','value');
-          return redirect('admin/dashboard/website-manage/home-banner/view/'.$slug);
+          return redirect()->route('allbanner.view',$slug);
         }else{
           Session::flash('error','value');
-          return redirect('admin/dashboard/website-manage/home-banner/view/'.$slug)->with('message','Information Update Failed !');
+          return redirect()->route('albanner.view',$slug)->with('message','Information Update Failed !');
         }
       }
       /*-------  post active ---*/
@@ -265,6 +266,19 @@ class bannerController extends Controller
     }
     }
 
+    // Recycle bin code is start here 
+    public function recycle(Request $request){
+      $search = $request['search'] ?? "";
+      if($search !=""){
+          $all= allbanner::onlyTrashed()->where('banner_heading', 'LIKE', "%$search%")->orwhere('banner_title','LIKE',"%$search%")
+          ->paginate(5);
+      }
+      else{
+          $all = allbanner::onlyTrashed()->where('status', 1)->orderBy('banner_id', 'ASC')->paginate(5);
+      }
+      $totalpost = allbanner::count();
+      return view('websiteBackend.common.allbanner.recycle',compact('all','search','totalpost'));
+  }
 
 
     

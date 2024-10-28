@@ -9,7 +9,7 @@
                     <div class="slider_image">
                         <img src="{{asset('uploads/website/'.$data->banner_bg_image)}}" alt="child protection Banner Image" class="img-fluid">
                     </div>
-                    <div class="slider_text">
+                    <div class="slider_text container">
                         <h2>{{$data->banner_heading}}</h2>
                         <h1>{{$data->banner_title}} </h1>
                     </div>

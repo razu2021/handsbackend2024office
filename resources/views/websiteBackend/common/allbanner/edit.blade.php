@@ -15,7 +15,7 @@
             <small class="text-muted float-end">Update Menus Information</small>
           </div>
           <div class="card-body">
-            <form method="post" action="{{url('admin/dashboard/website-manage/home-banner/update')}}" enctype="multipart/form-data">
+            <form method="post" action="{{route('allbanner.update')}}" enctype="multipart/form-data">
               @csrf
               <div class="row">
               <input type="hidden" class="form-control" id="basic-default-fullname" name="id"  value="{{ $data->banner_id }}" />

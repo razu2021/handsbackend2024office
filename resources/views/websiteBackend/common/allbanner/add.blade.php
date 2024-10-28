@@ -11,11 +11,11 @@
       @endif
       <div class="card mb-4">
           <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0 fw-bold"> Add a New Banner Item </h5>
-            <small class="text-muted float-end"> <button class="btn btn-success"> <a class="text-white" href="{{url('admin/dashboard/website-manage/blade-page/add')}}">Insert New Page </a></button></small>
+            <h5 class="mb-0 fw-bold"> <button class="btn btn-success"> <a class="text-white" href="{{route('allbanner.all')}}">All Information </a></button> </h5>
+            <small class="text-muted float-end"> <button class="btn btn-success"> <a class="text-white" href="{{route('blade.add')}}">Insert New Page </a></button></small>
           </div>
           <div class="card-body">
-            <form method="post" action="{{url('admin/dashboard/website-manage/home-banner/submit')}}" enctype="multipart/form-data">
+            <form method="post" action="{{route('allbanner.submit')}}" enctype="multipart/form-data">
               @csrf
               <div class="row">
               <!-- aphone end -->

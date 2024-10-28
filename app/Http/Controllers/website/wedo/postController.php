@@ -7,7 +7,6 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 use App\Models\allpost;
 use Carbon\Carbon;
 class postController extends Controller
@@ -19,14 +18,15 @@ class postController extends Controller
       $id= Auth::guard('admin')->user()->id;
       $search = $request['search'] ?? "";
          if($search !=""){
-           $all= allpost::where('status',1)->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+           $all= allpost::where('status',1)->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")->orwhere('category_as','LIKE',"%$search%")
            ->paginate(5);
          }
          else{
            $all = allpost::where('status', 1)->orderBy('allpost_id', 'ASC')->paginate(5);
          }
         $totalpost = allpost::count();
-        return view('websiteBackend.common.allpost.index',compact('all','search','totalpost'));
+        $deletecount = allpost::onlyTrashed()->count();
+        return view('websiteBackend.common.allpost.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = allpost::count();
@@ -230,4 +230,17 @@ class postController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+      // Recycle bin code is start here 
+      public function recycle(Request $request){
+      $search = $request['search'] ?? "";
+      if($search !=""){
+          $all= allpost::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+          ->paginate(5);
+      }
+      else{
+          $all = allpost::onlyTrashed()->where('status', 1)->orderBy('allpost_id', 'ASC')->paginate(5);
+      }
+      $totalpost = allpost::count();
+      return view('websiteBackend.common.allpost.recycle',compact('all','search','totalpost'));
+  }
 }

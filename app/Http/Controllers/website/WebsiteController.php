@@ -27,6 +27,7 @@ use App\Models\customer;
 use App\Models\designation;
 use App\Models\dipositads;
 use App\Models\doctors;
+use App\Models\easyloan;
 use App\Models\email;
 use App\Models\faq;
 use App\Models\field_storise;
@@ -76,17 +77,18 @@ class WebsiteController extends Controller
     }
    /*------- about page and linked page -------*/ 
     public function about_us(){
-        $banner= allbanner::where('status',1)->where('page_unique_name','about_us_page')->limit(1)->get();
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','about_us_page')->limit(1)->get();
         $aboutus= aboutus::where('post_status',1)->orderby('aboutus_id','ASC')->limit(1)->get();
         $whatwedo= whatwedo::where('post_status',1)->orderby('whatwedo_id','ASC')->limit(4)->get();
         $whatwedo_head= whatwedo::where('post_status',1)->orderby('whatwedo_id','ASC')->limit(1)->get();
         $security= security_trust::where('post_status',1)->orderby('security_trust_id','ASC')->limit(1)->get();
         $slogan= slogan::where('post_status',1)->where('set_as','organization_slogan')->limit(1)->get();
         $customer = customer::where('post_status',1)->orderby('customer_id','DESC')->limit(15)->get();
+        $easyloan = easyloan::where('post_status',1)->get();
         $customercount = customer::count();
-        $member = member_donner::where('post_status',1)->limit(12)->get();
+        $member = member_donner::where('post_status',1)->orderby('member_donner_id','DESC')->limit(12)->get();
         $testi = testimonial::where('post_status',1)->get();
-        return view('website.pages.about_us',compact('banner','aboutus','whatwedo','whatwedo_head','security','member','slogan','testi','customer','customercount'));
+        return view('website.pages.about_us',compact('banner','aboutus','whatwedo','whatwedo_head','security','member','slogan','testi','customer','customercount','easyloan'));
     }
     // testimonial form 
     public function testi_insert(Request $request){
@@ -181,12 +183,10 @@ class WebsiteController extends Controller
         $whatwedo_head= whatwedo::where('post_status',1)->orderby('whatwedo_id','ASC')->limit(1)->get();
         $slogan= slogan::where('post_status',1)->where('set_as','organization_slogan')->limit(1)->get();
         $makedonation= slogan::where('post_status',1)->where('set_as','donation_slogan')->limit(1)->get();
-        $seving = micro_service::where('post_status',1)->where('category_as','seving_service')->get();
-        $micro = micro_service::where('post_status',1)->where('category_as','micro_finance')->get();
-        $legal = micro_service::where('post_status',1)->where('category_as','legal_aid')->get();
-        $lastproject= allprojects::where('post_status',1)->orderby('allprojects_id','DESC')->limit(11)->get();
+       
+        $lastproject= allprojects::where('post_status',1)->orderby('allprojects_id','DESC')->limit(16)->get();
         $branch = branch::where('post_status',1)->get();
-        return view('website.pages.where_we_work',compact('banner','branch','branchh','whatwedo_head','slogan','makedonation','micro','seving','legal','lastproject'));
+        return view('website.pages.where_we_work',compact('banner','branch','branchh','whatwedo_head','slogan','makedonation','lastproject'));
     }
     public function our_stratiegy(){
         $banner= allbanner::where('post_status',1)->where('page_unique_name','strategy_page')->limit(1)->get();
@@ -222,7 +222,7 @@ class WebsiteController extends Controller
    }
    public function micro_finance(){
     $banner= allbanner::where('post_status',1)->where('page_unique_name','micro_finance_Page')->limit(1)->get();
-    $desc= page_desc::where('post_status',1)->where('category_as','micro_finance')->limit(1)->get();
+    $desc= page_desc::where('post_status',1)->where('category_as','micro_finace')->limit(1)->get();
     $allservice = micro_service::where('post_status',1)->where('category_as','micro_finance')->paginate(4);
     $servicelist = micro_service::where('post_status',1)->where('category_as','micro_finance')->get();
     $sevinglist = micro_service::where('post_status',1)->where('category_as','seving_service')->limit(4)->get();
@@ -346,7 +346,7 @@ class WebsiteController extends Controller
     }
     public function emergency_relif(){
         $banner= allbanner::where('post_status',1)->where('page_unique_name','emergency_relife_page')->limit(1)->get();
-        $desc= page_desc::where('post_status',1)->where('category_as', 'emergency_relife')->limit(1)->get();
+        $desc= page_desc::where('post_status',1)->where('category_as', 'emergency_relief')->limit(1)->get();
         $slogan= slogan::where('post_status',1)->where('set_as','donation_slogan')->get();
         $post = allpost::where('post_status',1)->where('category_as','emergency_relife')->get();
         $bannerbt =bannerbottom::where('post_status',1)->where('category_as','emergency_relife')->limit(1)->get();
@@ -367,25 +367,7 @@ class WebsiteController extends Controller
         return view('website.pages.child_protection',compact('banner','whydonateh','whydonate','slogan','post','totaldonner','totalprojects','people','cost','lastproject','upcoming'));
     }
 
-    public function post_details($slug){
-        $banner= allbanner::where('post_status',1)->where('page_unique_name','post_details_page')->get();
-        $product = product::where('post_status',1)->orderby('product_id','DESC')->limit(4)->get();
-        $slogan= slogan::where('post_status',1)->where('set_as','organization_slogan')->limit(1)->get();
-        $post = allpost::where('post_status',1)->where('slug',$slug)->firstOrFail();
-        
-        return view('website.pages.post_details',compact('banner','post','product','slogan'));
-    }
-    public function all_projects(){
-        $banner= allbanner::where('post_status',1)->where('page_unique_name','all_projects_page')->get();
-        $allprojects = allprojects::where('post_status',1)->orderby('allprojects_id','DESC')->get();
-        return view('website.pages.all_projects',compact('banner','allprojects'));
-    }
-    public function all_projects_details($slug){
-        $banner= allbanner::where('post_status',1)->where('page_unique_name','all_projects_details_page')->get();
-        $product = product::where('post_status',1)->orderby('product_id','DESC')->limit(4)->get();
-        $data = allprojects::where('post_status',1)->where('slug',$slug)->firstOrFail();
-        return view('website.pages.all_projects_details',compact('banner','data','product'));
-    }
+
 
     public function education_program(){
         $banner= allbanner::where('post_status',1)->where('page_unique_name','education_page')->limit(1)->get();
@@ -397,7 +379,7 @@ class WebsiteController extends Controller
     }
     public function health_nutrition(){
         $banner= allbanner::where('post_status',1)->where('page_unique_name','heath_nutrition_page')->limit(1)->get();
-        $desc= page_desc::where('post_status',1)->where('category_as', 'health_and_nutrition')->limit(1)->get();
+        $desc= page_desc::where('post_status',1)->where('category_as', 'health_nutrition')->limit(1)->get();
         $slogan= slogan::where('post_status',1)->where('set_as','donation_slogan')->get();
         $post = allpost::where('post_status',1)->where('category_as','health_and_nutrition')->get();
         $bannerbt =bannerbottom::where('post_status',1)->where('category_as','health_and_nutrition')->limit(1)->get();
@@ -458,23 +440,51 @@ class WebsiteController extends Controller
         return view('website.pages.feild_strois',compact('banner','story'));
     }
 /* ------blog and news ---*/
+    public function news(){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','news_page')->limit(1)->get();
+        $news = allpost::where('post_status',1)->where('category_as','news_feeds')->get();
+        return view('website.pages.news',compact('banner','news'));
+    } 
+
+
+
     public function hands_blogs(){
-        $banner= allbanner::where('post_status',1)->where('page_unique_name','our_all_projects_page')->limit(1)->get();
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','all_blog_page')->limit(1)->get();
         $news = allpost::where('post_status',1)->where('category_as','news_feeds')->limit(3)->get();
         $blog = allpost::where('post_status',1)->where('category_as','blog_event')->limit(3)->get();
         $others = allpost::where('post_status',1)->where('category_as','other_activitis')->limit(3)->get();
-        return view('website.pages.our_all_projects',compact('banner','news','blog','others'));
+        return view('website.pages.all_blog',compact('banner','news','blog','others'));
     }
-    public function news(){
-        $banner= allbanner::where('post_status',1)->where('page_unique_name','new_page')->limit(1)->get();
-        $news = allpost::where('post_status',1)->where('category_as','news_feeds')->get();
-        return view('website.pages.news',compact('banner','news'));
-    }
-    public function blog_events(){
-        $banner= allbanner::where('post_status',1)->where('page_unique_name','blog_events_page')->limit(1)->get();
+
+    public function hands_events(){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','all_events_page')->limit(1)->get();
         $blog = allpost::where('post_status',1)->where('category_as','blog_event')->get();
-        return view('website.pages.blog_events',compact('banner','blog'));
+        return view('website.pages.all_events',compact('banner','blog'));
     }
+
+
+    public function all_projects(){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','all_projects_page')->get();
+        $allprojects = allprojects::where('post_status',1)->orderby('allprojects_id','DESC')->get();
+        return view('website.pages.all_projects',compact('banner','allprojects'));
+    }
+    public function all_projects_details($slug){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','all_projects_details_page')->get();
+        $product = product::where('post_status',1)->orderby('product_id','DESC')->limit(4)->get();
+        $data = allprojects::where('post_status',1)->where('slug',$slug)->firstOrFail();
+        return view('website.pages.all_projects_details',compact('banner','data','product'));
+    }
+
+    public function post_details($slug){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','post_details_page')->get();
+        $product = product::where('post_status',1)->orderby('product_id','DESC')->limit(4)->get();
+        $slogan= slogan::where('post_status',1)->where('set_as','organization_slogan')->limit(1)->get();
+        $post = allpost::where('post_status',1)->where('slug',$slug)->firstOrFail();
+        
+        return view('website.pages.post_details',compact('banner','post','product','slogan'));
+    }
+
+
 /* ------ get involved  ---*/
     public function get_involved(){
         return view('website.pages.involved_involved');
@@ -572,7 +582,7 @@ class WebsiteController extends Controller
         return view('website.pages.product',compact('banner','desc','slogan','product','bannerh','aboutproduct'));
     }
     public function free_health(){
-        $banner= allbanner::where('post_status',1)->where('page_unique_name','health_campaign_page')->limit(1)->get();
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','health_campaign_page')->get();
         $about = allabout::where('post_status',1)->where('category_as','about_health')->limit(1)->get();
         $doctor = doctors::where('post_status',1)->orderby('doctors_id','DESC')->limit(4)->get();
         $desc= page_desc::where('post_status',1)->where('category_as', 'health_campaign')->limit(1)->get();
@@ -590,7 +600,6 @@ class WebsiteController extends Controller
         return view('website.pages.our_impact',compact('allimpact','allprojects','banner'));
     }
     /*----  our team-------- */
-   
     public function team_details($slug){
         $banner= allbanner::where('post_status',1)->where('page_unique_name','team_details.blade_page')->limit(1)->get();
         $data= allstaff::where('post_status',1)->where('slug',$slug)->firstOrFail();
@@ -659,20 +668,20 @@ class WebsiteController extends Controller
 /*------  othes page and linked  */
 
     public function internship(){
-        $banner= allbanner::where('post_status',1)->where('page_unique_name','career_page')->get();
-        $bannerh= allbanner::where('post_status',1)->where('page_unique_name','career_page')->limit(1)->get();
-        $bannerbt =bannerbottom::where('post_status',1)->where('category_as','career')->limit(1)->get();
-        $desc= page_desc::where('post_status',1)->where('category_as', 'career')->limit(1)->get();
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','internship_oppertunity_page')->get();
+        $bannerbt =bannerbottom::where('post_status',1)->where('category_as','internship')->limit(1)->get();
+        $desc= page_desc::where('post_status',1)->where('category_as', 'internship')->limit(1)->get();
         $slogan= slogan::where('post_status',1)->where('set_as','organization_slogan')->get();
         $course= course::where('post_status',1)->get();
-        return view('website.pages.internship_oppertunity',compact('banner','bannerh','desc','course','slogan','bannerbt'));
+        return view('website.pages.internship_oppertunity',compact('banner','desc','course','slogan','bannerbt'));
     }
     public function course($slug){
+        $banner= allbanner::where('post_status',1)->where('page_unique_name','training_details_page')->get();
         $data = course::where('post_status',1)->where('slug',$slug)->firstOrFail();
         $course= course::where('post_status',1)->get(); 
         $items = course::where('post_status',1)->where('slug', $slug)->pluck('course_title'); // itmes find out 
         $apply_count = apply_course::where('post_status', 1)->whereIn('course_name', $items)->count(); // how many student apply with this courses 
-        return view('website.pages.training_details',compact('data','course','apply_count'));
+        return view('website.pages.training_details',compact('banner','data','course','apply_count'));
     }
     public function apply_course(Request $request){
         $request->validate([
@@ -696,7 +705,6 @@ class WebsiteController extends Controller
               'gender.required' => ' Gender is Required.',
               'education.required' => ' education is Required.',
               'address.required' => ' Address is Required.',
-             
             ]
         );
         $slug=uniqid('20');
@@ -824,7 +832,6 @@ class WebsiteController extends Controller
     public function privacy_policy(){
         return view('website.pages.privacy_policy');
     }
-
     public function support(){
         return view('website.pages.support');
     }
@@ -851,7 +858,6 @@ class WebsiteController extends Controller
         $pending = faq::where('post_status', 2)->orderBy('faqs_id', 'DESC')->paginate(5);
         return view('website.pages.faq',compact('faqs','totalpost','search','insertcurrent','review','pending'));
     }
-
     public function insert(Request $request){
         $request->validate([
             'name' => 'required',
@@ -897,7 +903,6 @@ class WebsiteController extends Controller
         $social = socialmediaurl::where('post_status',1)->get();
         return view('website.pages.contact',compact('banner','phone','email','social'));
     }
-
     public function contact_form(Request $request){
         $request->validate([
             'name' => 'required',
@@ -929,20 +934,19 @@ class WebsiteController extends Controller
             Session::flash('error','value');
             return redirect()->back()->with('error',' Message Submit Failed !');
         }
-
     }
 //site map 
 public function sitemap(){
     $banner= allbanner::where('post_status',1)->where('page_unique_name','sitemap_page')->limit(1)->get();
     return view('website.pages.sitemap',compact('banner'));
 }
-
 public function apply_loan(){
     $branch = branch::where('post_status',1)->get();
     $micro = micro_service::where('post_status',1)->where('category_as','micro_finance')->get();
-    return view('website.pages.apply_loan',compact('branch','micro'));
+    $desc= page_desc::where('post_status',1)->where('category_as',' loan_application')->limit(1)->get();
+    $slogan= slogan::where('post_status',1)->where('set_as','organization_slogan')->limit(1)->get();
+    return view('website.pages.apply_loan',compact('branch','micro','desc','slogan'));
 }
-
 public function loan_application(Request $request){
     $request->validate([
       'fname' => 'required',
@@ -971,8 +975,6 @@ public function loan_application(Request $request){
         'loan_category.required' => 'Loan Category is Required.',
         'branch_name.required' => 'Branch Name is Required.',
         'address.required' => 'Full Address is Required.',
-        
-        
       ]
   );
   $slugname = $request['name'];
@@ -1006,8 +1008,11 @@ public function loan_application(Request $request){
     return redirect()->back()->with('error',' Information Added Failed !');
 }
 }
-
-
 // end 
 
+
+
+
+
+// end controller 
 }

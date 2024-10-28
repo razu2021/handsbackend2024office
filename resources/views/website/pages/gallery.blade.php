@@ -1,22 +1,28 @@
 @extends('layouts.webmaster')
 @section('web_content')  
   <main>
-    <section class="team_banner">
-        <div class="banner_3_bg">
+  @foreach($banner as $data)
+    <section class="microfinace_banner" style="background-image: url('{{asset('uploads/website/'.$data->banner_bg_image)}}')">
+        <div class="bannerbg">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                         <div class="banner_3">
-                            <h1> Hands Programe<span style="color: red;"> Storis </span>  </h1>
-                            <a href="index.html">Home /</a>
-                            <a href="gallery.html"> Gallery </a>
+                            <h1 style="font-size: 5rem; color: #000;">{{$data->banner_heading}}</h1>
+                            <h3>{{$data->banner_title}}</h3>
+                            @if($data->banner_button1 != "")
+                            <a href="{{$data->banner_button_url1}}">{{$data->banner_button1}} ||</a>
+                            @endif
+                            @if($data->banner_button2 !="")
+                            <a href="javascript:void(0)" class="text-dark"> {{$data->banner_button2}}</a>
+                            @endif
                         </div>
                     </div>
-                    <!-- col end  -->
                 </div>
             </div>
         </div>
     </section>
+    @endforeach
     <!-- banner end  -->
 <section class="section_position section-padding">
     <div class="bg_top"><img src="{{asset('contents/assets/website')}}/assets/img/vactor/shap1.png" alt=""></div>
@@ -35,7 +41,7 @@
                        <div class="services_contents">
                             <h3>Photo Gallery</h3>
                             <p class="pb-4"> Human and Nature Development Society (HANDS) all programe and photo Gallery is here . </p>
-                            <a href="photo.html"><span> <i class="fa-solid fa-arrow-right"></i> </span> Read more </a>
+                            <a href="{{route('photo_gallery')}}"><span> <i class="fa-solid fa-arrow-right"></i> </span> Read more </a>
                         </div>
                     </div>
                 </div>
@@ -50,7 +56,7 @@
                        <div class="services_contents">
                             <h3>Video Gallery </h3>
                             <p class="pb-4">Human and Nature Development Society (HANDS) all programe and Video Gallery is here ..</p>
-                            <a href="video.html"><span> <i class="fa-solid fa-arrow-right"></i> </span> Read more </a>
+                            <a href="{{route('vide_gallery')}}"><span> <i class="fa-solid fa-arrow-right"></i> </span> Read more </a>
                         </div>
                     </div>
                 </div>
@@ -65,7 +71,7 @@
                        <div class="services_contents">
                             <h3> Our Feild Storis</h3>
                             <p class="pb-4">Human and Nature Development Society (HANDS) all programe and Feild storis is here .</p>
-                            <a href="feild_strois.html"><span> <i class="fa-solid fa-arrow-right"></i> </span> Read more </a>
+                            <a href="{{route('field_storis')}}"><span> <i class="fa-solid fa-arrow-right"></i> </span> Read more </a>
                         </div>
                     </div>
                 </div>
@@ -80,7 +86,7 @@
                        <div class="services_contents">
                             <h3>Other's</h3>
                             <p class="pb-4">Human and Nature Development Society (HANDS) all programe and others is heres, </p>
-                            <a href="others.html"><span> <i class="fa-solid fa-arrow-right"></i> </span> Read more </a>
+                            <a href="{{route('other_program')}}"><span> <i class="fa-solid fa-arrow-right"></i> </span> Read more </a>
                         </div>
                     </div>
                 </div>

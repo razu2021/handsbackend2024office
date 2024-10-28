@@ -27,7 +27,8 @@ class fieldStoriseController extends Controller
            $all = field_storise::where('status', 1)->orderBy('field_storise_id', 'ASC')->paginate(5);
          }
         $totalpost = field_storise::count();
-        return view('websiteBackend.gallery.field_storise.index',compact('all','search','totalpost'));
+        $deletecount= field_storise::onlyTrashed()->count();
+        return view('websiteBackend.gallery.field_storise.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = field_storise::count();
@@ -160,4 +161,18 @@ class fieldStoriseController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+
+          // Recycle bin code is start here 
+          public function recycle(Request $request){
+            $search = $request['search'] ?? "";
+            if($search !=""){
+                $all= field_storise::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+                ->paginate(5);
+            }
+            else{
+                $all = field_storise::onlyTrashed()->where('status', 1)->orderBy('field_storise_id', 'ASC')->paginate(5);
+            }
+            $totalpost = field_storise::count();
+            return view('websiteBackend.gallery.field_storise.recycle',compact('all','search','totalpost'));
+        }
 }

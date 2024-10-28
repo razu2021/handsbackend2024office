@@ -1,31 +1,57 @@
 @extends('layouts.webmaster')
 @section('web_content')   
   <main>
+<section>
+    <div class="health_banner">
+    <div class="owl-carousel owl-thame index_banner_sliders">
     @foreach($banner as $data)
-    <section class="banner3" style="background-image:url({{asset('uploads/website/'.$data->banner_bg_image)}})">
-        <div class="banner3bg">
+        <div class="index_banner" style="background-image:url('{{asset('uploads/website/'.$data->banner_bg_image)}}')">
+            <div class="index_banner_bg">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
-                        <div class="banner3_content">
-                            <div class="banner3_info">
-                                <h1> {{$data->banner_heading}}<br><span>  {{$data->banner_title}}</span></h1>
-                                <p></p>
+                    <!-- index slider  -->
+                    <div class="index_slider">
+                        <div class="index_slider_items">
+                            <div class="index_slider_content">
+                                <p>{{$data->banner_title}}</p>
+                                <h1>{{$data->banner_heading}}</h1>
+                                <p><span>{{$data->banner_caption}}</span></p>
+                                <div class="button3">
+                                    @if($data-> banner_button1 !="")
+                                    <button> <a href="{{$data->banner_button_url1}}">{{$data->banner_button1}}</a></button>
+                                    @endif
+                                    @if($data-> banner_button2 !="")
+                                    <button> <a href="{{$data->banner_button_url2}}">{{$banners->banner_button2}}</a></button>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 ">
-                        <div class="banner3_image pt-5">
-                            <img src="{{asset('uploads/website/'.$data->banner_image)}}" alt="HANDS Banner image for Free Health Campaign"  class="img-fluid">
-                        </div>
+                    <!-- index slider  -->
                     </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+                        <div class="index_slider">
+                            <div class="index_slider_items ">
+                                <div class="index_slider_img ">
+                                    @if($data->banner_image !="")
+                                    <img src="{{asset('uploads/website/'.$data->banner_image)}}" alt="banner image" class="img-fluid ">
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <!-- slider end -->
+                    </div>
+                    <!-- cole end  -->
+                </div>
                 </div>
             </div>
         </div>
-    </section>
-@endforeach
-
-
+    @endforeach
+    </div>
+    <!-- banner slidter end here  -->
+    </div>
+</section>
 <!-- banner 3 end herer  -->
  @foreach($about as $data)   
 <section class="about_heath_sec section-padding">

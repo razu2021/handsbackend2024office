@@ -6,10 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 use App\Models\smeads;
 use Carbon\Carbon;
 
@@ -30,7 +28,8 @@ class smeAdsController extends Controller
            $all = smeads::where('status', 1)->orderBy('smeads_id', 'ASC')->paginate(5);
          }
         $totalpost = smeads::count();
-        return view('websiteBackend.home.smeads.index',compact('all','search','totalpost'));
+        $deletecount= smeads::onlyTrashed()->count();
+        return view('websiteBackend.home.smeads.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = smeads::count();
@@ -240,4 +239,18 @@ class smeAdsController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+
+    // Recycle bin code is start here 
+    public function recycle(Request $request){
+      $search = $request['search'] ?? "";
+      if($search !=""){
+          $all= smeads::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+          ->paginate(5);
+      }
+      else{
+          $all = smeads::onlyTrashed()->where('status', 1)->orderBy('smeads_id', 'ASC')->paginate(5);
+      }
+      $totalpost = smeads::count();
+      return view('websiteBackend.home.smeads.recycle',compact('all','search','totalpost'));
+  }
 }

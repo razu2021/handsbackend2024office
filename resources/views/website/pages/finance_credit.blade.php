@@ -2,13 +2,15 @@
 @section('web_content')   
 <main>
 @foreach($banner as $data)
-<section class="section-padding" style="background-image: url('{{asset('uploads/website/'.$data->banner_bg_image)}}');background-repeat: no-repeat;background-position: center;background-size: cover;">
-    <div class="container">
+<section class="" style="background-image: url('{{asset('uploads/website/'.$data->banner_bg_image)}}');background-repeat: no-repeat;background-position: center;background-size: cover;">
+<div class="comonbannerbg">
+<div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="display-2 " id="banner_texts" > {{$data->banner_heading}}</h1>
             </div>
         </div>
+    </div>
     </div>
 </section>
 @endforeach

@@ -6,7 +6,6 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 use App\Models\dipositads;
 use Carbon\Carbon;
 class dipositAdsController extends Controller
@@ -26,7 +25,8 @@ public function index(Request $request){
        $all = dipositads::where('status', 1)->orderBy('dipositads_id', 'ASC')->paginate(5);
      }
     $totalpost = dipositads::count();
-    return view('websiteBackend.home.dipositads.index',compact('all','search','totalpost'));
+    $deletecount = dipositads::onlyTrashed()->count();
+    return view('websiteBackend.home.dipositads.index',compact('all','search','totalpost','deletecount'));
 }
 public function add(){
     $totalpost = dipositads::count();
@@ -221,4 +221,20 @@ if ($data) {
   return redirect()->back()->with('message', 'Delete failed !');
 }
 }
+
+    // Recycle bin code is start here 
+    public function recycle(Request $request){
+      $search = $request['search'] ?? "";
+      if($search !=""){
+          $all= dipositads::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+          ->paginate(5);
+      }
+      else{
+          $all = dipositads::onlyTrashed()->where('status', 1)->orderBy('dipositads_id', 'ASC')->paginate(5);
+      }
+      $totalpost = dipositads::count();
+      return view('websiteBackend.home.dipositads.recycle',compact('all','search','totalpost'));
+  }
+
+
 }

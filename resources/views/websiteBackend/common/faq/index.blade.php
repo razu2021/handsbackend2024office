@@ -10,7 +10,7 @@
                     <div class="col-lg-8 offset-lg-2">
                         <div class=" text-center pt-4 pb-0">
                           <h2 style="border-bottom: 5px solid red; display:inline-block;background:#011a41;padding:3px;border-radius:10px;color:white;text-transform:uppercase"> 
-                            Banner Information Entair Website
+                            All Information Entair Website
                           </h2>
                         </div>
                       </div>
@@ -30,6 +30,7 @@
                       <div class="col-lg-3 text-center ">
                           <div class="mb-2 ">
                           <a href="{{ route('faqs.add') }}"><button class="btn btn-success px-4">Add New Items</button></a>
+                          <a href="{{route('faqs.recycle')}}"> <button type="button" class="btn btn-warning position-relative">Recycle<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> {{$deletecount}}+ </span></button></a>
                           </div> 
                       </div>
                     </div>

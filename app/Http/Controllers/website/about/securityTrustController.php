@@ -27,7 +27,8 @@ class securityTrustController extends Controller
            $all = security_trust::where('status', 1)->orderBy('security_trust_id', 'ASC')->paginate(5);
          }
         $totalpost = security_trust::count();
-        return view('websiteBackend.about.security_trust.index',compact('all','search','totalpost'));
+        $deletecount= security_trust::onlyTrashed()->count();
+        return view('websiteBackend.about.security_trust.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = security_trust::count();
@@ -213,4 +214,18 @@ class securityTrustController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+
+    // Recycle bin code is start here 
+    public function recycle(Request $request){
+      $search = $request['search'] ?? "";
+      if($search !=""){
+          $all= security_trust::onlyTrashed()->where('top_heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+          ->paginate(5);
+      }
+      else{
+          $all = security_trust::onlyTrashed()->where('status', 1)->orderBy('security_trust_id', 'ASC')->paginate(5);
+      }
+      $totalpost = security_trust::count();
+      return view('websiteBackend.about.security_trust.recycle',compact('all','search','totalpost'));
+  }
 }

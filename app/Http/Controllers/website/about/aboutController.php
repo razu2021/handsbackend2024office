@@ -29,7 +29,8 @@ class aboutController extends Controller
            $all = aboutus::where('status', 1)->orderBy('aboutus_id', 'ASC')->paginate(5);
          }
         $totalpost = aboutus::count();
-        return view('websiteBackend.about.aboutus.index',compact('all','search','totalpost'));
+        $deletecount = aboutus::onlyTrashed()->count();
+        return view('websiteBackend.about.aboutus.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = aboutus::count();
@@ -221,4 +222,17 @@ class aboutController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+            // Recycle bin code is start here 
+            public function recycle(Request $request){
+              $search = $request['search'] ?? "";
+              if($search !=""){
+                  $all= aboutus::onlyTrashed()->where('top_heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+                  ->paginate(5);
+              }
+              else{
+                  $all = aboutus::onlyTrashed()->where('status', 1)->orderBy('aboutus_id', 'ASC')->paginate(5);
+              }
+              $totalpost = aboutus::count();
+              return view('websiteBackend.about.aboutus.recycle',compact('all','search','totalpost'));
+          }
 }

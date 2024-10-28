@@ -21,8 +21,10 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->integer('unique_id')->default(1);
             $table->string('slug',50)->nullable();
+            $table->string('creator',50)->nullable();
+            $table->string('editor',50)->nullable();
             $table->integer('status')->default(1);
-            $table->integer('post_status')->default(2);
+            $table->integer('post_status')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,7 +35,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::create('add_education', function (Blueprint $table)  {
+        Schema::create('work_statuses', function (Blueprint $table)  {
             //
             $table->dropSoftDeletes();
         });

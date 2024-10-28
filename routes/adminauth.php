@@ -12,7 +12,7 @@ use App\Http\Controllers\Adminauth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::group(['middleware' => ['guest:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
 
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
@@ -37,26 +37,33 @@ Route::group(['middleware' => ['guest:admin'], 'prefix' => 'admin', 'as' => 'adm
                 ->name('password.store');
 });
 
-Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function () {
 
+    // Show the email verification notice
     Route::get('verify-email', EmailVerificationPromptController::class)
                 ->name('verification.notice');
 
+    // Handle email verification via signed URL
     Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
                 ->middleware(['signed', 'throttle:6,1'])
                 ->name('verification.verify');
 
+    // Resend email verification notification
     Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
                 ->middleware('throttle:6,1')
                 ->name('verification.send');
 
+    // Confirm password before sensitive actions
     Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
                 ->name('password.confirm');
 
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
-    Route::put('password', [PasswordController::class, 'update'])->name('password.update');
+    // Update admin password
+    Route::put('password', [PasswordController::class, 'update'])
+                ->name('password.update');
 
+    // Logout admin
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
 });

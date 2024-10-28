@@ -27,7 +27,8 @@ class photoGealleryController extends Controller
            $all = photo_gallery::where('status', 1)->orderBy('photo_gallery_id', 'ASC')->paginate(5);
          }
         $totalpost = photo_gallery::count();
-        return view('websiteBackend.gallery.photo_gallery.index',compact('all','search','totalpost'));
+        $deletecount= photo_gallery::onlyTrashed()->count();
+        return view('websiteBackend.gallery.photo_gallery.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = photo_gallery::count();
@@ -70,7 +71,7 @@ class photoGealleryController extends Controller
           if($request->hasFile('service_image')){
             $image=$request->file('service_image');
             $imageName=rand(10000,9999999).'_'.$insert.'-'.time().'.webp'; // .$image->getClientOriginalExtension()   ... replace webp
-            Image::make($image)->fit(1080, 1080, function ($constraint) {
+            Image::make($image)->fit(1080, 700, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             })->encode('webp', 90)->save('uploads/website/gallery/'.$imageName);
@@ -114,7 +115,7 @@ class photoGealleryController extends Controller
          if($request->hasFile('service_image')){
             $image=$request->file('service_image');
             $imageName=rand(10000,9999999).'_'.$id.'-'.time().'.webp'; // .$image->getClientOriginalExtension()   ... replace webp
-            Image::make($image)->fit(1080, 1080, function ($constraint) {
+            Image::make($image)->fit(1080, 700, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             })->encode('webp', 90)->save('uploads/website/gallery/'.$imageName);
@@ -199,5 +200,19 @@ class photoGealleryController extends Controller
     } else {
       return redirect()->back()->with('message', 'Delete failed !');
     }
+    }
+
+      // Recycle bin code is start here 
+      public function recycle(Request $request){
+        $search = $request['search'] ?? "";
+        if($search !=""){
+            $all= photo_gallery::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+            ->paginate(5);
+        }
+        else{
+            $all = photo_gallery::onlyTrashed()->where('status', 1)->orderBy('photo_gallery_id', 'ASC')->paginate(5);
+        }
+        $totalpost = photo_gallery::count();
+        return view('websiteBackend.gallery.photo_gallery.recycle',compact('all','search','totalpost'));
     }
 }

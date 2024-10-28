@@ -189,7 +189,7 @@
 </section>    
 <!-- loan step end here  -->    
 @foreach($dipositads as $data)
-<section class="section_index_banner_saving">
+<section class="section_index_banner_saving" style="background-image:url('{{asset('uploads/website/'.$data->service_image)}}')">
     <div class="section_index_bannerbg">
         <div class="container section-padding">
             <div class="row">
@@ -220,7 +220,7 @@
                 <div class="faq">
                     <div class="faq_head_about">
                         <h2 class="text-dark">Frequently Asked Questions</h2>
-                        <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam perferendis, voluptates aperiam in animi odit excepturi ipsam. Quas, dolore magnam!</p>
+                        <p class="text-dark">Our Frequently Asked Questions (FAQ) section provides clear answers to common inquiries about our loan process, terms, eligibility, and more. Explore helpful information to make your application process smooth and hassle-free.</p>
                     </div>
                     <div class="accordion accordion-flush" id="accordionFlushExample">
                     @foreach($faqs as $faq)

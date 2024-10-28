@@ -29,7 +29,22 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        
+        $loggedInUserRole  = $request->user()->role;
+
+        //dd($loggedInUserRole);
+
+        if($loggedInUserRole === 1){
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }
+        elseif($loggedInUserRole === 2){
+            return redirect()->route('custtomer-dashboard');
+        }
+        if($loggedInUserRole === 3){
+            return redirect()->route('volunteer-dashboard');
+        }
+
+        return redirect()->route('user-dashboard');
     }
 
     /**

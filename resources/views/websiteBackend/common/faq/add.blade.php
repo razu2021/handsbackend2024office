@@ -12,7 +12,7 @@
       <div class="card mb-4">
           <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0 fw-bold"> Add New Item </h5>
-            <small class="text-muted float-end">A a New Item for website </small>
+            <small class="text-muted float-end"><a class="p-2" href="{{route('faqs.all')}}"><button class="btn btn-success">All information</button></a></small>
           </div>
           <div class="card-body">
             <form method="post" action="{{ route('faqs.submit') }}" enctype="multipart/form-data">
@@ -26,7 +26,6 @@
                 <span class="text-danger">@error('name'){{$message}} @enderror</span>
                 </div>
               </div>
-
               <div class="col-md-6">
                 <div class="mb-3">
                 <label class="form-label" for="basic-default-fullname">Write your phone <span class="text-danger"> <i class="fas fa-solid fa-star"></i></span></label>
@@ -64,9 +63,6 @@
                 <span class="text-danger">@error('answer'){{$message}} @enderror</span>
                 </div>
               </div>
-             
-
-            
               <!-- aphone end -->
               </div>
               <!-- row -->

@@ -1,27 +1,27 @@
 @extends('layouts.webmaster')
 @section('web_content')
-<main id="content" style="display: none;">
-    @foreach($banner as $data)
-    <section class="team_banner" style="background-image: url('{{asset('uploads/website/'.$data->banner_bg_image)}}')">
-        <div class="banner_3_bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-                        <div class="banner_3">
-                            <h1 style="font-size: 5rem; color: red;">{{$data->banner_heading}}</h1>
-                            @if($data->banner_button1 !="")
-                            <a href="{{$data->banner_button_url1}}">{{$data->banner_button1}} ||</a>
-                            @endif
-                            @if($data->banner_button2 !="")
-                            <a href="{{$data->banner_button_url2}}">{{$data->banner_button2}} </a>
-                            @endif
-                        </div>
-                    </div>
+<main>
+@foreach($banner as $data)
+<section>
+    <div class="row" style="border-bottom:1px solid #000">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+            <div class="banner4">
+                <div class="banner4_content">
+                    <h1> {{$data->banner_heading}} </h1>
+                    <p> {{$data->banner_caption}}</p>
                 </div>
             </div>
         </div>
-    </section>
-    @endforeach
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+            <div class="banner4">
+                <div class="banner4_images">
+                    <img src="{{asset('uploads/website/'.$data->banner_bg_image)}}" alt="{{$data->banner_title}}" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endforeach
     <section class="section-padding">
         <div class="container-fluid">
             <div class="row">
@@ -33,9 +33,8 @@
                 <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 g-0">
                     <div class="hands_photo_gallery">
                         <div class="hands_photo">
-                            <a href="" data-bs-toggle="modal" data-bs-target="#mymodel{{$data->photo_gallery_id}}"> <img
-                                    src="{{asset('uploads/website/gallery/'.$data->service_image)}}"
-                                    alt="{{$data->title}}" class="img-fluid" loading="lazy" /></a>
+                            <a href="" data-bs-toggle="modal" data-bs-target="#mymodel{{$data->photo_gallery_id}}"> 
+                            <img src="{{asset('uploads/website/gallery/'.$data->service_image)}}" alt="Human and Nature Development Society (HANDS) {{$data->title}} photo" class="img-fluid" loading="lazy" /></a>
                         </div>
                     </div>
                 </div>

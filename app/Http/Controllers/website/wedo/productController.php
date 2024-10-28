@@ -8,7 +8,6 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 use App\Models\product;
 use Carbon\Carbon;
 class productController extends Controller
@@ -27,7 +26,8 @@ class productController extends Controller
            $all = product::where('status', 1)->orderBy('product_id', 'ASC')->paginate(5);
          }
         $totalpost = product::count();
-        return view('websiteBackend.common.product.index',compact('all','search','totalpost'));
+        $deletecount = product::onlyTrashed()->count();
+        return view('websiteBackend.common.product.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = product::count();
@@ -226,4 +226,17 @@ class productController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+      // Recycle bin code is start here 
+      public function recycle(Request $request){
+      $search = $request['search'] ?? "";
+      if($search !=""){
+          $all= product::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+          ->paginate(5);
+      }
+      else{
+          $all = product::onlyTrashed()->where('status', 1)->orderBy('product_id', 'ASC')->paginate(5);
+      }
+      $totalpost = product::count();
+      return view('websiteBackend.common.product.recycle',compact('all','search','totalpost'));
+  }
 }

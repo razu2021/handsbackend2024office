@@ -2,20 +2,17 @@
 @section('web_content') 
 <main>
 <!-- section end herre  -->
-<section class="make_D_image">
-    <div class="make_donation_quickbg">
-        <div class="container section-padding">
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8 offset-lg-2">
-                    <div class="make_donation_quick">
-                        <h1 class="pb-2">How you can help us </h1>
-                        <h3 class="pb-2">Just call at <span>  +880 1918148000 </span> to make a donation </h3>
-                    </div>
-                </div>
+@foreach($banner as $data)
+<section class="section-padding" style="background-image: url('{{asset('uploads/website/'.$data->banner_bg_image)}}');background-repeat: no-repeat;background-position: center;background-size: cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="display-2 " id="banner_texts" > {{$data->banner_heading}}</h1>
             </div>
         </div>
     </div>
 </section>
+@endforeach
 <!-- section end  -->
 <section class="section-padding">
     <div class="container">

@@ -6,7 +6,7 @@
         font-weight: 600;
     }
     p{
-        padding: 2rem 1rem;
+        padding: 1rem 1rem;
         text-align: justify;
     }
 }
@@ -45,7 +45,7 @@
 }
 // ------------service two 
 .service_two{
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
     min-height: 40rem;
     width: 100%;
     padding: 1rem;
@@ -57,6 +57,14 @@
         }
     }
    
+}
+.services_images{
+    background-color: #f3f3f3;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    p{
+        padding: 1rem;
+        font-style: italic;
+    }
 }
 .service_tow_profile{
     position: relative;
@@ -428,7 +436,7 @@
     }
 }
 .relif_content{
-    height: 40.5rem;
+    min-height: 40.5rem;
     width: 100%;
     display: grid;
     text-align: left;
@@ -444,26 +452,51 @@
     }
 }
 //footer banner 
-.footer_banner_image{
-    height: 45.5rem;
-    width: 100%;
-    object-fit: cover;
-    img{
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-    }
-}
-.footer_banner_content{
-    background-color: rgb(255, 136, 0);
-    height: 45.5rem;
-    width: 100%;
-    display: grid;
-    text-align: left;
-    align-content: center;
-    padding: 0rem 5rem;
+.bannerbottom{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
-    h1{
-        @include heading1();
+}
+.bgbottom{
+  
+    background-color: rgba(255, 255, 255, 0.50);
+}
+.banner_bottom_content{
+    padding: 4rem;
+    background:#fff;
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+    border-top-left-radius: 5rem;
+    border-bottom-right-radius: 5rem;
+    h6{
+        text-align: center;
+        padding-bottom: 2rem;
     }
 }
+
+#bgtext {
+    font-weight: 700;
+    color: white;
+    display: block;
+    background-size: 200%;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-repeat: repeat;
+    background-color: #fff;
+    background-image: linear-gradient(90deg, rgb(255, 0, 255) 0%, rgb(255, 255, 255) 33.34%, rgb(0, 0, 0) 67.86%, rgb(0, 110, 255) 100%);
+    animation: animateGradients 5s ease-in-out infinite;
+    padding-bottom: 1rem;
+  }
+  
+  @keyframes animateGradients {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+

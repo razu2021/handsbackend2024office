@@ -27,7 +27,8 @@ class applyCourseController extends Controller
            $all = apply_course::where('status', 1)->orderBy('apply_course_id', 'ASC')->paginate(5);
          }
         $totalpost = apply_course::count();
-        return view('websiteBackend.other.apply_course.index',compact('all','search','totalpost'));
+        $deletecount = apply_course::onlyTrashed()->count();
+        return view('websiteBackend.other.apply_course.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = apply_course::count();
@@ -180,4 +181,16 @@ class applyCourseController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+    public function recycle(Request $request){
+      $search = $request['search'] ?? "";
+      if($search !=""){
+          $all= apply_course::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")->orwhere('subtitle','LIKE',"%$search%")
+          ->paginate(5);
+      }
+      else{
+          $all = apply_course::onlyTrashed()->where('status', 1)->orderBy('apply_course_id', 'ASC')->paginate(5);
+      }
+      $totalpost = apply_course::count();
+      return view('websiteBackend.other.apply_course.recycle',compact('all','search','totalpost'));
+  }
 }

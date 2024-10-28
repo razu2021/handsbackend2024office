@@ -15,7 +15,7 @@
             <small class="text-muted float-end">Update Menus Information</small>
           </div>
           <div class="card-body">
-            <form method="post" action="{{url('admin/dashboard/manage-application/main-menu/update')}}" enctype="multipart/form-data">
+            <form method="post" action="{{route('blade.update')}}" enctype="multipart/form-data">
               @csrf
               <div class="row">
               <input type="hidden" class="form-control" id="basic-default-fullname" name="id"  value="{{ $data->menu_id }}" />

@@ -1,16 +1,27 @@
 @extends('layouts.webmaster')
 @section('web_content') 
 @foreach($banner as $data)
-<section class="section-padding" style="background-image: url('{{asset('uploads/website/'.$data->banner_bg_image)}}');background-repeat: no-repeat;background-position: center;background-size: cover;">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="display-2 " id="banner_texts" > {{$data->banner_heading}}</h1>
+    <section class="microfinace_banner" style="background-image: url('{{asset('uploads/website/'.$data->banner_bg_image)}}')">
+        <div class="bannerbg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                        <div class="banner_3">
+                            <h1 style="font-size: 5rem; color: #000;">{{$data->banner_heading}}</h1>
+                            <h3>{{$data->banner_title}}</h3>
+                            @if($data->banner_button1 != "")
+                            <a href="{{$data->banner_button_url1}}">{{$data->banner_button1}} ||</a>
+                            @endif
+                            @if($data->banner_button2 !="")
+                            <a href="javascript:void(0)" class="text-dark"> {{$data->banner_button2}}</a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-@endforeach
+    </section>
+    @endforeach
 @foreach($about as $data)
 <section class="section-padding">
 <div class="container about_section">

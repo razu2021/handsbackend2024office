@@ -12,7 +12,7 @@
       <div class="card mb-4">
           <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0 fw-bold"> Add New Item </h5>
-            <small class="text-muted float-end">A a New Item for website </small>
+            <small class="text-muted float-end"><a class="p-2" href="{{route('video_gallery.all')}}"><button class="btn btn-success">All  information</button></a> </small>
           </div>
           <div class="card-body">
             <form method="post" action="{{ route('video_gallery.submit') }}" enctype="multipart/form-data">
@@ -23,7 +23,7 @@
               <div class="col-md-12">
                 <div class="mb-3">
                 <label class="form-label" for="basic-default-fullname">Video Embed Link <span class="text-danger"> <i class="fas fa-solid fa-star"></i></span></label>
-                <input type="url" class="form-control" id="basic-default-fullname" placeholder="Write Heading Name " name="service_image"  value="{{old('service_image')}}"/>
+                <input type="url" class="form-control" id="basic-default-fullname" placeholder="Embed video link " name="service_image"  value="{{old('service_image')}}"/>
                 <span class="text-danger">@error('service_image'){{$message}} @enderror</span>
                 </div>
               </div>

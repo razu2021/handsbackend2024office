@@ -1,34 +1,36 @@
 @extends('layouts.webmaster')
 @section('web_content')  
 <main>
-@foreach($bannerh as $data)
-<section class="banner_slider" style="background-image:url('{{asset('uploads/website/'.$data->banner_bg_image)}}')">
-@endforeach
-    <div class="banner_slider3bg">
-        <div class="owl-carousel owl-theme container_slider">
-            @foreach($banner as $data)
-            <div class="container slider_container_size container_slider_item">
-                <div class="row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
-                        <div class="container_slider_content">
-                            <div class="container_slider_text">
-                                <h3> {{$data->banner_title}}</h3>
-                                <h1>{{$data->banner_heading}}</span> </h1>
-                                <p>{{banner_caption}}</p>
+<section>
+    <div class="other_slider">
+    <div class="owl-carousel owl-theme container_slider">
+    @foreach($banner as $data)
+        <div class="other_slider_items other_slider" style="background-image:url('{{asset('uploads/website/'.$data->banner_bg_image)}}')">
+        <section class="section-padding bannerbg">
+            <div class="container other_slider_area">
+                <div class="row" style="border-bottom:1px solid #000">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 col-xxl-7">
+                        <div class="banner4">
+                            <div class="banner4_content ">
+                                <h3>{{$data->banner_title}}</h3>
+                                <h1> {{$data->banner_heading}} </h1>
+                                <p> {{$data->banner_caption}}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
-                        <div class="container_slider_images">
-                            <div class="container_slider_images">
-                                <img src="{{asset('uploads/website/'.$data->banner_image)}}" alt="Human and Nature Development Society (HANDS) Website Banner image " class="img-fluid">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 col-xxl-5">
+                        <div class="banner4">
+                            <div class="banner4_images">
+                                <img src="{{asset('uploads/website/'.$data->banner_image)}}" alt="{{$data->banner_title}}" class="img-fluid">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            @endforeach
+            </section>
         </div>
+        @endforeach
+    </div>
     </div>
 </section>
 <section class="section-padding section_images" >
@@ -50,8 +52,8 @@
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
                 <div class="relif_section">
-                    <div class="relif_content">
-                        <h3>{{$data->title}}</h3>
+                    <div class="relif_content wow animate_animated animate__fadeInRight">
+                        <h3>{{$data->heading}}</h3>
                         <p>{!! $data->caption !!}</p>
                     </div>
                 </div>

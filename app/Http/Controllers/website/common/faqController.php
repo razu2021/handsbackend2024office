@@ -25,7 +25,8 @@ class faqController extends Controller
            $all = faq::where('status', 1)->orderBy('faqs_id', 'ASC')->paginate(5);
          }
         $totalpost = faq::count();
-        return view('websiteBackend.common.faq.index',compact('all','search','totalpost'));
+        $deletecount = faq::onlyTrashed()->count();
+        return view('websiteBackend.common.faq.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = faq::count();
@@ -178,4 +179,17 @@ class faqController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+    // Recycle bin code is start here 
+    public function recycle(Request $request){
+      $search = $request['search'] ?? "";
+      if($search !=""){
+          $all= faq::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+          ->paginate(5);
+      }
+      else{
+          $all = faq::onlyTrashed()->where('status', 1)->orderBy('faqs_id', 'ASC')->paginate(5);
+      }
+      $totalpost = faq::count();
+      return view('websiteBackend.common.faq.recycle',compact('all','search','totalpost'));
+  }
 }

@@ -1,20 +1,20 @@
 @extends('layouts.webmaster')
 @section('web_content')  
   <main>
-    @foreach($banner as $data)
-    <section class="legal_aid_banner" style="background-image:url('{{asset('uploads/website/'.$data->banner_bg_image)}}')">
-        <div class="common_banner_bg">
-            <div class="container section-padding">
-                <div class="row justify-content-sm-center">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 col-xxl-5">
-                        <div class="common_banner_content">
-                            <img src="{{asset('uploads/website/'.$data->banner_image)}}" alt="Human and Nature Development Society (HANDS) Banner Image for Legal Aid">
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 col-xxl-7 ">
-                        <div class="common_banner_contents">
-                         <h1>{{$data->banner_title}}</h1>
-                         <p>{{$data->banner_caption}}</p>
+  @foreach($banner as $data)
+  <section class="microfinace_banner" style="background-image: url('{{asset('uploads/website/'.$data->banner_bg_image)}}')">
+        <div class="bannerbg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                        <div class="banner_3">
+                            <h1 style="font-size: 5rem; color: #000;">{{$data->banner_heading}}</h1>
+                            @if($data->banner_button1 != "")
+                            <a href="{{$data->banner_button_url1}}">{{$data->banner_button1}} ||</a>
+                            @endif
+                            @if($data->banner_button2 !="")
+                            <a href="javascript:void(0)" class="text-dark"> {{$data->banner_button2}}</a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -22,7 +22,6 @@
         </div>
     </section>
     @endforeach
-    <!-- banner end  -->
 
     <section class="section_position section-padding">
         <div class="bg_top"><img src="{{asset('contents/assets/website')}}/assets/img/vactor/shap1.png" alt=""></div>

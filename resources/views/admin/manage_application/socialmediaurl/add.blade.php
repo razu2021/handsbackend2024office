@@ -12,7 +12,7 @@
       <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                       <h5 class="mb-0 fw-bold"> Add a New Menu Item </h5>
-                      <small class="text-muted float-end">Add New Menu Items on your Website</small>
+                      <small class="text-muted float-end"><a class="p-2" href="{{url('admin/dashboard/manage-application/socialmediaurl')}}"><button class="btn btn-success">All information</button></a></small>
                     </div>
                     <div class="card-body">
                       <form method="post" action="{{url('admin/dashboard/manage-application/socialmediaurl/submit')}}" enctype="multipart/form-data">
@@ -25,9 +25,10 @@
                           <select name="social_mediaid" id="social_mediaid" class="form-control">
                             <option value=""> URL Set as</option>
                           @foreach($all as $data)
-                          <option value="{{$data->social_media_id}}">{{$data->social_media_name}}</option>
+                          <option value="{{$data->social_media_name}}">{{$data->social_media_name}}</option>
                           @endforeach
                           </select>
+                          <span class="text-danger">@error('social_mediaid'){{$message}} @enderror</span>
                           </div>
                         </div>
                         <!-- aphone end -->
@@ -35,6 +36,7 @@
                           <div class="mb-3">
                           <label class="form-label" for="basic-default-fullname">Add Social Media URL <span class="text-danger"> <i class="fas fa-solid fa-star"></i></span></label>
                           <input type="text" class="form-control" id="basic-default-fullname" placeholder="https://www.facebook.com/username  " name="social_media_url"  value="{{old('social_media_url')}}"/>
+                            <span class="text-danger">@error('social_media_url'){{$message}} @enderror</span>
                           </div>
                         </div>
                         <!-- aphone end -->

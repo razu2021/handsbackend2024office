@@ -25,7 +25,7 @@
               <div class="col-md-12">
                 <div class="mb-3">
                 <label class="form-label" for="basic-default-fullname">Video Embed Link <span class="text-danger"> <i class="fas fa-solid fa-star"></i></span></label>
-                <input type="url" class="form-control" id="basic-default-fullname" placeholder="Add Embed URL " name="service_image"  value="{{old('service_image')}}"/>
+                <input type="url" class="form-control" id="basic-default-fullname" placeholder="Add Embed URL " name="service_image"  value="{{$data->service_image}}"/>
                 <span class="text-danger">@error('service_image'){{$message}} @enderror</span>
                 </div>
               </div>

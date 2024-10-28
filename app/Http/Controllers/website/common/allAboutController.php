@@ -29,7 +29,8 @@ class allAboutController extends Controller
            $all = allabout::where('status', 1)->orderBy('allabout_id', 'ASC')->paginate(5);
          }
         $totalpost = allabout::count();
-        return view('websiteBackend.common.allabout.index',compact('all','search','totalpost'));
+        $deletecount = allabout::onlyTrashed()->count();
+        return view('websiteBackend.common.allabout.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = allabout::count();
@@ -200,5 +201,18 @@ class allAboutController extends Controller
     } else {
       return redirect()->back()->with('message', 'Delete failed !');
     }
+    }
+      // Recycle bin code is start here 
+      public function recycle(Request $request){
+        $search = $request['search'] ?? "";
+        if($search !=""){
+            $all= allabout::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+            ->paginate(5);
+        }
+        else{
+            $all = allabout::onlyTrashed()->where('status', 1)->orderBy('allabout_id', 'ASC')->paginate(5);
+        }
+        $totalpost = allabout::count();
+        return view('websiteBackend.common.allabout.recycle',compact('all','search','totalpost'));
     }
 }

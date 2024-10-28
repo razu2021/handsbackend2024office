@@ -11,8 +11,8 @@
       @endif
       <div class="card mb-4">
           <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0 fw-bold">Update Menus </h5>
-            <small class="text-muted float-end">Update Menus Information</small>
+            <h5 class="mb-0 fw-bold">Update Information </h5>
+            <small class="text-muted float-end"><a class="p-2" href="{{url('admin/dashboard/manage-application/socialmedia')}}"><button class="btn btn-success">All information</button></a></small>
           </div>
           <div class="card-body">
             <form method="post" action="{{url('admin/dashboard/manage-application/socialmedia/update')}}" enctype="multipart/form-data">

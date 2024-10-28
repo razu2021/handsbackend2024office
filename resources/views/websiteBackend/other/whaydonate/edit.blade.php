@@ -43,7 +43,6 @@
                 <span class="text-danger">@error('subtitle'){{$message}} @enderror</span>
                 </div>
               </div>
-
               <!-- item 2 ends -->
               <div class="col-md-12">
                 <div class="mb-3">
@@ -55,7 +54,7 @@
               <div class="col-md-12">
                 <div class="mb-3">
                 <label class="form-label" for="basic-default-fullname">Update Description<span class="text-danger"> <i class="fas fa-solid fa-star"></i></span></label>
-                <textarea class="form-control" name="caption" id="editor2" value="{!! $data->caption !!}">{!! $data->des !!}</textarea>
+                <textarea class="form-control" name="des" id="editor2" value="{!! $data->des !!}">{!! $data->des !!}</textarea>
                 <span class="text-danger">@error('des'){{$message}} @enderror</span>
                 </div>
               </div>

@@ -12,10 +12,10 @@
       <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
           <h5 class="mb-0 fw-bold"> Add a New Banner Item </h5>
-          <small class="text-muted float-end"> <button class="btn btn-success"> <a class="text-white" href="{{url('admin/dashboard/website-manage/home-banner/add')}}">Add New Banner </a></button></small>
+          <small class="text-muted float-end"> <button class="btn btn-success"> <a class="text-white" href="{{route('allbanner.add')}}">Add New Banner </a></button></small>
         </div>
         <div class="card-body">
-          <form method="post" action="{{url('admin/dashboard/website-manage/blade-page/submit')}}" enctype="multipart/form-data">
+          <form method="post" action="{{route('blade.submit')}}" enctype="multipart/form-data">
             @csrf
             <div class="row">
             <!-- aphone end -->
@@ -31,14 +31,10 @@
               <span class="text-danger">@error('page_name'){{$message}} @enderror</span>
               </div>
             </div>
-            
-            
-            
-
-
+          
             </div>
             <!-- row -->
-            <button type="submit" class="btn btn-primary">Upload</button>
+            <button type="submit" class="btn btn-primary">Add Item</button>
           </form>
        
         </div>
@@ -54,34 +50,31 @@
               <div>
                 <ul style="text-align:left;list-style-type:none">
                   @foreach($inserted as $activepage)
-                    <li> <span style="color:green"> <i class="far fa-check-circle"></i></span> {{$activepage->page_name}} </li>
+                    <li> <span style="color:green"> <i class="far fa-check-circle"></i></span> {{$activepage->page_name }} </li>
                   @endforeach
                 </ul>
               </div>
            
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        
           </div>
         </div>
       </div>
-
-
       <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
         <div class="card text-center">
           <div class="card-body">
-            <h5 class="card-title">Update History</h5>
+            <h5 class="card-title">Create History</h5>
             <p class="card-text">
               <div>
                 <h1><div id="clock"></div></h1>
+                <h3>Total Post: {{$totalpost}}</h3>
               </div>
             </p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+           
+            
+         
           </div>
         </div>
       </div>
-
-
-
-
       <!-- col end  -->
     </div>
     <!-- row end  -->

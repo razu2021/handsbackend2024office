@@ -21,7 +21,7 @@
                                 <input type="text" name="search" value="{{$search}}" class="form-control" placeholder="Search Entair Table">
                                 <div class="input-group-append">
                                   <button class="btn btn-outline-success" type="submit">Submit</button>
-                                  <button class="btn btn-outline-warning" type="submit"><a class="text-dark" href="{{ route('designation.recycle') }}">Reset</a></button>
+                                  <button class="btn btn-outline-warning" type="submit"><a class="text-dark" href="{{ route('notice.recycle') }}">Reset</a></button>
                                 </div>
                               </div>
                               </form>
@@ -29,7 +29,7 @@
                       </div>
                       <div class="col-lg-3 text-center ">
                           <div class="mb-2 ">
-                          <a href="{{ route('designation.all') }}"><button class="btn btn-success px-4">All Appoinments</button></a>
+                          <a href="{{ route('notice.all') }}"><button class="btn btn-success px-4">All Appoinments</button></a>
                           </div> 
                       </div>
                     </div>
@@ -48,9 +48,9 @@
                     <tbody>
                     @foreach($all as $data)
                       <tr>
-                        <td>{{$data->designation_id}}</td>
+                        <td>{{$data->notice_id}}</td>
                         <td>{{$data->title}}</td>
-                        <td>{!! $data->caption !!}</td>
+                        <td>{!! Str::words($data->caption,35) !!}</td>
                         <td>{{$data->created_at->format('Y-m-d H:i:s A')}}</td>
                         <td>  
                         @if ($data->post_status == 1) 
@@ -65,8 +65,8 @@
                               Action
                             </button>
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" onclick="return confirm('Delete this Information')" href="{{route('designation.restore',$data->designation_id)}}">Restor</a></li>
-                              <li><a class="dropdown-item" onclick="return confirm('Delete this Information')" href="{{route('designation.delete',$data->designation_id)}}">Delete</a></li>
+                              <li><a class="dropdown-item" onclick="return confirm('Delete this Information')" href="{{route('notice.restore',$data->notice_id)}}">Restor</a></li>
+                              <li><a class="dropdown-item" onclick="return confirm('Delete this Information')" href="{{route('notice.delete',$data->notice_id)}}">Delete</a></li>
                             </ul>
                           </div>
                         </td>

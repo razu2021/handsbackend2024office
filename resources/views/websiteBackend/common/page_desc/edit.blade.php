@@ -40,6 +40,7 @@
                   <option value="what_we_do">What We Do</option>
                   <option value="internship">Internship..</option>
                   <option value="career">Career..</option>
+                  <option value="loan_application">Loan Application</option>
                 </select>
                 <span class="text-danger">@error('heading'){{$message}} @enderror</span>
                 </div>

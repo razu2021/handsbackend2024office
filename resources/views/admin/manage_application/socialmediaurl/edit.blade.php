@@ -12,7 +12,7 @@
       <div class="card mb-4">
           <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0 fw-bold">Update Menus </h5>
-            <small class="text-muted float-end">Update Menus Information</small>
+            <small class="text-muted float-end"><a class="p-2" href="{{url('admin/dashboard/manage-application/socialmediaurl')}}"><button class="btn btn-success">All information</button></a></small>
           </div>
           <div class="card-body">
             <form method="post" action="{{url('admin/dashboard/manage-application/socialmediaurl/update')}}" enctype="multipart/form-data">
@@ -26,9 +26,9 @@
                 <div class="mb-3">
                 <label class="form-label" for="basic-default-fullname">Set URL As<span class="text-danger"> <i class="fas fa-solid fa-star"></i></span></label>
                 <select name="social_mediaid" id="social_mediaid" class="form-control">
-                  <option value=""> {{$data->socialMediaName->social_media_name}}</option>
+                  <option value=""> {{$data->social_mediaid}}</option>
                 @foreach($all as $alls)
-                <option value="{{$alls->social_media_id}}">{{$alls->social_media_name}}</option>
+                <option value="{{$alls->social_media_name}}">{{$alls->social_media_name}}</option>
                 @endforeach
                 </select>
                 </div>

@@ -27,7 +27,8 @@ class ourImpactController extends Controller
            $all = ourimpact::where('status', 1)->orderBy('ourimpact_id', 'ASC')->paginate(5);
          }
         $totalpost = ourimpact::count();
-        return view('websiteBackend.invo.ourimpact.index',compact('all','search','totalpost'));
+        $deletecount = ourimpact::onlyTrashed()->count();
+        return view('websiteBackend.invo.ourimpact.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = ourimpact::count();
@@ -191,4 +192,18 @@ class ourImpactController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+
+        // Recycle bin code is start here 
+        public function recycle(Request $request){
+          $search = $request['search'] ?? "";
+          if($search !=""){
+              $all= ourimpact::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+              ->paginate(5);
+          }
+          else{
+              $all = ourimpact::onlyTrashed()->where('status', 1)->orderBy('ourimpact_id', 'ASC')->paginate(5);
+          }
+          $totalpost = ourimpact::count();
+          return view('websiteBackend.invo.ourimpact.recycle',compact('all','search','totalpost'));
+      }
 }

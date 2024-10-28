@@ -31,7 +31,8 @@ class whatsnewController extends Controller
            $all = whatsnew::where('status', 1)->orderBy('whatsnew_id', 'ASC')->paginate(5);
          }
         $totalpost = whatsnew::count();
-        return view('websiteBackend.home.whatsnew.index',compact('all','search','totalpost'));
+        $deletecount = whatsnew::onlyTrashed()->count();
+        return view('websiteBackend.home.whatsnew.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = whatsnew::count();
@@ -242,6 +243,19 @@ class whatsnewController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
-
+    
+    // Recycle bin code is start here 
+    public function recycle(Request $request){
+      $search = $request['search'] ?? "";
+      if($search !=""){
+          $all= whatsnew::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+          ->paginate(5);
+      }
+      else{
+          $all = whatsnew::onlyTrashed()->where('status', 1)->orderBy('whatsnew_id', 'ASC')->paginate(5);
+      }
+      $totalpost = whatsnew::count();
+      return view('websiteBackend.home.whatsnew.recycle',compact('all','search','totalpost'));
+  }
 
 }

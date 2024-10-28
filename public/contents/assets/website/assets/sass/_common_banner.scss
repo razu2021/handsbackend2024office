@@ -176,14 +176,19 @@
 // banner image start here ===============
 // banner 3
 .banner_3{
-    padding: 10rem 0rem ;
+    padding: 5rem 0rem ;
     text-align: center;
     h1{
-        @include heading1($color:#fff);
+        @include heading1($color:#000);
         font-weight:900;
         text-transform: uppercase;
     }
+    h3{
+        font-weight: 700;
+        color: #000;
+    }
     a{
+        margin-top: 2rem;
         color: red;
         transition: all 0.5s;
         &:hover{
@@ -310,6 +315,39 @@
         font-size: 1.8rem;
     }
 }
+
+.bvolunter_image{
+    background-attachment: fixed;
+   
+}
+.other_slider{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+.other_slider_area{
+    background-color: #fff;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    overflow: hidden;
+}
+// other slider banner animation 
+.owl-carousel .owl-item.active .other_slider_items .banner4_images img {
+    animation: fadeInRight 2s linear;
+}
+
+.owl-carousel .owl-item.active .other_slider_items .banner4_content h1 {
+    animation: fadeInDown 2s linear;
+}
+.owl-carousel .owl-item.active .other_slider_items .banner4_content h3 {
+    animation: fadeInDown 2s linear;
+}
+
+
+.owl-carousel .owl-item.active .other_slider_items .banner4_content p {
+    animation:fadeInUp 2s linear;
+}
+
 
 
 // banner 3 start here ==============
@@ -556,6 +594,7 @@
     }
 }
 // about page banner 
+
 .aboutpagebg{
     background-image: url(../img/background/bg-image.png);
     background-position: center;
@@ -570,9 +609,11 @@
     background-repeat: no-repeat;
 }
 .aboutbgcolor{
-    background-color: rgba(255,255,255,0.85);
+    background-color: rgba(255,255,255,0.40);
 }
-
+.comonbannerbg{
+    background-color: rgba(0,0,0,0.45);
+}
 /* CSS */
 
 

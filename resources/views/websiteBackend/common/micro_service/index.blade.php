@@ -30,6 +30,7 @@
                       <div class="col-lg-3 text-center ">
                           <div class="mb-2 ">
                           <a href="{{ route('micro_service.add') }}"><button class="btn btn-success px-4">Add New Items</button></a>
+                          <a href="{{route('micro_service.recycle')}}"> <button type="button" class="btn btn-warning position-relative">Recycle<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> {{$deletecount}}+ </span></button></a>
                           </div> 
                       </div>
                     </div>

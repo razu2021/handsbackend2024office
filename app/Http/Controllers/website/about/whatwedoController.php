@@ -27,7 +27,8 @@ class whatwedoController extends Controller
            $all = whatwedo::where('status', 1)->orderBy('whatwedo_id', 'ASC')->paginate(5);
          }
         $totalpost = whatwedo::count();
-        return view('websiteBackend.about.whatwedo.index',compact('all','search','totalpost'));
+        $deletecount = whatwedo::onlyTrashed()->count();
+        return view('websiteBackend.about.whatwedo.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = whatwedo::count();
@@ -178,5 +179,18 @@ class whatwedoController extends Controller
     } else {
       return redirect()->back()->with('message', 'Delete failed !');
     }
+    }
+      // Recycle bin code is start here 
+      public function recycle(Request $request){
+        $search = $request['search'] ?? "";
+        if($search !=""){
+            $all= whatwedo::onlyTrashed()->where('top_heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+            ->paginate(5);
+        }
+        else{
+            $all = whatwedo::onlyTrashed()->where('status', 1)->orderBy('whatwedo_id', 'ASC')->paginate(5);
+        }
+        $totalpost = whatwedo::count();
+        return view('websiteBackend.about.whatwedo.recycle',compact('all','search','totalpost'));
     }
 }

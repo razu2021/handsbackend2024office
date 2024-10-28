@@ -156,20 +156,18 @@
     </div>
 </section>
 @endforeach
-
-
-
-
-
-
+@foreach($easyloan as $data)
 <section class="section-padding">
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8 offset-lg-2">
                 <div class="ready_to_apply" style="background-image:url('{{asset('contents/assets/website')}}/assets/img/background/Image.png');background-repeat: no-repeat;background-position: center;">
                     <div class="ready_con">
-                        <h1>Are you ready to apply for get <span>easy loan</span>  </h1>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit dignissimos cupiditate, iste itaque quibusdam quis quos tenetur molestiae in provident doloribus sunt veritatis ab eligendi dolorem nemo, autem odio. Maiores eveniet, temporibus repudiandae nihil iusto eos at! Aliquid, totam excepturi eos id, quaerat magnam sunt, ullam ea pariatur voluptas incidunt!</p>
+                        <h1>{{$data->title}}</h1>
+                        <p>{!! $data->caption !!}</p>
+                         <div class="button3">
+                         <button><a href="{{route('apply_loan')}}">{{$data->button}}</a></button>
+                         </div>
                     </div>
                 </div>
             </div>
@@ -177,14 +175,7 @@
         </div>
     </div>
 </section>
-
-
-
-
-
-
-
-
+@endforeach
 <section class="storybg section-padding">
     <div class="container">
         <div class="row">
@@ -261,12 +252,13 @@
 </div>
 @foreach($slogan as $data)
 <section class="make_D_image" style="background-image:url('{{asset('uploads/website/'.$data->service_image)}}')">
+    <div class="make_donation_quickbg">
         <div class="container section-padding">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8 offset-lg-2">
                     <div class="make_donation_quick">
                         <h1 class="pb-2">{{$data->heading}}</h1>
-                        <h3 class="pb-2">{{$data->title}}</h3>
+                        <h3 class="pb-2">{{$data->title}} </h3>
                     </div>
                 </div>
             </div>

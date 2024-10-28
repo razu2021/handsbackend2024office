@@ -974,7 +974,7 @@ form .submit_button {
 }
 
 .section_index_bannerbg {
-  background: linear-gradient(311deg, rgba(255, 255, 255, 0.2133228291) 26%, rgba(255, 255, 255, 0.9220063025) 48%);
+  background: linear-gradient(58deg, rgba(255, 255, 255, 0.8575805322) 49%, rgba(255, 255, 255, 0.6194852941) 49%);
 }
 
 .secb_con {
@@ -1346,12 +1346,13 @@ form .submit_button {
 
 .trust_content {
   background-color: #fff;
+  min-height: 40rem;
 }
 .trust_content button {
   margin: 2rem 0rem;
   border: 1px solid #000;
   background-color: transparent;
-  color: #fff;
+  color: #f750d2;
   padding: 1rem;
 }
 .trust_content button span {
@@ -1364,6 +1365,13 @@ form .submit_button {
 }
 .trust_content p {
   color: #000;
+}
+
+.security_image {
+  min-height: 50rem;
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 
 .ready_to_apply {
@@ -1466,18 +1474,31 @@ form .submit_button {
 }
 
 #banner_texts {
+  padding: 8rem 0rem;
   font-weight: 700;
   color: white;
   display: block;
-  background-size: 100%;
+  background-size: 200%;
   -webkit-background-clip: text;
           background-clip: text;
   -webkit-text-fill-color: transparent;
   background-repeat: repeat;
-  background-color: rgb(0, 89, 255);
-  background-image: linear-gradient(90deg, rgb(23, 131, 255) 0%, rgb(7, 197, 255) 33.34%, rgb(234, 238, 9) 67.86%, rgb(255, 225, 0) 100%);
+  background-color: #fff;
+  background-image: linear-gradient(90deg, rgb(255, 0, 255) 0%, rgb(255, 255, 255) 33.34%, rgb(234, 238, 9) 67.86%, rgb(0, 110, 255) 100%);
+  animation: animateGradient 5s ease-in-out infinite;
 }
 
+@keyframes animateGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 .feed h1 {
   color: #000;
   font-weight: 700;
@@ -1595,13 +1616,17 @@ form .submit_button {
   padding-bottom: 1rem;
 }
 
+.footer_logo p {
+  color: #fff;
+}
+
 .microfinacne_content h5 {
   border-bottom: 1px solid bisque;
   display: inline-block;
   font-weight: 600;
 }
 .microfinacne_content p {
-  padding: 2rem 1rem;
+  padding: 1rem 1rem;
   text-align: justify;
 }
 
@@ -1636,7 +1661,7 @@ form .submit_button {
 }
 
 .service_two {
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
   min-height: 40rem;
   width: 100%;
   padding: 1rem;
@@ -1645,6 +1670,15 @@ form .submit_button {
   transform: scale(1.1);
   transition: all 1s;
   border-radius: 0.8rem;
+}
+
+.services_images {
+  background-color: #f3f3f3;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+.services_images p {
+  padding: 1rem;
+  font-style: italic;
 }
 
 .service_tow_profile {
@@ -2045,7 +2079,7 @@ form .submit_button {
 }
 
 .relif_content {
-  height: 40.5rem;
+  min-height: 40.5rem;
   width: 100%;
   display: grid;
   text-align: left;
@@ -2061,36 +2095,54 @@ form .submit_button {
   padding: 0.5rem 0rem;
 }
 
-.footer_banner_image {
-  height: 45.5rem;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-.footer_banner_image img {
-  height: 100%;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+.bannerbottom {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-.footer_banner_content {
-  background-color: rgb(255, 136, 0);
-  height: 45.5rem;
-  width: 100%;
-  display: grid;
-  text-align: left;
-  align-content: center;
-  padding: 0rem 5rem;
+.bgbottom {
+  background-color: rgba(255, 255, 255, 0.5);
 }
-.footer_banner_content h1 {
-  font-size: 3.4rem;
-  color: #fff;
+
+.banner_bottom_content {
+  padding: 4rem;
+  background: #fff;
+  box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+  border-top-left-radius: 5rem;
+  border-bottom-right-radius: 5rem;
+}
+.banner_bottom_content h6 {
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+#bgtext {
   font-weight: 700;
-  font-family: "Open Sans", sans-serif;
-  padding: 0.5rem 0rem;
+  color: white;
+  display: block;
+  background-size: 200%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-repeat: repeat;
+  background-color: #fff;
+  background-image: linear-gradient(90deg, rgb(255, 0, 255) 0%, rgb(255, 255, 255) 33.34%, rgb(0, 0, 0) 67.86%, rgb(0, 110, 255) 100%);
+  animation: animateGradients 5s ease-in-out infinite;
+  padding-bottom: 1rem;
 }
 
+@keyframes animateGradients {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 .hands_newses {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 2rem;
@@ -2430,19 +2482,24 @@ form .submit_button {
 }
 
 .banner_3 {
-  padding: 10rem 0rem;
+  padding: 5rem 0rem;
   text-align: center;
 }
 .banner_3 h1 {
   font-size: 3.4rem;
-  color: #fff;
+  color: #000;
   font-weight: 700;
   font-family: "Open Sans", sans-serif;
   padding: 0.5rem 0rem;
   font-weight: 900;
   text-transform: uppercase;
 }
+.banner_3 h3 {
+  font-weight: 700;
+  color: #000;
+}
 .banner_3 a {
+  margin-top: 2rem;
   color: red;
   transition: all 0.5s;
 }
@@ -2582,6 +2639,38 @@ form .submit_button {
   color: #011a41;
   font-style: italic;
   font-size: 1.8rem;
+}
+
+.bvolunter_image {
+  background-attachment: fixed;
+}
+
+.other_slider {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.other_slider_area {
+  background-color: #fff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  overflow: hidden;
+}
+
+.owl-carousel .owl-item.active .other_slider_items .banner4_images img {
+  animation: fadeInRight 2s linear;
+}
+
+.owl-carousel .owl-item.active .other_slider_items .banner4_content h1 {
+  animation: fadeInDown 2s linear;
+}
+
+.owl-carousel .owl-item.active .other_slider_items .banner4_content h3 {
+  animation: fadeInDown 2s linear;
+}
+
+.owl-carousel .owl-item.active .other_slider_items .banner4_content p {
+  animation: fadeInUp 2s linear;
 }
 
 .banner3 {
@@ -2793,7 +2882,11 @@ form .submit_button {
 }
 
 .aboutbgcolor {
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.comonbannerbg {
+  background-color: rgba(0, 0, 0, 0.45);
 }
 
 /* CSS */
@@ -3933,6 +4026,9 @@ form .submit_button {
     width: 95%;
     margin: 0 auto;
   }
+  .container {
+    padding: 0rem 2rem;
+  }
 }
 body {
   background-color: #fff;
@@ -3970,6 +4066,7 @@ body {
 
 .service_card {
   background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .service_card:hover {
   border-radius: 1rem;
@@ -3980,7 +4077,7 @@ body {
   display: flex;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 2rem;
-  height: 25rem;
+  min-height: 25rem;
   margin-bottom: 1rem;
   z-index: 1;
 }
@@ -4388,4 +4485,5 @@ body {
 .upcoming_campain p {
   padding: 1rem 0rem;
   text-align: justify;
+  font-style: normal;
 }/*# sourceMappingURL=main.css.map */

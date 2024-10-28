@@ -9,12 +9,13 @@
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                         <div class="banner_3">
-                            <h1 style="font-size: 5rem; color: red;">{{$data->banner_heading}}</h1>
-                            @if($data->banner_button1 !="")
+                            <h1 style="font-size: 5rem; color: #000;">{{$data->banner_heading}}</h1>
+                            <h3>{{$data->banner_title}}</h3>
+                            @if($data->banner_button1 != "")
                             <a href="{{$data->banner_button_url1}}">{{$data->banner_button1}} ||</a>
                             @endif
                             @if($data->banner_button2 !="")
-                            <a href="{{$data->banner_button_url2}}">{{$data->banner_button2}} </a>
+                            <a href="javascript:void(0)" class="text-dark"> {{$data->banner_button2}}</a>
                             @endif
                         </div>
                     </div>
@@ -23,7 +24,6 @@
         </div>
     </section>
     @endforeach
-
 <section class="section-padding">
     <div class="container">
         <div class="row">
@@ -33,6 +33,15 @@
                     @foreach($servicedetails as $data)
                         <div class="common_heading pt-4 pb-4 text-center">
                             <h1> || <span class="text-success fw-bold text-uppercase"> {{$data->title}} </span> ||</h1>
+                        </div>
+                        <div class="services_images">
+                            @if($data->service_image != "")
+                            <img src="{{asset('uploads/website/'.$data->service_image)}}" alt="{{$data->title }} Service by hands" width="100%" height="auto">
+                            <p>{{$data->title}} Provide by human and Nature Development Society (HANDS) for Sustainable Development </p>
+                            @else
+                            <img src="{{asset('contents/assets/website')}}/assets/img/programimage.png" alt="service image" width="100%" height="auto">
+                            <p>{{$data->title}} Provide by human and Nature Development Society (HANDS) for Sustainable Development </p>
+                            @endif
                         </div>
                         <div class="microfinacne_content">
                            <p>{!! $data->caption !!}</p>
@@ -64,7 +73,7 @@
                         <div class="sidebar_list">
                             <h4>Apply For Loan</h4>
                             <ul>
-                                <li><a href="{{route('apply-loan')}}">Apply for Loan</a></li>
+                                <li><a href="{{route('apply_loan')}}">Apply for Loan</a></li>
                             </ul>
                             </div>
                         </div>

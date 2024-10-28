@@ -12,9 +12,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\website\manage_application\mainmenuController;
 
 
+/*############# All route is protected for auth admin start here ########*/
 Route::middleware('auth:admin')->group(function () {
-    Route::get('admin/dashboard/manage_application/recycle', [recyclebinController::class, 'index']);
+/*########## All route is protected for auth admin start here #########*/
+    
+    Route::get('admin/dashboard/manage_application/recycle', [recyclebinController::class, 'index'])->name('all_link');
 
+
+    Route::get('admin/dashboard/manage_application/recycle', [recyclebinController::class, 'index']);
     /*-------- manage enrair menu --------*/
     Route::get('admin/dashboard/manage-application/main-menu', [mainmenuController::class, 'index']);
     Route::get('admin/dashboard/manage-application/main-menu/add', [mainmenuController::class, 'add']);
@@ -124,11 +129,13 @@ Route::middleware('auth:admin')->group(function () {
 
 
 
+    
+/* ######################   all protected route end here ========== ##################3*/
 });
-
-
-
 require __DIR__.'/adminauth.php';
+/* ######################   all protected route end here ========== ##################3*/
+
+
 
 
 

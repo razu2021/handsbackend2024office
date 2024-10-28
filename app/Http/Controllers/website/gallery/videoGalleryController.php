@@ -28,7 +28,8 @@ class videoGalleryController extends Controller
            $all = video_gallery::where('status', 1)->orderBy('video_gallery_id', 'ASC')->paginate(5);
          }
         $totalpost = video_gallery::count();
-        return view('websiteBackend.gallery.video_gallery.index',compact('all','search','totalpost'));
+        $deletecount= video_gallery::onlyTrashed()->count();
+        return view('websiteBackend.gallery.video_gallery.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = video_gallery::count();
@@ -161,4 +162,17 @@ class videoGalleryController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+          // Recycle bin code is start here 
+          public function recycle(Request $request){
+            $search = $request['search'] ?? "";
+            if($search !=""){
+                $all= video_gallery::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+                ->paginate(5);
+            }
+            else{
+                $all = video_gallery::onlyTrashed()->where('status', 1)->orderBy('video_gallery_id', 'ASC')->paginate(5);
+            }
+            $totalpost = video_gallery::count();
+            return view('websiteBackend.gallery.video_gallery.recycle',compact('all','search','totalpost'));
+        }
 }

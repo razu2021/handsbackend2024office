@@ -2,18 +2,19 @@
 @section('web_content')   
 <main>
 @foreach($banner as $data)
-    <section class="team_banner">
-        <div class="banner_3_bg">
+    <section class="microfinace_banner" style="background-image: url('{{asset('uploads/website/'.$data->banner_bg_image)}}')">
+        <div class="bannerbg">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                         <div class="banner_3">
-                            <h1>{{$data->banner_title}}</h1>
+                            <h1 style="font-size: 5rem; color: #000;">{{$data->banner_heading}}</h1>
+                            <h3>{{$data->banner_title}}</h3>
                             @if($data->banner_button1 != "")
-                            <a href="{{url('$data->banner_button1_url1')}}">{{$data->banner_button1}}</a>
+                            <a href="{{$data->banner_button_url1}}">{{$data->banner_button1}} ||</a>
                             @endif
                             @if($data->banner_button2 !="")
-                            <a href="javascript:void(0)" class="text-danger"> {{$data->banner_button2}}</a>
+                            <a href="javascript:void(0)" class="text-dark"> {{$data->banner_button2}}</a>
                             @endif
                         </div>
                     </div>
@@ -21,7 +22,7 @@
             </div>
         </div>
     </section>
-@endforeach
+    @endforeach
 @foreach($chairman as $data)
 <section class="section-padding">
     <div class="container">

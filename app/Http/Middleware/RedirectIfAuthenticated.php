@@ -20,6 +20,11 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
+            // this code for dubble auth check ----jodi admin dashboard login korar pore abar jodi same jodi email and password  logout na kore admin dhashboard login korar try kori .. tahole dashboard theke ber hote parbo na , 
+            if (Auth::guard($guard)->check() && $guard == 'admin') {
+                return redirect(RouteServiceProvider::ADMIN_HOME);
+            }
+
             if (Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::HOME);
             }

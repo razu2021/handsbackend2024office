@@ -30,7 +30,8 @@ class serviceOverviewController extends Controller
            $all = serviceOverview::where('status', 1)->orderBy('soverview_id', 'ASC')->paginate(5);
          }
         $totalpost = serviceOverview::count();
-        return view('websiteBackend.home.serviceOverview.index',compact('all','search','totalpost'));
+        $deletecount = serviceOverview::onlyTrashed()->count();
+        return view('websiteBackend.home.serviceOverview.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = serviceOverview::count();
@@ -236,4 +237,17 @@ class serviceOverviewController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+        // Recycle bin code is start here 
+        public function recycle(Request $request){
+          $search = $request['search'] ?? "";
+          if($search !=""){
+              $all= serviceOverview::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+              ->paginate(5);
+          }
+          else{
+              $all = serviceOverview::onlyTrashed()->where('status', 1)->orderBy('soverview_id', 'ASC')->paginate(5);
+          }
+          $totalpost = serviceOverview::count();
+          return view('websiteBackend.home.serviceOverview.recycle',compact('all','search','totalpost'));
+      }
 }

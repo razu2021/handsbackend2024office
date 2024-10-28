@@ -46,7 +46,14 @@ class socialMediaController extends Controller
       }
     /* ------  this is submit or insert page --------*/
       public function insert(Request $request){
-      
+        $request->validate([
+          'social_media_name' => ['required','unique:'.socialmedia::class]
+      ],
+          [
+              'social_media_name.required' => 'Social Media Name is Required',
+              'unique.required' => 'This name already has been taken',
+          ],
+      );
           $slug='admin'.uniqid('20');
           $creator=Auth::guard('admin')->user()->id;
           $insert=socialmedia::insertGetId([
@@ -68,7 +75,13 @@ class socialMediaController extends Controller
     
       /* ------  this is update page --------*/
       public function update(Request $request){
-      
+        $request->validate([
+          'social_media_name' => ['required','unique:'.socialmedia::class]
+      ],
+          [
+              'social_media_name.required' => 'Social Media Name is Required',
+          ],
+      );
         $id=$request['id'];
         $admin_id=$request['admin_id'];
         $slug=$request['slug'];

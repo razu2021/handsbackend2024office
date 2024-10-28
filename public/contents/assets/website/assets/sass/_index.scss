@@ -174,7 +174,7 @@
   background-size: cover;
 }
 .section_index_bannerbg{
-  background: linear-gradient(311deg, rgba(255,255,255,0.21332282913165268) 26%, rgba(255,255,255,0.9220063025210083) 48%);
+  background: linear-gradient(58deg, rgba(255,255,255,0.8575805322128851) 49%, rgba(255,255,255,0.6194852941176471) 49%);
 }
 .secb_con{
   text-align: center;
@@ -544,11 +544,13 @@
 // -------------
 .trust_content{
   background-color: #fff;
+  min-height: 40rem;
+
   button{
     margin: 2rem 0rem;
     border: 1px solid #000;
     background-color: transparent;
-    color: #fff;
+    color: #f750d2;
     padding: 1rem;
     span{
       color: #f750d2;
@@ -562,6 +564,13 @@
   p{
     color: #000;
   }
+}
+.security_image{
+  min-height: 50rem;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
 }
 .ready_to_apply{
   padding: 7rem 2rem ;
@@ -659,17 +668,39 @@
     color:#000;
   }
 }
-#banner_texts{
+#banner_texts {
+  padding: 8rem 0rem;
   font-weight: 700;
   color: white;
   display: block;
-  background-size: 100%;
+  background-size: 200%;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   background-repeat: repeat;
-  background-color: rgb(0, 89, 255);
-  background-image: linear-gradient(90deg, rgb(23, 131, 255) 0%, rgb(7, 197, 255) 33.34%, rgb(234, 238, 9) 67.86%, rgb(255, 225, 0) 100%);
+  background-color: #fff;
+  background-image: linear-gradient(90deg, rgb(255, 0, 255) 0%, rgb(255, 255, 255) 33.34%, rgb(234, 238, 9) 67.86%, rgb(0, 110, 255) 100%);
+  animation: animateGradient 5s ease-in-out infinite;
 }
+
+@keyframes animateGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+
+
+
+
+
 .feed{
 
   h1{
@@ -798,4 +829,9 @@
     padding-bottom: 1rem;
   }
 
+}
+.footer_logo{
+  p{
+    color: #fff;
+  }
 }

@@ -8,7 +8,7 @@
                 <div class="appoinment_about">
                     <div class="app_about_content p-4">
                         <h1>Don't miss out!  <span>[ Book your appointment ]</span>  before it's too late.</h1>
-                        <p class="pb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe nihil nulla, facilis placeat at quaerat exercitationem, reprehenderit itaque provident dolore molestias eius asperiores tempore minima a possimus nisi sunt quo.</p>
+                        <p class="pb-5">Time is running out, so don’t delay in taking advantage of this opportunity to advance your mission and secure the support you need. Our streamlined process ensures you get the assistance you need quickly and efficiently.</p>
                     </div>
                 </div>
                 </div>
@@ -56,28 +56,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- col end  -->
             </div>
         </div>
     </section>
-<!-- section end herre  -->
-<section class="make_D_image">
-    <div class="make_donation_quickbg">
-        <div class="container section-padding">
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8 offset-lg-2">
-                    <div class="make_donation_quick">
-                        <h1 class="pb-2">হিউম্যান এন্ড নেচার ডেভেলপমেন্ট সোসাইটি (হ্যান্ডস) </h1>
-                        <h3 class="pb-2"> সর্বদা<span>  মানুষ ও প্রকৃতির কল্যানে   </span> নিবেদিত</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- section end  -->
-
-<!-- ========  main content end herre  -->
   </main>
-
 @endsection

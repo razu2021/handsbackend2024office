@@ -27,7 +27,8 @@ class loanStepController extends Controller
            $all = loansteps::where('status', 1)->orderBy('loanstep_id', 'ASC')->paginate(5);
          }
         $totalpost = loansteps::count();
-        return view('websiteBackend.home.loansteps.index',compact('all','search','totalpost'));
+        $deletecount= loansteps::onlyTrashed()->count();
+        return view('websiteBackend.home.loansteps.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = loansteps::count();
@@ -180,4 +181,18 @@ class loanStepController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+
+        // Recycle bin code is start here 
+        public function recycle(Request $request){
+          $search = $request['search'] ?? "";
+          if($search !=""){
+              $all= loansteps::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+              ->paginate(5);
+          }
+          else{
+              $all = loansteps::onlyTrashed()->where('status', 1)->orderBy('loanstep_id', 'ASC')->paginate(5);
+          }
+          $totalpost = loansteps::count();
+          return view('websiteBackend.home.loansteps.recycle',compact('all','search','totalpost'));
+      }
 }

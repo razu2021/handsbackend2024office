@@ -26,7 +26,8 @@ class sloganController extends Controller
            $all = slogan::where('status', 1)->orderBy('slogan_id', 'ASC')->paginate(5);
          }
         $totalpost = slogan::count();
-        return view('websiteBackend.common.slogan.index',compact('all','search','totalpost'));
+        $deletecount= slogan::onlyTrashed()->count();
+        return view('websiteBackend.common.slogan.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = slogan::count();
@@ -214,4 +215,17 @@ class sloganController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+  // Recycle bin code is start here 
+  public function recycle(Request $request){
+    $search = $request['search'] ?? "";
+    if($search !=""){
+        $all= slogan::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+        ->paginate(5);
+    }
+    else{
+        $all = slogan::onlyTrashed()->where('status', 1)->orderBy('slogan_id', 'ASC')->paginate(5);
+    }
+    $totalpost = slogan::count();
+    return view('websiteBackend.common.slogan.recycle',compact('all','search','totalpost'));
+}
 }

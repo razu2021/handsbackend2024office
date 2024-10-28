@@ -12,7 +12,7 @@
       <div class="card mb-4">
           <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0 fw-bold"> Add New Item </h5>
-            <small class="text-muted float-end">A a New Item for website </small>
+            <small class="text-muted float-end"><a href="{{route('micro_service.all')}}">All Information </a></small>
           </div>
           <div class="card-body">
             <form method="post" action="{{ route('micro_service.submit') }}" enctype="multipart/form-data">

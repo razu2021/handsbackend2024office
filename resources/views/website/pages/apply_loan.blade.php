@@ -6,10 +6,12 @@
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-8 col-lg-4 col-xl-4 col-xxl-4">
                 <div class="appoinment_about">
+                    @foreach($desc as $data)
                     <div class="app_about_content p-4">
-                        <h1>Don't miss out!  <span>[ Book your appointment ]</span>  before it's too late.</h1>
-                        <p class="pb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe nihil nulla, facilis placeat at quaerat exercitationem, reprehenderit itaque provident dolore molestias eius asperiores tempore minima a possimus nisi sunt quo.</p>
+                        <h1>{{$data->title}}</h1>
+                        <p class="pb-5">{!! $data->caption !!}</p>
                     </div>
+                    @endforeach
                 </div>
                 </div>
                 <!-- col end  -->
@@ -158,21 +160,21 @@
         </div>
     </section>
 <!-- section end herre  -->
-<section class="make_D_image">
-    <div class="make_donation_quickbg">
+@foreach($slogan as $data)
+<section class="make_D_image" style="background-image:url('{{asset('uploads/website/'.$data->service_image)}}')">
         <div class="container section-padding">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8 offset-lg-2">
                     <div class="make_donation_quick">
-                        <h1 class="pb-2">হিউম্যান এন্ড নেচার ডেভেলপমেন্ট সোসাইটি (হ্যান্ডস) </h1>
-                        <h3 class="pb-2"> সর্বদা<span>  মানুষ ও প্রকৃতির কল্যানে   </span> নিবেদিত</h3>
+                        <h1 class="pb-2">{{$data->heading}}</h1>
+                        <h3 class="pb-2">{{$data->title}}</h3>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- section end  -->
+@endforeach
 
 <!-- ========  main content end herre  -->
   </main>

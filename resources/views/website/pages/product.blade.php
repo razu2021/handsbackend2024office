@@ -1,36 +1,38 @@
 @extends('layouts.webmaster')
 @section('web_content') 
   <main>
-@foreach($bannerh as $data)
-    <section class="banner_slider" style="background-image:url('{{asset('uploads/website/'.$data->banner_bg_image)}}')">
-@endforeach
-        <div class="banner_slider3bg">
-           <div class="owl-carousel owl-theme container_slider">
-            @foreach($banner as $data)
-                <div class="container slider_container_size container_slider_item">
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
-                            <div class="container_slider_content">
-                                <div class="container_slider_text">
-                                   <h3>{{$data->banner_title}}</h3>
-                                    <h1>{{$data->banner_heading}}</h1>
-                                    <p>{{$data->banner_caption}}</p>
-                                </div>
+  <section>
+    <div class="other_slider">
+    <div class="owl-carousel owl-theme container_slider">
+    @foreach($banner as $data)
+        <div class="other_slider_items other_slider" style="background-image:url('{{asset('uploads/website/'.$data->banner_bg_image)}}')">
+        <section class="section-padding bannerbg">
+            <div class="container other_slider_area">
+                <div class="row" style="border-bottom:1px solid #000">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 col-xxl-7">
+                        <div class="banner4">
+                            <div class="banner4_content ">
+                                <h3>{{$data->banner_title}}</h3>
+                                <h1> {{$data->banner_heading}} </h1>
+                                <p> {{$data->banner_caption}}</p>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
-                            <div class="container_slider_images">
-                                <div class="container_slider_images">
-                                    <img src="{{asset('uploads/website/'.$data->banner_image)}}" alt="HANDS Product Image for Human Bing" class="img-fluid" style="height:50rem;width:auto;object-fit:cover">
-                                </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 col-xxl-5">
+                        <div class="banner4">
+                            <div class="banner4_images">
+                                <img src="{{asset('uploads/website/'.$data->banner_image)}}" alt="{{$data->banner_title}}" class="img-fluid">
                             </div>
                         </div>
                     </div>
                 </div>
-                @endforeach
-           </div>
+            </div>
+            </section>
         </div>
-    </section>
+        @endforeach
+    </div>
+    </div>
+</section>
 @foreach($desc as $data)
 <section class="about_heath_sec " style="padding:5rem 0rem ">
     <div class="container">
@@ -46,12 +48,13 @@
 @endforeach
 @foreach($slogan as $data)
 <section class="make_D_image" style="background-image:url('{{asset('uploads/website/'.$data->service_image)}}')">
+    <div class="make_donation_quickbg">
         <div class="container section-padding">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8 offset-lg-2">
                     <div class="make_donation_quick">
                         <h1 class="pb-2">{{$data->heading}}</h1>
-                        <h3 class="pb-2">{{$data->title}}</h3>
+                        <h3 class="pb-2">{{$data->title}} </h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +74,11 @@
              </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 ">
                 <div class="about_product_image">
-                    <img src="{{asset('uploads/website/'.$data->service_image)}}" alt="Human and Nature Development Society (HANDS) Image" class="img-fluid" style="padding: 4rem;">
+                    @if($data->service_image !="")
+                    <img src="{{asset('uploads/website/'.$data->service_image)}}" alt="Human and Nature Development Society (HANDS) Product Image" class="img-fluid" style="padding: 4rem;">
+                    @else
+                    <img src="{{asset('contents/assets/website')}}/assets/img/programimage.png" alt="Human and Nature Development Society (HANDS) Image" class="img-fluid rounded-5" style="padding: 4rem;">
+                    @endif
                 </div>
             </div>
         </div>
@@ -90,7 +97,7 @@
             <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 mt-sm-4">
                 <div class="service_two">
                     <div class="service_tow_profile">
-                        <img src="{{asset('uploads/website/'.$data->service_image)}}" alt="{{$data->title}}" class="img-fluid"/>
+                        <img src="{{asset('uploads/website/'.$data->service_image)}}" alt="HANDS Product image {{$data->title}}" class="img-fluid"/>
                     </div>
                     <div class="service_two_cotent">
                         <h2>{{$data->title}} </h2>

@@ -51,7 +51,7 @@
                       <tr>
                         <td> {{$data->url_id}}</td>
                         <td>{{$data->social_media_url}}</td>
-                        <td> {{$data->socialMediaName->social_media_name}}</td>
+                        <td> {{$data->social_mediaid}}</td>
                         <td>  
                         @if ($data->post_status == 1) 
                             <p class="text-success">Publish</p>

@@ -27,7 +27,8 @@ class courseController extends Controller
            $all = course::where('status', 1)->orderBy('course_id', 'ASC')->paginate(5);
          }
         $totalpost = course::count();
-        return view('websiteBackend.other.course.index',compact('all','search','totalpost'));
+        $deletecount= course::onlyTrashed()->count();
+        return view('websiteBackend.other.course.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = course::count();
@@ -269,4 +270,18 @@ class courseController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+        // Recycle bin code is start here 
+        public function recycle(Request $request){
+          $search = $request['search'] ?? "";
+          if($search !=""){
+              $all= course::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")->orwhere('subtitle','LIKE',"%$search%")
+              ->paginate(5);
+          }
+          else{
+              $all = course::onlyTrashed()->where('status', 1)->orderBy('course_id', 'ASC')->paginate(5);
+          }
+          $totalpost = course::count();
+          return view('websiteBackend.other.course.recycle',compact('all','search','totalpost'));
+      }
+        
 }

@@ -29,6 +29,7 @@
             <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 offset-lg-2">
                 <div class="about_e_crisis">
                     <div class="crisis_content">
+                            <h1>{{$data->title}}</h1>
                         <p>{!! $data->caption !!}</p>
                     </div>
                 </div>

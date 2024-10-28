@@ -49,6 +49,17 @@ class socialMediaUrlController extends Controller
       }
     /* ------  this is submit or insert page --------*/
       public function insert(Request $request){
+        $request->validate([
+
+          'social_media_url' => 'required',
+          'social_mediaid' => ['required','unique:'.socialmediaurl::class,],
+      ],
+          [
+              'social_media_url.required' => 'Social Media URL is Required',
+              'social_mediaid.required' => 'Social Media Name is Required',
+              'social_mediaid.unique' => 'Social Media Name already has been Teken!',
+          ],
+      );
           $slug='admin'.uniqid('20');
           $creator=Auth::guard('admin')->user()->id;
           $insert=socialmediaurl::insertGetId([
@@ -71,7 +82,16 @@ class socialMediaUrlController extends Controller
     
       /* ------  this is update page --------*/
       public function update(Request $request){
-      
+        $request->validate([
+          'social_media_url' => 'required',
+          'social_mediaid' => ['required','unique:'.socialmediaurl::class,],
+      ],
+          [
+              'social_media_url.required' => 'Social Media URL is Required',
+              'social_mediaid.required' => 'Social Media Name is Required',
+              'social_mediaid.unique' => 'Social Media Name already has been Teken!',
+          ],
+      );
         $id=$request['id'];
         $admin_id=$request['admin_id'];
         $slug=$request['slug'];

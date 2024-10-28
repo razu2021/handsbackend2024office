@@ -25,8 +25,9 @@ class easyLoancontroller extends Controller
          else{
            $all = easyloan::where('status', 1)->orderBy('easyloan_id', 'ASC')->paginate(5);
          }
+         $deletecount= easyloan::onlyTrashed()->count();
         $totalpost = easyloan::count();
-        return view('websiteBackend.about.easyloan.index',compact('all','search','totalpost'));
+        return view('websiteBackend.about.easyloan.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = easyloan::count();
@@ -171,4 +172,17 @@ class easyLoancontroller extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+            // Recycle bin code is start here 
+            public function recycle(Request $request){
+              $search = $request['search'] ?? "";
+              if($search !=""){
+                  $all= easyloan::onlyTrashed()->where('top_heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+                  ->paginate(5);
+              }
+              else{
+                  $all = easyloan::onlyTrashed()->where('status', 1)->orderBy('easyloan_id', 'ASC')->paginate(5);
+              }
+              $totalpost = easyloan::count();
+              return view('websiteBackend.about.easyloan.recycle',compact('all','search','totalpost'));
+          }
 }

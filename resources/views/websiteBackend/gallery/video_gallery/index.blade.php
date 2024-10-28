@@ -30,6 +30,7 @@
                       <div class="col-lg-3 text-center ">
                           <div class="mb-2 ">
                           <a href="{{ route('video_gallery.add') }}"><button class="btn btn-success px-4">Add New Items</button></a>
+                          <a href="{{route('video_gallery.recycle')}}"> <button type="button" class="btn btn-warning position-relative">Recycle<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> {{$deletecount}}+ </span></button></a>
                           </div> 
                       </div>
                     </div>
@@ -38,11 +39,9 @@
                     <thead>
                       <tr>
                         <th scope="col">ID: </th>
-                        <th scope="col"> Location </th>
                         <th scope="col"> Heading </th>
                         <th scope="col"> Title</th>
-                        <th scope="col"> caption</th>
-                        <th scope="col"> Image</th>
+                        <th scope="col"> Embed link</th>
                         <th scope="col">status</th>
                         <th scope="col">Mangae</th>
                       </tr>
@@ -51,18 +50,9 @@
                     @foreach($all as $data)
                       <tr>
                         <td>{{$data->video_gallery_id}}</td>
-                        <td>{{$data->location}}</td>
                         <td>{{$data->heading}}</td>
                         <td> {{$data->title}}</td>
-                        <td> {!! Str::words($data->caption,10) !!}</td>
-                        @if($data->service_image !="")
-                        <!-- image  -->
-                        <td> 
-                          <img src="{{asset('uploads/website/gallery/'.$data->service_image)}}" alt="banner image" height="80px" width="auto">
-                        </td>
-                        @else
-                        <td> <img src="{{asset('uploads')}}/avatar.jpg" alt="Avater image" height="80px" width="auto"></td>
-                        @endif
+                        <td> {{$data->service_image}} </td>
                         <td>  
                         @if ($data->post_status == 1) 
                             <p class="text-success">Publish</p>

@@ -7,7 +7,7 @@
             <div class="card text-left">
                 <div class="row">
                     <div class="col-lg-7 m-2"><h3 class="p-2 text-uppercase"><span><i class="fas fa-solid fa-trademark"></i></span>Banner Information </h3></div>
-                    <div class="col-lg-3 text-end m-2 p-2"><a class="p-2" href="{{url('admin/dashboard/website-manage/home-banner')}}"><button class="btn btn-success">All Banner information</button></a></div>
+                    <div class="col-lg-3 text-end m-2 p-2"><a class="p-2" href="{{route('allbanner.all')}}"><button class="btn btn-success">All Banner information</button></a></div>
                 </div>
                 <div class="table-responsive text-nowrap">
                   <table class="table">

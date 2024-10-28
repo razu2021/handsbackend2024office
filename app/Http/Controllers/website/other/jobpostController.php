@@ -27,7 +27,8 @@ class jobpostController extends Controller
            $all = jobpost::where('status', 1)->orderBy('jobpost_id', 'ASC')->paginate(5);
          }
         $totalpost = jobpost::count();
-        return view('websiteBackend.other.jobpost.index',compact('all','search','totalpost'));
+        $deletecount=jobpost::onlyTrashed()->count();
+        return view('websiteBackend.other.jobpost.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = jobpost::count();
@@ -221,4 +222,17 @@ class jobpostController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+    // Recycle bin code is start here 
+    public function recycle(Request $request){
+      $search = $request['search'] ?? "";
+      if($search !=""){
+          $all= jobpost::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")->orwhere('subtitle','LIKE',"%$search%")
+          ->paginate(5);
+      }
+      else{
+          $all = jobpost::onlyTrashed()->where('status', 1)->orderBy('jobpost_id', 'ASC')->paginate(5);
+      }
+      $totalpost = jobpost::count();
+      return view('websiteBackend.other.jobpost.recycle',compact('all','search','totalpost'));
+  }
 }

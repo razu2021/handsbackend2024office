@@ -2,26 +2,26 @@
 @section('web_content')   
   <main>
   @foreach($banner as $data)
-    <section class="microfinace_banner" style="background-image: url('{{asset('uploads/website/'.$data->banner_bg_image)}}')">
-        <div class="bannerbg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-                        <div class="banner_3">
-                            <h1 style="font-size: 5rem; color: red;">{{$data->banner_heading}}</h1>
-                            @if($data->banner_button1 !="")
-                            <a href="{{$data->banner_button_url1}}">{{$data->banner_button1}} ||</a>
-                            @endif
-                            @if($data->banner_button2 !="")
-                            <a href="{{$data->banner_button_url2}}">{{$data->banner_button2}} </a>
-                            @endif
-                        </div>
-                    </div>
+  <section>
+    <div class="row" style="border-bottom:1px solid #000">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+            <div class="banner4">
+                <div class="banner4_content">
+                    <h1> {{$data->banner_heading}}</h1>
+                    <p> {{$data->banner_caption}}</p>
                 </div>
             </div>
         </div>
-    </section>
-    @endforeach
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+            <div class="banner4">
+                <div class="banner4_images">
+                    <img src="{{asset('uploads/website/'.$data->banner_bg_image)}}" alt="Human and Nature development Socety (HANDS) {{$data->banner_title}} image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endforeach
 @foreach($desc as $data)
 <section class="section-padding">
     <div class="container">
@@ -29,6 +29,7 @@
             <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 offset-lg-2">
                 <div class="about_e_crisis">
                     <div class="crisis_content">
+                        <h1>{{$data->title}}</h1>
                         <p>{!! $data->caption !!}</p>
                     </div>
                 </div>
@@ -135,21 +136,17 @@
     </div>
 </section>
 @foreach($bannerbt as $data)
-<section>
-    <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 g-0">
-            <div class="footer_banner">
-                <div class="footer_banner_image">
-                    <img src="{{asset('uploads/website/'.$data->service_image)}}" alt="Human and Nautre Development Society (HANDS) Banner Image" class="img-fluid">
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 g-0">
-            <div class="footer_banner">
-                <div class="footer_banner_content">
-                    <h1>{{$data->title}}</h1>
-                    <p>{!!$data->caption !!}</p>
-                </div>
+<section class="bannerbottom" style="background-image:url('{{asset('uploads/website/'.$data->service_image)}}')">
+    <div class="bgbottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 section-padding">
+                <div class="banner_bottom_content">
+                    <h1 id="bgtext">{{$data->heading}}</h1>
+                    <h6 class="blogo"><span>---</span><img src="{{asset('contents/assets/website')}}/assets/img/logo (2).png" alt="" style="height: 5rem;"><span>---</span></h6>
+                    <h3 class="pb-2">{{$data->title}}</h3>
+                    <p>{!! $data->caption !!}</p>
+                </div>                   
             </div>
         </div>
     </div>

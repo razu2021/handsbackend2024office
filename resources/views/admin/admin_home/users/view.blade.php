@@ -2,40 +2,38 @@
 @section('admin_content')
 
 <section>
-  <div class="container ">
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-          <div class="card mb-4 mt-4">
-            <div class="bt text-end pt-4 pb-2" style="padding-right:50px ">
-                <a href=""><button class="btn btn-success">status</button></a>
-                <a href="{{url('admin/dashboard/admin_allusers/delete/'.$data->id)}}"><button class="btn btn-danger">Delete </button></a>
-            </div>
-            <hr>
+<div class="container-xxl flex-grow-1 container-p-y">
+  <div class="row">
+    <div class="col-lg-12 mb-4 order-0">
+      <div class="card">
+        <div class="d-flex align-items-end row">
+          <div class="col-sm-12">
             <div class="card-body">
-              <div class="row">
-                <div class="col-lg-4 " style="border-right:2px solid #000">
-                  <h4>{{$data->name}}</h4>
-                  <h4>{{$data->email}}</h4>
-                  <h4>{{$data->verified_at}}</h4>
-                </div>
-                <div class="col-lg-4" style="border-right:2px solid #000">
-                  <h4><span>Created at:</span> {{$data->created_at}}</h4>
-                  <h4><span>Updated at:</span>{{$data->updated_at}}</h4>
-                </div>
-                <div class="col-lg-4 text-center">
-                  no data 
-                </div>
-                
-              </div>
-              <!-- card body end -->
+              <h3 class="card-title text-primary"> {{ $data->name }} </h3>
+              <h5 class="card-title text-primary"> {{ $data->email }} </h5>
+              @if($data->role == 0)
+              <h5 class="card-title text-primary"> Normal User </h5>
+              @elseif($data->role == 1)
+              <h5 class="card-title text-primary"> Employee </h5>
+              @elseif($data->role == 2)
+              <h5 class="card-title text-primary"> Customer </h5>
+              @elseif($data->role == 3)
+              <h5 class="card-title text-primary">Volunteer </h5>
+              @endif
+             
+
+              <p class=""> Created at  <span class="fw-bold">{{$data->created_at->format('Y-m-d H:i:s A')}}</span>  </p>
+              <p class="mb-4"> Created at  <span class="fw-bold">{{$data->updated_at->format('Y-m-d H:i:s A')}}</span> </p>
+              <a href="{{route('alluser.all')}}" class="btn btn-sm btn-outline-primary">View All Information </a>
             </div>
           </div>
-        <!-- col end  -->
+        </div>
       </div>
-    <!-- row end  -->
     </div>
-  </div>
 </section>
+
+
+
 <!-- profile information  -->
 <section>
   <div class="container ">

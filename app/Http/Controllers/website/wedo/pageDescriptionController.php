@@ -2,11 +2,9 @@
 namespace App\Http\Controllers\website\wedo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 use App\Models\page_desc;
 use Carbon\Carbon;
 class pageDescriptionController extends Controller
@@ -25,7 +23,8 @@ class pageDescriptionController extends Controller
            $all = page_desc::where('status', 1)->orderBy('page_desc_id', 'ASC')->paginate(5);
          }
         $totalpost = page_desc::count();
-        return view('websiteBackend.common.page_desc.index',compact('all','search','totalpost'));
+        $deletecount= page_desc::onlyTrashed()->count();
+        return view('websiteBackend.common.page_desc.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = page_desc::count();
@@ -157,4 +156,17 @@ class pageDescriptionController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+      // Recycle bin code is start here 
+      public function recycle(Request $request){
+      $search = $request['search'] ?? "";
+      if($search !=""){
+          $all= page_desc::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+          ->paginate(5);
+      }
+      else{
+          $all = page_desc::onlyTrashed()->where('status', 1)->orderBy('page_desc_id', 'ASC')->paginate(5);
+      }
+      $totalpost = page_desc::count();
+      return view('websiteBackend.common.page_desc.recycle',compact('all','search','totalpost'));
+  }
 }

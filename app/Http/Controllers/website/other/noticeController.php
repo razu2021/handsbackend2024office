@@ -26,7 +26,8 @@ class noticeController extends Controller
            $all = notice::where('status', 1)->orderBy('notice_id', 'ASC')->paginate(5);
          }
         $totalpost = notice::count();
-        return view('websiteBackend.other.notice.index',compact('all','search','totalpost'));
+        $deletecount =notice::onlyTrashed()->count();
+        return view('websiteBackend.other.notice.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = notice::count();
@@ -167,6 +168,20 @@ class noticeController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+    // Recycle bin code is start here 
+    public function recycle(Request $request){
+      $search = $request['search'] ?? "";
+      if($search !=""){
+          $all= notice::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")->orwhere('subtitle','LIKE',"%$search%")
+          ->paginate(5);
+      }
+      else{
+          $all = notice::onlyTrashed()->where('status', 1)->orderBy('notice_id', 'ASC')->paginate(5);
+      }
+      $totalpost = notice::count();
+      return view('websiteBackend.other.notice.recycle',compact('all','search','totalpost'));
+  }
+    
 
 
 }

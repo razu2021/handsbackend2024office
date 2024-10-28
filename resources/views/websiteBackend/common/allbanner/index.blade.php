@@ -21,7 +21,7 @@
                                 <input type="text" name="search" value="{{$search}}" class="form-control" placeholder="Search Entair Table">
                                 <div class="input-group-append">
                                   <button class="btn btn-outline-success" type="submit">Submit</button>
-                                  <button class="btn btn-outline-warning" type="submit"><a class="text-dark" href="{{url('admin/dashboard/website-manage/home-banner')}}">Reset</a></button>
+                                  <button class="btn btn-outline-warning" type="submit"><a class="text-dark" href="{{route('allbanner.all')}}">Reset</a></button>
                                 </div>
                               </div>
                               </form>
@@ -29,7 +29,8 @@
                       </div>
                       <div class="col-lg-3 text-center ">
                           <div class="mb-2 ">
-                          <a href="{{url('admin/dashboard/website-manage/home-banner/add')}}"><button class="btn btn-success px-4">Add New Items</button></a>
+                          <a href="{{route('allbanner.add')}}"><button class="btn btn-success px-4">Add New Items</button></a>
+                          <a href="{{route('allbanner.recycle')}}"> <button type="button" class="btn btn-warning position-relative">Recycle<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> {{$deletecount}}+ </span></button></a>
                           </div>
                       </div>
                     </div>
@@ -86,14 +87,14 @@
                               Action
                             </button>
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="{{url('admin/dashboard/website-manage/home-banner/edit/'.$data->slug)}}">Edit</a></li>
-                              <li><a class="dropdown-item" href="{{url('admin/dashboard/website-manage/home-banner/view/'.$data->slug)}}">View</a></li>
-                              <li><a class="dropdown-item" onclick="return confirm('Delete this Information')" href="{{url('admin/dashboard/website-manage/home-banner/softdelete/'.$data->banner_id)}}">Delete</a></li>
+                              <li><a class="dropdown-item" href="{{route('allbanner.edit',$data->slug)}}">Edit</a></li>
+                              <li><a class="dropdown-item" href="{{route('allbanner.view',$data->slug)}}">View</a></li>
+                              <li><a class="dropdown-item" onclick="return confirm('Delete this Information')" href="{{route('allbanner.softdelete',$data->banner_id)}}">Delete</a></li>
                               <li><hr class="dropdown-divider"></li>
                               @if ($data->post_status == 2) 
-                              <li><a class="dropdown-item text-success fw-bold" href="{{url('admin/dashboard/website-manage/home-banner/post_active/'.$data->banner_id)}}">Publish</a></li>
+                              <li><a class="dropdown-item text-success fw-bold" href="{{route('allbanner.post_active',$data->banner_id)}}">Publish</a></li>
                               @elseif($data->post_status == 1)
-                              <li><a class="dropdown-item text-warning fw-bold " href="{{url('admin/dashboard/website-manage/home-banner/post_deactive/'.$data->banner_id)}}">Unpublished</a></li>
+                              <li><a class="dropdown-item text-warning fw-bold " href="{{route('allbanner.post_deactive',$data->banner_id)}}">Unpublished</a></li>
                               @endif
                             </ul>
                           </div>

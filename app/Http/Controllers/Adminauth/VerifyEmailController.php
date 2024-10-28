@@ -11,18 +11,21 @@ use Illuminate\Http\RedirectResponse;
 class VerifyEmailController extends Controller
 {
     /**
-     * Mark the authenticated user's email address as verified.
+     * Mark the authenticated admin's email address as verified.
      */
     public function __invoke(EmailVerificationRequest $request): RedirectResponse
     {
+        // Check if the admin's email is already verified
         if ($request->user()->hasVerifiedEmail()) {
-            return redirect()->intended(RouteServiceProvider::HOME.'?verified=1');
+            return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
         }
 
+        // Mark email as verified and fire event if not already verified
         if ($request->user()->markEmailAsVerified()) {
             event(new Verified($request->user()));
         }
 
-        return redirect()->intended(RouteServiceProvider::HOME.'?verified=1');
+        // Redirect to admin dashboard after verification
+        return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
     }
 }

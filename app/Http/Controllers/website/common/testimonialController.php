@@ -25,7 +25,8 @@ class testimonialController extends Controller
            $all = testimonial::where('status', 1)->orderBy('testimonial_id', 'ASC')->paginate(5);
          }
         $totalpost = testimonial::count();
-        return view('websiteBackend.common.testimonial.index',compact('all','search','totalpost'));
+        $deletecount = testimonial::onlyTrashed()->count();
+        return view('websiteBackend.common.testimonial.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = testimonial::count();
@@ -216,4 +217,17 @@ class testimonialController extends Controller
       return redirect()->back()->with('message', 'Delete failed !');
     }
     }
+  // Recycle bin code is start here 
+  public function recycle(Request $request){
+    $search = $request['search'] ?? "";
+    if($search !=""){
+        $all= testimonial::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+        ->paginate(5);
+    }
+    else{
+        $all = testimonial::onlyTrashed()->where('status', 1)->orderBy('testimonial_id', 'ASC')->paginate(5);
+    }
+    $totalpost = testimonial::count();
+    return view('websiteBackend.common.testimonial.recycle',compact('all','search','totalpost'));
+}
 }

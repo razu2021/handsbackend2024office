@@ -20,7 +20,7 @@
                           <strong>socialmediaurl Relationship</strong>
                         </td>
                         <td class="text-center"><strong>: </strong></td>
-                        <td class="text-left">{{$data->socialMediaName->social_media_name}}</td>
+                        <td class="text-left">{{$data->social_mediaid}}</td>
                       </tr>
                       <tr>
                         <td class="text-end">

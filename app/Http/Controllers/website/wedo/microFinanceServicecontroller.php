@@ -26,7 +26,8 @@ class microFinanceServicecontroller extends Controller
            $all = micro_service::where('status', 1)->orderBy('micro_service_id', 'ASC')->paginate(5);
          }
         $totalpost = micro_service::count();
-        return view('websiteBackend.common.micro_service.index',compact('all','search','totalpost'));
+        $deletecount = micro_service::onlyTrashed()->count();
+        return view('websiteBackend.common.micro_service.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = micro_service::count();
@@ -52,6 +53,7 @@ class microFinanceServicecontroller extends Controller
             'heading' => 'required',
             'title' => 'required',
             'caption' => 'required',
+            'service_image' => 'required|mimes:jpeg,jpg,png,gif,avi,webp|max:5120', // Adjust file types and max size as needed
         ],
             [
               'category_as.required' => 'Service Category is Required.',
@@ -59,7 +61,7 @@ class microFinanceServicecontroller extends Controller
               'heading.required' => ' Heading is Required.',
               'title.required' => ' Title is Required.',
               'caption.required' => 'Caption is Required.',
-          
+              'service_image.required' => 'Service Image is Required!',   
             ]
         );
           $slug='admin'.uniqid('20');
@@ -78,13 +80,6 @@ class microFinanceServicecontroller extends Controller
           ]);
           /*------- image start here ------ */
           // bg image 
-          $request->validate([
-            'service_image' => 'required|mimes:jpeg,jpg,png,gif,avi,webp|max:5120', // Adjust file types and max size as needed
-         ],
-             [
-                 'service_image.required' => 'Service Image is Required!',     
-             ]
-         );
           if($request->hasFile('service_image')){
             $image=$request->file('service_image');
             $imageName=rand(10000,9999999).'_'.$insert.'-'.time().'.webp'; // .$image->getClientOriginalExtension()   ... replace webp
@@ -235,5 +230,18 @@ class microFinanceServicecontroller extends Controller
     } else {
       return redirect()->back()->with('message', 'Delete failed !');
     }
+    }
+       // Recycle bin code is start here 
+       public function recycle(Request $request){
+        $search = $request['search'] ?? "";
+        if($search !=""){
+            $all= micro_service::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+            ->paginate(5);
+        }
+        else{
+            $all = micro_service::onlyTrashed()->where('status', 1)->orderBy('micro_service_id', 'ASC')->paginate(5);
+        }
+        $totalpost = micro_service::count();
+        return view('websiteBackend.common.micro_service.recycle',compact('all','search','totalpost'));
     }
 }

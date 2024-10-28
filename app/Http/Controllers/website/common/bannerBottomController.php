@@ -28,7 +28,8 @@ class bannerBottomController extends Controller
            $all = bannerbottom::where('status', 1)->orderBy('bannerbottom_id', 'ASC')->paginate(5);
          }
         $totalpost = bannerbottom::count();
-        return view('websiteBackend.common.bannerbottom.index',compact('all','search','totalpost'));
+        $deletecount = bannerbottom::onlyTrashed()->count();
+        return view('websiteBackend.common.bannerbottom.index',compact('all','search','totalpost','deletecount'));
     }
     public function add(){
         $totalpost = bannerbottom::count();
@@ -228,5 +229,18 @@ class bannerBottomController extends Controller
     } else {
       return redirect()->back()->with('message', 'Delete failed !');
     }
+    }
+      // Recycle bin code is start here 
+      public function recycle(Request $request){
+        $search = $request['search'] ?? "";
+        if($search !=""){
+            $all= bannerbottom::onlyTrashed()->where('heading', 'LIKE', "%$search%")->orwhere('title','LIKE',"%$search%")
+            ->paginate(5);
+        }
+        else{
+            $all = bannerbottom::onlyTrashed()->where('status', 1)->orderBy('bannerbottom_id', 'ASC')->paginate(5);
+        }
+        $totalpost = bannerbottom::count();
+        return view('websiteBackend.common.bannerbottom.recycle',compact('all','search','totalpost'));
     }
 }

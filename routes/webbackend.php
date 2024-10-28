@@ -52,39 +52,44 @@ use App\Http\Controllers\website\wedo\productController;
 use App\Models\allprojects;
 use App\Models\designation;
 
-/*--------- website frontend manage constroller end  here -------- */
-
-
-
+/*---------  All route is protected for auth admin start here ---------*/
 Route::middleware('auth:admin')->group(function () {
+/*---------  All route is protected for auth admin start here ---------*/
+
+
+
     Route::get('admin/dashboard/manage_application/recycle', [recyclebinController::class, 'index']);
 
     /*-------- manage enrair menu --------*/
-    Route::get('admin/dashboard/website-manage/home-banner', [bannerController::class, 'index']);
-    Route::get('admin/dashboard/website-manage/home-banner/add', [bannerController::class, 'add']);
-    Route::get('admin/dashboard/website-manage/home-banner/edit/{slug}', [bannerController::class, 'edit']);
-    Route::get('admin/dashboard/website-manage/home-banner/view/{slug}', [bannerController::class, 'view']);
-    Route::post('admin/dashboard/website-manage/home-banner/submit', [bannerController::class, 'insert']);
-    Route::post('admin/dashboard/website-manage/home-banner/update', [bannerController::class, 'update']);
-    Route::get('admin/dashboard/website-manage/home-banner/softdelete/{id}', [bannerController::class, 'softdelete']);
-    Route::get('admin/dashboard/website-manage/home-banner/restore/{id}', [bannerController::class, 'restore']);
-    Route::get('admin/dashboard/website-manage/home-banner/delete/{id}', [bannerController::class, 'delete']);
-    Route::get('admin/dashboard/website-manage/home-banner/recycle', [bannerController::class, 'recycle']);
-    Route::get('admin/dashboard/website-manage/home-banner/post_active/{id}', [bannerController::class, 'post_active']);
-    Route::get('admin/dashboard/website-manage/home-banner/post_deactive/{id}', [bannerController::class, 'post_deactive']);
+    Route::prefix('admin/dashboard/website-manage/Entair-website-banner')->name('allbanner.')->group(function(){
+    Route::get('/', [bannerController::class, 'index'])->name('all');
+    Route::get('/add', [bannerController::class, 'add'])->name('add');
+    Route::get('/edit/{slug}', [bannerController::class, 'edit'])->name('edit');
+    Route::get('/view/{slug}', [bannerController::class, 'view'])->name('view');
+    Route::post('/submit', [bannerController::class, 'insert'])->name('submit');
+    Route::post('/update', [bannerController::class, 'update'])->name('update');
+    Route::get('/softdelete/{id}', [bannerController::class, 'softdelete'])->name('softdelete');
+    Route::get('/restore/{id}', [bannerController::class, 'restore'])->name('restore');
+    Route::get('/delete/{id}', [bannerController::class, 'delete'])->name('delete');
+    Route::get('/recycle', [bannerController::class, 'recycle'])->name('recycle');
+    Route::get('/post_active/{id}', [bannerController::class, 'post_active'])->name('post_active');
+    Route::get('/post_deactive/{id}', [bannerController::class, 'post_deactive'])->name('post_deactive');
+    });
     /*--------  Banner end here  --------*/
-    Route::get('admin/dashboard/website-manage/blade-page', [bladeInfoController::class, 'index']);
-    Route::get('admin/dashboard/website-manage/blade-page/add', [bladeInfoController::class, 'add']);
-    Route::get('admin/dashboard/website-manage/blade-page/edit/{slug}', [bladeInfoController::class, 'edit']);
-    Route::get('admin/dashboard/website-manage/blade-page/view/{slug}', [bladeInfoController::class, 'view']);
-    Route::post('admin/dashboard/website-manage/blade-page/submit', [bladeInfoController::class, 'insert']);
-    Route::post('admin/dashboard/website-manage/blade-page/update', [bladeInfoController::class, 'update']);
-    Route::get('admin/dashboard/website-manage/blade-page/softdelete/{id}', [bladeInfoController::class, 'softdelete']);
-    Route::get('admin/dashboard/website-manage/blade-page/restore/{id}', [bladeInfoController::class, 'restore']);
-    Route::get('admin/dashboard/website-manage/blade-page/delete/{id}', [bladeInfoController::class, 'delete']);
-    Route::get('admin/dashboard/website-manage/blade-page/recycle', [bladeInfoController::class, 'recycle']);
-    Route::get('admin/dashboard/website-manage/blade-page/post_active/{id}', [bladeInfoController::class, 'post_active']);
-    Route::get('admin/dashboard/website-manage/blade-page/post_deactive/{id}', [bladeInfoController::class, 'post_deactive']);
+    Route::prefix('admin/dashboard/website-manage/blade-page')->name('blade.')->group(function(){
+        Route::get('/', [bladeInfoController::class, 'index'])->name('all');
+        Route::get('/add', [bladeInfoController::class, 'add'])->name('add');
+        Route::get('/edit/{slug}', [bladeInfoController::class, 'edit'])->name('edit');
+        Route::get('/view/{slug}', [bladeInfoController::class, 'view'])->name('view');
+        Route::post('/submit', [bladeInfoController::class, 'insert'])->name('submit');
+        Route::post('/update', [bladeInfoController::class, 'update'])->name('update');
+        Route::get('/softdelete/{id}', [bladeInfoController::class, 'softdelete'])->name('softdelete');
+        Route::get('/restore/{id}', [bladeInfoController::class, 'restore'])->name('restore');
+        Route::get('/delete/{id}', [bladeInfoController::class, 'delete'])->name('delete');
+        Route::get('/recycle', [bladeInfoController::class, 'recycle'])->name('recycle');
+        Route::get('/post_active/{id}', [bladeInfoController::class, 'post_active'])->name('post_active');
+        Route::get('/post_deactive/{id}', [bladeInfoController::class, 'post_deactive'])->name('post_deactive');
+    });
     // --------------  common route --------------- 
     Route::prefix('admin/dashboard/website-manage/faqs')->name('faqs.')->group(function () {
         Route::get('/', [faqController::class, 'index'])->name('all');
@@ -110,7 +115,7 @@ Route::middleware('auth:admin')->group(function () {
     Home Page rout Start here 
     =====================================- --------*/
 
-    Route::prefix('admin/dashboard/website-manage/whatsnew')->name('whatsnew.')->group(function () {
+        Route::prefix('admin/dashboard/website-manage/whatsnew')->name('whatsnew.')->group(function () {
         Route::get('/', [whatsnewController::class, 'index'])->name('all');
         Route::get('/add', [whatsnewController::class, 'add'])->name('add');
         Route::get('/edit/{slug}', [whatsnewController::class, 'edit'])->name('edit');
@@ -720,49 +725,10 @@ Route::prefix('admin/dashboard/website-manage/applyloan')->name('applyloan.')->g
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* ######################   all protected route end here ========== ##################3*/
 });
-
-
-
 require __DIR__.'/adminauth.php';
+/* ######################   all protected route end here ========== ##################3*/
 
 
 

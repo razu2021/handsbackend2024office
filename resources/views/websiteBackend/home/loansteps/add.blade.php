@@ -12,7 +12,7 @@
       <div class="card mb-4">
           <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0 fw-bold"> Add New Item </h5>
-            <small class="text-muted float-end">A a New Item for website </small>
+            <small class="text-muted float-end"><a href="{{route('loansteps.all')}}">All information</a></small>
           </div>
           <div class="card-body">
             <form method="post" action="{{ route('loansteps.submit') }}" enctype="multipart/form-data">
@@ -36,7 +36,7 @@
               <div class="col-md-12">
                 <div class="mb-3">
                 <label class="form-label" for="basic-default-fullname">Add Caption<span class="text-danger"> <i class="fas fa-solid fa-star"></i></span></label>
-                <textarea name="caption" id="editor"></textarea>
+                <textarea name="caption" id="editor" value="{{old('caption')}}">{{old('caption')}}</textarea>
                 <span class="text-danger">@error('caption'){{$message}} @enderror</span>
                 </div>
               </div>
